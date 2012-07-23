@@ -1,8 +1,11 @@
 Feats::Application.routes.draw do
-  get "static_pages/signup"
-  get "static_pages/signin"
+  resources :users, only: [:new, :create]
   
-  match "/auth/facebook/callback" => "sessions#create"
+
+  get "static_pages/signin"
+
+  match '/signup', to: 'users#new'  
+  match '/auth/facebook/callback', to: 'sessions#create'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

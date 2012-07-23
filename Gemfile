@@ -9,6 +9,8 @@ group :development, :test do
   gem 'guard-rspec', '0.5.5'
 end
 
+gem 'annotate', '~> 2.4.1.beta', group: :development
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -25,6 +27,7 @@ group :test do
   gem 'growl', '1.0.3'
   gem 'guard-spork', '0.3.2'
   gem 'spork', '0.9.0'
+  gem 'factory_girl_rails', '1.4.0'
 end
 
 group :production do

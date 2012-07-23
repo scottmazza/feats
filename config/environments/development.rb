@@ -34,8 +34,4 @@ Feats::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
-  
-  # Facebook authentication info  
-  ENV['FACEBOOK_APP_ID'] = "463074820377113"
-  ENV['FACEBOOK_SECRET'] = "3fef8d4dbf6e11ef205912df59dcd38a"
 end

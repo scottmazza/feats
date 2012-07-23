@@ -64,9 +64,4 @@ Feats::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
-  
-  # Facebook authentication info  
-  ENV['FACEBOOK_APP_ID'] = "463074820377113"
-  ENV['FACEBOOK_SECRET'] = "3fef8d4dbf6e11ef205912df59dcd38a"
-  
 end

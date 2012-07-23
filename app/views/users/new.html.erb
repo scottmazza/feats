@@ -44,13 +44,15 @@
       <div class="well">
       <h3>New to feats of? &nbsp;Sign up</h3>
       <br>
-        <form class="form">
-        <input type="email" class="input-large" placeholder="Email">
+      <%= form_for(@user) do |f| %>
+        <%= render 'shared/error_messages' %>
+        <%= f.label :email %>
+        <%= f.text_field :email %>
         <br>
         <br>
-        <button type="Sign Up" class="btn btn-large btn-info">Start Competing</button>
-        </form>
-        <a href="signin.html">Already a member? Sign in here.</a>
+        <%= f.submit "Sign Up", class: "btn btn-large btn-info" %>
+      <% end %>
+      <a href="signin.html">Already a member? Sign in here.</a>
       </div>
     </ul>
   </div>

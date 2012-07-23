@@ -34,8 +34,4 @@ Feats::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
-
-  # Facebook authentication info  
-  ENV['FACEBOOK_APP_ID'] = "463074820377113"
-  ENV['FACEBOOK_SECRET'] = "3fef8d4dbf6e11ef205912df59dcd38a"
 end
