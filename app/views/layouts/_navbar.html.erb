@@ -1,0 +1,27 @@
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="single_signup.html"><img alt="Feats of" src="assets/img/featsof.png" style="height:38px"></a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li><a href="howitworks.html">How It Works</a></li>
+          <li><a href="signin.html">Terms of Service</a></li>
+        </ul>
+      </div>
+          <div class="nav-collapse pull-right">
+            <ul class="nav">
+	          <% if current_user %>
+	            <li>Welcome <%= current_user.name %>!
+		      <% else %>
+                <li><%= link_to "Sign in with Facebook", "/auth/facebook" %></li>
+              <% end %>
+            </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</div>

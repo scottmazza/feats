@@ -1,11 +1,19 @@
 Feats::Application.routes.draw do
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :edit, :update]
   
+  # These static pages are temporary
+  get "static_pages/edituser"
+  get "static_pages/featmap"
+  get "static_pages/featpage"
+  get "static_pages/newfeat"
+  get "static_pages/placepage"
+  get "static_pages/user"
 
-  get "static_pages/signin"
-
-  match '/signup', to: 'users#new'  
+  match '/signup', to: 'users#new' 
+  match '/signin', to: 'sessions#new'
   match '/auth/facebook/callback', to: 'sessions#create'
+  match '/auth/failure', to: redirect('/')
+  match 'signout', to: 'sessions#destroy', as: 'signout'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

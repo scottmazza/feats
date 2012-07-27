@@ -2,15 +2,16 @@
 #
 # Table name: users
 #
-#  id            :integer         not null, primary key
-#  email         :string(255)
-#  name          :string(255)
-#  username      :string(255)
-#  image         :string(255)
-#  oath_provider :string(255)
-#  oath_uid      :string(255)
-#  created_at    :datetime        not null
-#  updated_at    :datetime        not null
+#  id               :integer         not null, primary key
+#  email            :string(255)
+#  name             :string(255)
+#  username         :string(255)
+#  image            :string(255)
+#  created_at       :datetime        not null
+#  updated_at       :datetime        not null
+#  oauth_provider   :string(255)
+#  oauth_token      :string(255)
+#  oauth_expires_at :datetime
 #
 
 require 'spec_helper'
