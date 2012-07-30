@@ -16,7 +16,8 @@
   <div class="row">
     <ul class="span3">
       <div class="well">
-      <h3>New to feats of? &nbsp;Sign up</h3>
+      <h3>New to feats of?</h3>
+	  <h3>Sign up and start competing!</h3>
       <br>
       <%= form_for(@user) do |f| %>
         <%= render 'shared/error_messages' %>
@@ -24,7 +25,7 @@
         <%= f.text_field :email %>
         <br>
         <br>
-        <%= f.submit "Sign Up", class: "btn btn-large btn-info" %>
+        <%= f.submit "Sign Up with Facebook", class: "btn btn-large btn-primary" %>
       <% end %>
       </div>
     </ul>
