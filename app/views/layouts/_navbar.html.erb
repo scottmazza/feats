@@ -18,12 +18,23 @@
       <div class="nav-collapse pull-right">
         <ul class="nav">
 		      <% if current_user %>
-		        <li id="fat-menu" class="dropdown">
+	          <li id="feats-menu" class="dropdown">
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-		            Welcome <%= current_user.name %>! <b class="caret"></b>
+		            Feats <b class="caret"></b>
 		          </a>
 		          <ul class="dropdown-menu">
-			          <li class "divider"></li>
+			          <%= link_to "Create Feat", "#" %>
+			        </ul>
+		        </li>
+		        <li id="user-menu" class="dropdown">
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+		            <%= current_user.name %> <b class="caret"></b>
+		          </a>
+		          <ul class="dropdown-menu">
+			          <li>
+				          <%= link_to "Profile", edit_user_path(current_user) %>
+				        </li>
+			          <li class="divider"></li>
 			          <li>
 				          <%= link_to "Sign out", signout_path, method: "delete" %>
 				        </li>

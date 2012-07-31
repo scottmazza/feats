@@ -15,6 +15,10 @@
 #
 
 class User < ActiveRecord::Base
+  has_many :locations, inverse_of: :user
+  has_many :attempts
+  has_many :feats, inverse_of: :user
+  has_many :feats, through: :attempts 
   attr_accessible :email, :name, :username, :image, :oauth_provider, 
                   :oauth_token, :oauth_expires_at
   

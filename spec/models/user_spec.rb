@@ -22,12 +22,13 @@ describe User do
   
   subject { @user }
   
-  it { should respond_to(:email)         }
-  it { should respond_to(:name)          }
-  it { should respond_to(:username)      }
-  it { should respond_to(:image)         }
-  it { should respond_to(:oath_provider) }
-  it { should respond_to(:oath_uid)      }
+  it { should respond_to(:email)               }
+  it { should respond_to(:name)                }
+  it { should respond_to(:username)            }
+  it { should respond_to(:image)               }
+  it { should respond_to(:oauth_provider)      }
+  it { should respond_to(:oauth_token)         }
+  it { should respond_to(:oauth_expires_at)    }
   
   it { should be_valid }
   

@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.6'
 gem 'omniauth-facebook'
+gem 'geocoder'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'

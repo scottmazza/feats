@@ -11,7 +11,43 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120724221409) do
+ActiveRecord::Schema.define(:version => 20120729231323) do
+
+  create_table "attempts", :force => true do |t|
+    t.integer  "feat_id"
+    t.integer  "user_id"
+    t.float    "score"
+    t.string   "video_url"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "attempts", ["feat_id"], :name => "index_attempts_on_feat_id"
+  add_index "attempts", ["user_id"], :name => "index_attempts_on_user_id"
+
+  create_table "feats", :force => true do |t|
+    t.integer  "location_id"
+    t.text     "description"
+    t.boolean  "low_score_wins"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "user_id"
+  end
+
+  add_index "feats", ["location_id"], :name => "index_feats_on_location_id"
+
+  create_table "locations", :force => true do |t|
+    t.string   "name"
+    t.string   "address"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "user_id"
+  end
+
+  add_index "locations", ["latitude"], :name => "index_locations_on_latitude"
+  add_index "locations", ["longitude"], :name => "index_locations_on_longitude"
 
   create_table "users", :force => true do |t|
     t.string   "email"
@@ -26,5 +62,6 @@ ActiveRecord::Schema.define(:version => 20120724221409) do
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["username"], :name => "index_users_on_username", :unique => true
 
 end
