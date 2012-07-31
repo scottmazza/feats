@@ -167,12 +167,12 @@ body {
 }
 
 a {
-  color: #49afcd;
+  color: #999;
   text-decoration: none;
 }
 
 a:hover {
-  color: #49afcd;
+  color: #FFF;
   text-decoration: underline;
 }
 
@@ -2490,9 +2490,9 @@ table .span24 {
 .well {
   min-height: 20px;
   min-width: 220px;
-  padding: 20px;
+  padding: 20px 20px 26px 20px;
   margin-bottom: 19px;
-  background-color: #000;
+  background-color: rgba(0,0,0,.88);
   border: 1px solid #eee;
   border: 1px solid rgba(0, 0, 0, 0.05);
   -webkit-border-radius: 4px;
@@ -2679,7 +2679,7 @@ button.close {
 }
 
 .btn-large {
-  padding: 10px 41px 10px 41px;
+  padding: 10px 67px 10px 67px;
   font-size: 18px;
   line-height: normal;
   -webkit-border-radius: 5px;
