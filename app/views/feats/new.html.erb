@@ -3,49 +3,32 @@
     <div class="span12">
       <div class="craig-unit">
         <div class="scott-unit">
-        <h1>Create a new feat</h1>
-        <br>
-        <form class="form">
-        <fieldset>
-          <div class="control-group">
-          <label class="control-label" for="input02">Address</label>
-            <div class="controls">
-            <input type="text" class="input-xlarge" id="input02" placeholder="Click on the map to enter address">
-            </div>
-          </div>
-          
-          <div class="control-group">
-            <label class="control-label" for="input01">Name of place where feat took place</label>
-            <div class="controls">
-              <input type="text" class="input-xxlarge" id="input01" placeholder="i.e. The White House, Key Bridge, Iron Horse Taproom">
-            </div>
-          </div>
-          
-          <div class="control-group">
-            <label class="control-label" for="input01">The feat</label>
-            <div class="controls">
-              <textarea class="input-xxlarge" id="textarea" rows="1" placeholder="i.e. The most push ups, The fastest time running accross, The fastest pint"></textarea>
-            </div>
-          </div>
-          
-          <div class="control-group">
-            <div class="control-group">
-              <label class="control-label" for="input01">Enter your result</label>
-              <input type="text" class="input-xlarge" id="input01" placeholder="">
-            </div>
-          </div>
-          
-          <div class="control-group">
-            <div class="control-group">
-              <label class="control-label" for="input01">Validate your result with a link to a YouTube video</label>
-              <input type="text" class="input-xxlarge" id="input01" placeholder="">
-            </div>
-          </div>
+          <h1>Create a new feat</h1>
+					<br>
+		      <h2>
+						<%= @location.name %><br>
+		        <%= @location.street %><br>
+		        <%= @location.city %>, <%= @location.state %>, 
+		        <%= @location.zipcode %><br>
+		      </h2>
+					<h4><%= link_to "Change Location", "/locations" %></h4>
           <br>
-          
-          <button type="submit" class="btn btn-info btn-large">Create Feat</button>
-          </fieldset>
-        </form>
+          <%= form_for @feat do |f| %>
+            <%= render 'shared/error_messages', target: @feat %>
+            <fieldset>
+              <%= f.label :name %>
+              <%= f.text_field :name %>
+              <%= f.label :description %>
+              <%= f.text_area :description, rows: 4 %>
+	            <%= f.label :scoring %>
+              <%= f.select :low_score_wins, 
+            		[['Highest score wins', 0], ['Lowest score wins', 1]] %>
+              <br>
+              <br>
+	            <%= f.submit "Create Feat", 
+	              class: "btn btn-large btn-primary" %>
+	          </fieldset>
+          <% end %>
         </div>
       </div>
     </div>

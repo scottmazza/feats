@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120729231323) do
+ActiveRecord::Schema.define(:version => 20120814164424) do
 
   create_table "attempts", :force => true do |t|
     t.integer  "feat_id"
@@ -32,18 +32,22 @@ ActiveRecord::Schema.define(:version => 20120729231323) do
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.integer  "user_id"
+    t.string   "name"
   end
 
   add_index "feats", ["location_id"], :name => "index_feats_on_location_id"
 
   create_table "locations", :force => true do |t|
     t.string   "name"
-    t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "user_id"
+    t.string   "street"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zipcode"
   end
 
   add_index "locations", ["latitude"], :name => "index_locations_on_latitude"

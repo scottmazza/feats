@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      <div class="craig-unit">
+        <div class="scott-unit">
+          <h1>Create a new feat location</h1>
+          <br>
+          <%= form_for @location do |f| %>
+            <%= render 'shared/error_messages', target: @location %>
+            <fieldset>
+              <%= f.label :name %>
+              <%= f.text_field :name, maxlength: 255 %>
+	            <%= f.label :street %>
+              <%= f.text_field :street, disabled: 'true', maxlength: 255 %>
+	            <%= f.label :city %>
+              <%= f.text_field :city, disabled: 'true', maxlength: 100 %>
+	            <%= f.label :state %>
+              <%= f.text_field :state, disabled: 'true', maxlength: 2 %>
+	            <%= f.label :zipcode %>
+              <%= f.text_field :zipcode, disabled: 'true', maxlength: 5 %>
+              <br>
+              <br>
+	            <%= f.submit "Create Location", 
+	              class: "btn btn-large btn-primary" %>
+	          </fieldset>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+

@@ -16,15 +16,15 @@
   <div class="row">
     <ul class="span3">
       <div class="well">
-	  <h3>Sign up and start competing!</h3>
-      <br>
-      <%= form_for(@user) do |f| %>
-        <%= render 'shared/error_messages' %>
-        <%= f.label :email %>
-        <%= f.text_field :email %>
+	      <h3>Sign up and start competing!</h3>
         <br>
-        <%= f.submit "Sign Up", class: "btn btn-large btn-primary" %>
-      <% end %>
+        <%= form_for(@user) do |f| %>
+          <%= render 'shared/error_messages', target: @user %>
+          <h3><%= f.label :email %></h3>
+          <%= f.text_field :email %>
+          <br>
+          <%= f.submit "Sign Up", class: "btn btn-large btn-primary" %>
+        <% end %>
       </div>
     </ul>
   </div>

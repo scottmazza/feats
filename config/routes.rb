@@ -1,13 +1,8 @@
 Feats::Application.routes.draw do
-  get "feats/new"
 
-  get "feats/create"
-
-  get "feats/edit"
-
-  get "feats/update"
-
-  resources :users, only: [:new, :create, :edit, :update]
+  resources :users,     only: [:new, :create, :edit, :update]
+  resources :feats,     only: [:new, :create, :edit, :update]
+  resources :locations, only: [:new, :create, :edit, :update, :index]
   
   # These static pages are temporary
   get "static_pages/edituser"
