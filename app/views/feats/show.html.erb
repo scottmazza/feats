@@ -1,0 +1,65 @@
+<script type="text/javascript"
+	src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBk3LMS2I-w-KWmm2YEnPdqPu4EVULGfdE&sensor=false">
+</script>
+<script type="text/javascript">
+	var gMap;
+	function initialize() {
+		var lat_lng = new google.maps.LatLng(<%=@location.latitude%>,
+			 							<%=@location.longitude%>);
+	  var mapOptions = {
+	    center: lat_lng,
+	    zoom: 15,
+	    mapTypeId: google.maps.MapTypeId.ROADMAP
+	  };
+	  gMap = new google.maps.Map(document.getElementById("map_canvas"),
+	          mapOptions);
+		var marker = new google.maps.Marker({
+			position: lat_lng,
+			title: "<%=@location.name%>"
+		});
+	
+		marker.setMap(gMap);
+}
+</script>
+<div class="container">
+  <div class="row">
+    <div class="span5">
+      <div class="scott-unit">
+				<div class="row">
+					<div class="span2"  align="right"><h2>Feat:</h2></div>
+					<div class="span2"><%= @feat.name %></div>
+				</div>
+				<div class="row">
+					<div class="span2"  align="right"><h2>Created by:</h2></div>
+					<div class="span2"><%= @feat.user.username %></div>
+				</div>
+				<div class="row">
+					<div class="span2" align="right"><h2>Location:</h2></div>
+					<div class="span2">
+						<%= @location.name %><br>
+						<%= @location.address %>
+					</div>
+				</div>
+				<div class="row">
+					<div class="span2" align="right"><h2>Description:</h2></div>
+					<div class="span2"><%= @feat.description %></div>
+				</div>
+				<div class="row">
+					<div class="span2" align="right"><h2>Scoring:</h2></div>
+					<div class="span2">
+						<% if @feat.low_score_wins %>						
+							Low score wins.
+						<% else %>
+							High score wins.
+						<% end %>
+					</div>
+				</div>
+				<br>
+	      <br>
+			</div>
+    </div>
+		<div id="map_canvas" class="span7"></div>
+  </div>
+</div>
+<br>
+<br>

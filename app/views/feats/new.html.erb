@@ -1,17 +1,38 @@
+<script type="text/javascript"
+	src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBk3LMS2I-w-KWmm2YEnPdqPu4EVULGfdE&sensor=false">
+</script>
+<script type="text/javascript">
+	var gMap;
+  function initialize() {
+		var lat_lng = new google.maps.LatLng(<%=@location.latitude%>,
+			 							<%=@location.longitude%>);
+    var mapOptions = {
+      center: lat_lng,
+      zoom: 15,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    gMap = new google.maps.Map(document.getElementById("map_canvas"),
+            mapOptions);
+		var marker = new google.maps.Marker({
+			position: lat_lng,
+			title: "<%=@location.name%>"
+		});
+		
+		marker.setMap(gMap);
+  }
+</script>
 <div class="container">
   <div class="row">
-    <div class="span12">
+    <div class="span5">
       <div class="craig-unit">
         <div class="scott-unit">
           <h1>Create a new feat</h1>
 					<br>
 		      <h2>
 						<%= @location.name %><br>
-		        <%= @location.street %><br>
-		        <%= @location.city %>, <%= @location.state %>, 
-		        <%= @location.zipcode %><br>
+		        <%= @location.address %><br>
 		      </h2>
-					<h4><%= link_to "Change Location", "/locations" %></h4>
+					<h4><%= link_to "Change Location", locate_locations_path %></h4>
           <br>
           <%= form_for @feat do |f| %>
             <%= render 'shared/error_messages', target: @feat %>
@@ -32,6 +53,7 @@
         </div>
       </div>
     </div>
+		<div id="map_canvas" class="span7"></div>
   </div>
 </div>
 <br>

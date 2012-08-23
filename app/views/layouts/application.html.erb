@@ -16,12 +16,14 @@
 	  <link href="assets/stylesheets/bootstrap-responsive.css" rel="stylesheet">
 	  <link href="assets/stylesheets/custom.css" rel="stylesheet">
 	  <style type="text/css">
-   
-	  body {
-			padding-top: 100px;
-	      padding-bottom: 0px;
-	  }
-
+		 html { height: 100% }
+		 body {
+				padding-top: 100px;
+		    padding-bottom: 0px;
+				height: 100%;
+				margin: 0
+		  }
+			#map_canvas { height: 500px }
 	  </style>
 	  <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
 
@@ -37,21 +39,23 @@
 	  <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
 
 	</head>
-	<body>
-		<%= render 'layouts/navbar' %>
+	<body onload="initialize()">
 		<div class="container">
-		  <% flash.each do |key, value| %>
-		    <div class="alert alert-<%= key %>"><%= value %></div>
-		  <% end %>
-		  <%= yield %>
+			<%= render 'layouts/navbar' %>
+			  <% flash.each do |key, value| %>
+			    <div class="alert alert-<%= key %>"><%= value %></div>
+			  <% end %>
+			  <%= yield %>
 
-		  <!-- Main hero unit for a primary marketing message or call to action -->    
+			  <!-- Main hero unit for a primary marketing message or call to action -->    
 
-		  <footer>   
-		  </footer>
-
-		  <%= debug(params) if Rails.env.development? %>
-		</div>
+			  <footer>   
+			  </footer>
+			<% if Rails.env.development? %>
+		  	<%= debug(params) %>
+		  	<%= debug(session) %>
+			<% end %>
+	  </div>
 	</body>
 </html>
 

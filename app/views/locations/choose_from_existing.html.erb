@@ -22,29 +22,36 @@
 }
 </script>
 <div class="row">
-  <div class="span5">
-    <div class="craig-unit">
-      <div class="scott-unit">
-        <h1>Create a new feat location</h1>
+  <div class="span4">
+		<div class="craig-unit">
+			<div class="scott-unit">
+        <h3>
+					The following locations exist at
+				</h3>
+				<br>
+				<%= "#{session[:address]}" %>:
+				<br>
         <br>
-        <%= form_for @location do |f| %>
-          <%= render 'shared/error_messages', target: @location %>
+        <%= form_tag new_feat_path, method: 'get' do %>
           <fieldset>
-            <%= f.label :name %>
-            <%= f.text_field :name, maxlength: 255 %>
-           	<%= f.label :address %>
-            <%= f.text_field :address, disabled: 'true', maxlength: 255 %>
-            <br>
-            <br>
-           <%= f.submit "Create Location", 
-             class: "btn btn-large btn-primary" %>
-         </fieldset>
+						<%= select_tag(:location_id,
+						 	options_from_collection_for_select(@locations, :id, :name),
+							multiple: 'true')%>
+						<br>
+           	<%= submit_tag 'Use this location', 
+							class: "btn btn-small btn-primary" %>
+         	</fieldset>
         <% end %>
-			</div>
-		</div>
+				<br>
+				<h3>OR</h3>
+				<br>
+				<br>
+				<%= button_to 'Create new location', { action: 'new' }, 
+					{ method: 'get', class: 'btn btn-small btn-primary' }%>
+		  </div>
+	  </div>
   </div>
-	<div id="map_canvas" class="span7"></div>
+	<div id="map_canvas" class="span8"></div>
 </div>
 <br>
 <br>
-

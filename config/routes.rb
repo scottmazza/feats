@@ -1,8 +1,12 @@
 Feats::Application.routes.draw do
 
   resources :users,     only: [:new, :create, :edit, :update]
-  resources :feats,     only: [:new, :create, :edit, :update]
-  resources :locations, only: [:new, :create, :edit, :update, :index]
+  resources :feats,     only: [:new, :create, :edit, :update, :show]
+  resources :locations do     
+    options = { only: [:new, :create, :edit, :update] }
+    get 'locate', on: :collection
+    get 'choose_from_existing', on: :collection
+  end 
   
   # These static pages are temporary
   get "static_pages/edituser"
@@ -11,6 +15,7 @@ Feats::Application.routes.draw do
   get "static_pages/newfeat"
   get "static_pages/placepage"
   get "static_pages/user"
+  get "static_pages/testpage"
 
   match '/signup', to: 'users#new' 
   match '/signin', to: 'sessions#new'
