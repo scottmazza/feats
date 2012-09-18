@@ -1,9 +1,9 @@
 <script type="text/javascript"
-	src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBk3LMS2I-w-KWmm2YEnPdqPu4EVULGfdE&sensor=false">
+	src="http://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_API_KEY']%>&sensor=false">
 </script>
 <script type="text/javascript">
 	var gMap;
-	function initialize() {
+	$(function ()  {
 		var lat_lng = new google.maps.LatLng(<%=@location.latitude%>,
 			 							<%=@location.longitude%>);
 	  var mapOptions = {
@@ -19,7 +19,7 @@
 		});
 	
 		marker.setMap(gMap);
-}
+	});
 </script>
 <div class="container">
   <div class="row">
@@ -56,6 +56,33 @@
 				</div>
 				<br>
 	      <br>
+				<div class="row">
+					<div class="span4">
+						<% if @attempts.empty? %>
+							<h2>This feat has no recorded attempts</h2>
+						<% else %>
+							<h2>Attempts:</h2>
+							<ol>
+								<% @attempts.each do |a| %>
+									<li><%= a.user.username%>: <%= a.score.to_s %>
+									<% if a.user.id == session[:user_id] %>
+									  <% @attempt_exists = true %>
+										<%= link_to "Update", edit_attempt_path(a.id) %>
+									<% end %>
+									</li>
+								<% end %>
+							</ol>
+						<% end %>
+					</div>
+				</div>
+				<% if !@attempt_exists %>
+					<div class="row">
+						<div class="span4">
+							<%= link_to "Record an attempt on this feat", 
+									new_attempt_path %>
+						</div>
+					</div>
+				<% end %>
 			</div>
     </div>
 		<div id="map_canvas" class="span7"></div>

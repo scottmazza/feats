@@ -1,0 +1,70 @@
+<script type="text/javascript"
+	src="http://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_API_KEY']%>&sensor=false">
+</script>
+<script type="text/javascript">
+	var gMap;
+	var gMarkers = [ ];
+	
+	$(function () {
+		var lat_lng_bounds = new google.maps.LatLngBounds();
+		var ne_lat_lng;
+		var lat_lng = new google.maps.LatLng(<%=@attempts.first.feat.location.latitude%>,
+			 							<%=@attempts.first.feat.location.longitude%>);
+	  var mapOptions = {
+	    center: lat_lng,
+	    zoom: 15,
+	    mapTypeId: google.maps.MapTypeId.ROADMAP
+	  };
+	  gMap = new google.maps.Map(document.getElementById("map_canvas"),
+	          mapOptions);
+		<% @attempts.each do |a| %>
+			lat_lng = new google.maps.LatLng(<%=a.feat.location.latitude%>,
+				 							<%=a.feat.location.longitude%>);
+			var marker = new google.maps.Marker({
+				position: lat_lng,
+				title: "<%=a.feat.name%>",
+			});
+
+			marker.setMap(gMap);
+ 			gMarkers.push(marker);
+			lat_lng_bounds.extend(lat_lng);
+		<% end %>
+		
+		gMap.fitBounds(lat_lng_bounds);		
+	});
+	
+	function selection_changed( select_obj ) {
+		var idx = select_obj.selectedIndex;
+		gMap.panTo(gMarkers[idx].position);		
+	}
+</script>
+<div class="row">
+  <div class="span4">
+		<div class="craig-unit">
+			<div class="scott-unit">
+        <h3>
+					You have attempted the following feats:
+				</h3>
+        <br>
+        <%= form_tag feats_path, action: 'show', method: 'get' do %>
+          <fieldset>
+						<select id="id" name="id" onchange="selection_changed(this)" 
+							multiple="multiple">
+							<% @attempts.each do |a| %>
+								<option value="<%=a.feat.id%>"><%=a.feat.name%></option>
+							<% end %>
+						</select>
+						<br>
+           	<%= submit_tag 'View Feat', 
+							class: "btn btn-small btn-primary" %>
+         	</fieldset>
+        <% end %>
+				<br>
+				<br>
+		  </div>
+	  </div>
+  </div>
+	<div id="map_canvas" class="span8"></div>
+</div>
+<br>
+<br>

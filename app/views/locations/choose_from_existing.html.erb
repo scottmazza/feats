@@ -3,7 +3,7 @@
 </script>
 <script type="text/javascript">
 	var gMap;
-	function initialize() {
+	$(function () {
 		var lat_lng = new google.maps.LatLng(<%=session[:latitude]%>,
 			 							<%=session[:longitude]%>);
 	  var mapOptions = {
@@ -19,7 +19,7 @@
 		});
 	
 		marker.setMap(gMap);
-}
+	});
 </script>
 <div class="row">
   <div class="span4">

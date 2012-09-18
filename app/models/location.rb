@@ -26,6 +26,8 @@ class Location < ActiveRecord::Base
   validates :latitude, presence: true
   validates :longitude, presence: true 
   
+  geocoded_by :address
+  
   def self.find_names_by_lat_long( latitude, longitude )
     find_by_sql ["SELECT name, id from locations WHERE latitude=? and longitude=?",
       latitude, longitude ] 

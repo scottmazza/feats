@@ -23,7 +23,10 @@
 		            Feats <b class="caret"></b>
 		          </a>
 		          <ul class="dropdown-menu">
-			          <%= link_to "Create Feat", "/feats/new" %>
+			          <%= link_to "My Feats", feats_path %>
+								<%= link_to "My Feat Attempts", attempts_path %>
+			          <%= link_to "Create Feat", new_feat_path %>
+								<%= link_to "Search Feats", search_feats_path %>
 			        </ul>
 		        </li>
 		        <li id="user-menu" class="dropdown">
