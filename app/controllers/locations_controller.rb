@@ -80,7 +80,7 @@ class LocationsController < ApplicationController
         @location.latitude, @location.longitude = 
           Geocoder.coordinates(@location.address)
           
-        if ( @location.latitude.nil? && @location.longitude.nil? )
+        if @location.latitude.nil? && @location.longitude.nil? 
           @location.errors[:base] <<"Cannot locate address."
           
         else

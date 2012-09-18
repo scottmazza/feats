@@ -1,5 +1,6 @@
 Feats::Application.routes.draw do
-
+  root to: 'feats#index'
+  
   resources :users,     only: [:new, :create, :edit, :update]
   resources :feats do
     options = { only: [:new, :create, :show, :index] } 

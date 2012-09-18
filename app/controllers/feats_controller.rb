@@ -45,21 +45,30 @@ class FeatsController < ApplicationController
         else        
           unless params[:address].blank?
             # Attempt to geolocate input address ----------------------------- #        
-            latitude, longitude = Geocoder.coordinates(params[:address])
+            @latitude, @longitude = Geocoder.coordinates(params[:address])
           end
-          if latitude.nil? && longitude.nil? 
+          if @latitude.nil? && @longitude.nil? 
             flash[:error] = "Please provide a valid search address."
           else
-            # Input is valid. Search locations first ------------------------- #
-            @locations = Location.near([latitude, longitude], distance )
-            unless @locations.nil?
+            # Input is valid. Use standard address & perform search ---------- #
+            params[:address] = Geocoder.address( [@latitude, @longitude] )
+            @locations = Location.near([@latitude, @longitude], distance )
+            if @locations.nil?
+              flash[:notice] = "No feats found in that area"
+            else
               @locations.each do |l|
                 @feats += Feat.find_all_by_location_id(l.id)
+              end
+              unless @feats.any?
+                flash[:notice] = "No feats found in that area"
               end
             end
           end
         end
       end
+    else
+      params[:distance] = "0.1"
+      params[:address]  = "Address"
     end
   end
   

@@ -7,30 +7,54 @@
 	
 	$(function () {
 		var lat_lng_bounds = new google.maps.LatLngBounds();
-		var ne_lat_lng;
-		var lat_lng = new google.maps.LatLng(<%=@feats.first.location.latitude%>,
+		var zoom = 15;
+		var title = "";
+		
+		<% if @feats.empty? %>
+			<% if request.location.latitude == 0 && 
+				    request.location.longitude == 0 %>
+				var lat_lng = new google.maps.LatLng(37.09024, -95.712891);
+				zoom    = 4;
+			<% else %>	
+				var lat_lng = new google.maps.LatLng(<%=request.location.latitude%>,
+												<%=request.location.longitude%>);
+			<% end %>
+		<% else %>
+			var lat_lng = new google.maps.LatLng(<%=@feats.first.location.latitude%>,
 			 							<%=@feats.first.location.longitude%>);
+		<% end %>
+		
 	  var mapOptions = {
 	    center: lat_lng,
-	    zoom: 15,
+	    zoom: zoom,
 	    mapTypeId: google.maps.MapTypeId.ROADMAP
 	  };
+	
 	  gMap = new google.maps.Map(document.getElementById("map_canvas"),
 	          mapOptions);
-		<% @feats.each do |f| %>
-			lat_lng = new google.maps.LatLng(<%=f.location.latitude%>,
-				 							<%=f.location.longitude%>);
+	
+		<% if @feats.any? %>
+			<% @feats.each do |f| %>
+				lat_lng = new google.maps.LatLng(<%=f.location.latitude%>,
+					 							<%=f.location.longitude%>);
+				var marker = new google.maps.Marker({
+					position: lat_lng,
+					title: "<%=f.name%>",
+				});
+
+				marker.setMap(gMap);
+	 			gMarkers.push(marker);
+				lat_lng_bounds.extend(lat_lng);
+			<% end %>
+			gMap.fitBounds(lat_lng_bounds);		
+		<% else %>
 			var marker = new google.maps.Marker({
 				position: lat_lng,
-				title: "<%=f.name%>",
+				title: title
 			});
 
 			marker.setMap(gMap);
- 			gMarkers.push(marker);
-			lat_lng_bounds.extend(lat_lng);
-		<% end %>
-		
-		gMap.fitBounds(lat_lng_bounds);		
+		<% end %>		
 	});
 	
 	function selection_changed( select_obj ) {
@@ -52,7 +76,7 @@
 						 	options_from_collection_for_select(@feats, :id, :name),
 							onchange: "selection_changed(this)", multiple: 'true')%>
 						<br>
-           	<%= submit_tag 'View Feat', 
+           	<%= submit_tag 'View Feat', name: nil,
 							class: "btn btn-small btn-primary" %>
          	</fieldset>
         <% end %>

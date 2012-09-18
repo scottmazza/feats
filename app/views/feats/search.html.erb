@@ -8,12 +8,17 @@
 	$(function () {
 		var lat_lng_bounds = new google.maps.LatLngBounds();
 		var zoom = 15;
+		var title = "";
 		
 		<% if @feats.empty? %>
-			<% if request.location.latitude == 0 && 
+			<% if !@latitude.nil? && !@longitude.nil? %>
+				var lat_lng = new google.maps.LatLng(<%=@latitude%>, <%=@longitude%>);
+				zoom = 15;
+				title = "<%=params[:address]%>";
+			<% elsif request.location.latitude == 0 && 
 				    request.location.longitude == 0 %>
 				var lat_lng = new google.maps.LatLng(37.09024, -95.712891);
-				var zoom    = 4;
+				zoom    = 4;
 			<% else %>	
 				var lat_lng = new google.maps.LatLng(<%=request.location.latitude%>,
 												<%=request.location.longitude%>);
@@ -23,21 +28,17 @@
 				new google.maps.LatLng(<%=@feats.first.location.latitude%>,
 			 				<%=@feats.first.location.longitude%>);
 		<% end %>
+		
 	  var mapOptions = {
 	    center: lat_lng,
 	    zoom: zoom,
 	    mapTypeId: google.maps.MapTypeId.ROADMAP
 	  };
+	
 	  gMap = new google.maps.Map(document.getElementById("map_canvas"),
 	          mapOptions);
-		<% if @feats.any? %>
-			var marker = new google.maps.Marker({
-				position: lat_lng,
-				title: title
-			});
 	
-			marker.setMap(gMap);
-		<% else %>
+		<% if @feats.any? %>
 			<% @feats.each do |f| %>
 				lat_lng = new google.maps.LatLng(<%=f.location.latitude%>,
 					 							<%=f.location.longitude%>);
@@ -50,9 +51,16 @@
 	 			gMarkers.push(marker);
 				lat_lng_bounds.extend(lat_lng);
 			<% end %>
+			gMap.fitBounds(lat_lng_bounds);		
+		<% else %>
+			var marker = new google.maps.Marker({
+				position: lat_lng,
+				title: title
+			});
+
+			marker.setMap(gMap);
 		<% end %>
 		
-		gMap.fitBounds(lat_lng_bounds);		
 	});
 	
 	function selection_changed( select_obj ) {
@@ -68,11 +76,11 @@
           <fieldset>
 						<h3>Search for feats within</h3>
 						<br>
-						<%= text_field_tag :distance, "0.0" %>
+						<%= text_field_tag :distance, params[:distance] %>
 						<br>
 						miles of
 						<br>
-           	<%= text_field_tag :address, :address, maxlength: 255 %>
+           	<%= text_field_tag :address, params[:address], maxlength: 255 %>
 						<br>
            	<%= submit_tag 'Search', name: nil, 
 							class: "btn btn-small btn-primary" %>
