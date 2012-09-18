@@ -10,15 +10,14 @@ class LocationsController < ApplicationController
   end
     
   def create
+    session[:location_id] = nil
     @location = Location.new(
                   name: params[:location][:name],
                   address:session[:address],
                   latitude: session[:latitude],
                   longitude: session[:longitude])
                   
-    if !@location.valid?
-      render action: :new
-    else                       
+    if @location.valid?
       # Check for a location with the same name (sans whitespace, etc.) --- #
       @locations = Location.find_names_by_lat_long(session[:latitude], 
                       session[:longitude])
@@ -36,6 +35,8 @@ class LocationsController < ApplicationController
         flash[:notice] = "Location created."
       end
       redirect_to new_feat_path
+    else                       
+      render action: :new
     end
   end
   
@@ -62,43 +63,36 @@ class LocationsController < ApplicationController
   def locate
     if params[:location].nil?           
       # Empty form -------------------------------------------------------- #
-      session[:address]   = nil
-      session[:latitude]  = nil
-      session[:longitude] = nil
+      session.delete(:address)
+      session.delete(:latitude)
+      session.delete(:longitude)
       @location = Location.new
       
     else             
       # Populate location with user entered data and validate ------------- #           
-      @location = Location.new( name: params[:location][:address],
+      @location = Location.new( name: "location name",
                                 address: params[:location][:address])
       @location.latitude  = 0
       @location.longitude = 0
       
-      if !@location.valid?        
-        # Keep rendering with errors until valid -------------------------- #        
-        render  
-              
-      else
+      if @location.valid?
         # Attempt to geolocate input address ------------------------------ #        
         @location.latitude, @location.longitude = 
           Geocoder.coordinates(@location.address)
           
-        if ( @location.latitude == 0 && @location.longitude == 0 )
-          @location.errors.add_to_base("Cannot locate address.")
-          render
+        if ( @location.latitude.nil? && @location.longitude.nil? )
+          @location.errors[:base] <<"Cannot locate address."
           
         else
           # We have coordinates, but do they match the input address? ----- #
           session[:address] = Geocoder.address( [@location.latitude,
                                 @location.longitude])
           session[:latitude]  = @location.latitude
-          session[:longitude] = @location.longitude
-          
-          if !session[:address].downcase.eql?(@location.address)
-            # They don't match. Verify new address with user -------------- #            
-            render
-          end
+          session[:longitude] = @location.longitude          
         end
+      else
+        # Keep rendering with errors until valid -------------------------- # 
+        session.delete(:address)       
       end
     end
   end

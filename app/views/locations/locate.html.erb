@@ -3,7 +3,7 @@
 </script>
 <script type="text/javascript">
 	var gMap;
-	function initialize() {
+	$(function () {
 		<% if session[:address].nil? %>
 			<% if request.location.latitude == 0 && 
 				    request.location.longitude == 0 %>
@@ -35,7 +35,7 @@
 		});
 	
 		marker.setMap(gMap);
-}
+	});
 </script>
 <div class="container">
 	<div class "row">
@@ -48,7 +48,7 @@
          <%= render 'shared/error_messages', target: @location %>
           <fieldset>
            <%= f.label :address %>
-            <%= f.text_field :address, maxlength: 255 %>
+           <%= f.text_field :address, maxlength: 255 %>
 					<br>
            <%= f.submit 'Search', class: "btn btn-small btn-primary" %>
          </fieldset>

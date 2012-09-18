@@ -1,12 +1,16 @@
 Feats::Application.routes.draw do
 
   resources :users,     only: [:new, :create, :edit, :update]
-  resources :feats,     only: [:new, :create, :edit, :update, :show]
+  resources :feats do
+    options = { only: [:new, :create, :show, :index] } 
+    get 'search', on: :collection
+  end    
   resources :locations do     
     options = { only: [:new, :create, :edit, :update] }
     get 'locate', on: :collection
     get 'choose_from_existing', on: :collection
   end 
+  resources :attempts,  only: [:new, :create, :edit, :update, :index]
   
   # These static pages are temporary
   get "static_pages/edituser"

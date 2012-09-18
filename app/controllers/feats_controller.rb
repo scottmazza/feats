@@ -12,29 +12,67 @@ class FeatsController < ApplicationController
     end
   end
 
-  def edit
+  def index
+    if params[:id].present?
+      redirect_to feat_path(params[:id])
+    else
+      @feats = Feat.find_all_by_user_id(session[:user_id])
+    end
   end
-
+  
   def new
-    # Location must be created/chosen before feat creation can continue --- #
+    # Location must be created/chosen before feat creation can continue ------ #
     
     @feat = Feat.new
-    if !params[:location_id].nil?
+    if params[:location_id].present?
       @location = Location.find(params[:location_id])
-      render
-    elsif !session[:location_id].nil? 
+    elsif session[:location_id].present? 
       @location = Location.find(session[:location_id])
     else
       redirect_to locate_locations_path
     end
   end
 
-  def show
-    @feat     = Feat.find(params[:id])
-    @user     = @feat.user
-    @location = @feat.location
+  def search
+    @feats = []
+    if params[:distance].present?
+      if params[:distance].nan?
+        flash[:error] = "Invalid distance, (#{params[:distance]})"
+      else
+        distance = params[:distance].to_f
+        if distance < 0 || distance > 100
+          flash[:error] = "Distance must be in the range [0..100]."
+        else        
+          unless params[:address].blank?
+            # Attempt to geolocate input address ----------------------------- #        
+            latitude, longitude = Geocoder.coordinates(params[:address])
+          end
+          if latitude.nil? && longitude.nil? 
+            flash[:error] = "Please provide a valid search address."
+          else
+            # Input is valid. Search locations first ------------------------- #
+            @locations = Location.near([latitude, longitude], distance )
+            unless @locations.nil?
+              @locations.each do |l|
+                @feats += Feat.find_all_by_location_id(l.id)
+              end
+            end
+          end
+        end
+      end
+    end
   end
   
-  def update
+  def show
+    @feat           = Feat.find(params[:id])
+    @user           = @feat.user
+    @location       = @feat.location
+    @attempt_exists = false
+    if @feat.low_score_wins 
+      @attempts = Attempt.find_all_by_feat_id( @feat.id, order: 'score')
+    else
+      @attempts = Attempt.find_all_by_feat_id( @feat.id, order: 'score DESC')
+    end
+    session[:feat_id] = @feat.id
   end
 end

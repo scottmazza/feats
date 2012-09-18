@@ -1,26 +1,4 @@
-<script type="text/javascript"
-	src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBk3LMS2I-w-KWmm2YEnPdqPu4EVULGfdE&sensor=false">
-</script>
-<script type="text/javascript">
-	var gMap;
-  function initialize() {
-		var lat_lng = new google.maps.LatLng(<%=@location.latitude%>,
-			 							<%=@location.longitude%>);
-    var mapOptions = {
-      center: lat_lng,
-      zoom: 15,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    gMap = new google.maps.Map(document.getElementById("map_canvas"),
-            mapOptions);
-		var marker = new google.maps.Marker({
-			position: lat_lng,
-			title: "<%=@location.name%>"
-		});
-		
-		marker.setMap(gMap);
-  }
-</script>
+<%= render 'shared/single_loc_map_script' %>
 <div class="container">
   <div class="row">
     <div class="span5">

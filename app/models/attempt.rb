@@ -15,4 +15,6 @@ class Attempt < ActiveRecord::Base
   belongs_to :user
   belongs_to :feat
   attr_accessible :feat_id, :score, :user_id, :video_url
+  
+  validates :score, presence: true, numericality: true   
 end
