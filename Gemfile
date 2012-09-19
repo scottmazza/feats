@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.6'
 gem 'omniauth-facebook'
 gem 'geocoder'
-gem 'sass-rails',   '3.2.4'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'
@@ -18,6 +17,8 @@ gem 'annotate', '~> 2.4.1.beta', group: :development
 group :assets do
   gem 'coffee-rails', '3.2.2'
   gem 'uglifier', '1.2.3'
+  gem 'sass-rails',   '3.2.4'
+  gem 'twitter-bootstrap-rails'
 end
 
 gem 'jquery-rails', '2.0.0'
