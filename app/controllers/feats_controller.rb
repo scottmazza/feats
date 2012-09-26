@@ -5,7 +5,9 @@ class FeatsController < ApplicationController
     @feat = Feat.new(params[:feat])
     @feat.user = User.find(session[:user_id])
     @feat.location = @location = Location.find(session[:location_id])
+    @feat.name = @feat.name.lstrip.rstrip
     if @feat.save
+      flash[:notice] = "Feat created successfully."
       redirect_to @feat
     else
       render action: 'new'
@@ -36,7 +38,7 @@ class FeatsController < ApplicationController
   def search
     @feats = []
     if params[:distance].present?
-      if params[:distance].nan?
+      if params[:distance].not_a_positive_float?
         flash[:error] = "Invalid distance, (#{params[:distance]})"
       else
         distance = params[:distance].to_f

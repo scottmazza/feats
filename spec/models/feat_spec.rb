@@ -15,5 +15,6 @@ end
 #  updated_at     :datetime        not null
 #  user_id        :integer
 #  name           :string(255)
+#  timed          :boolean
 #
 

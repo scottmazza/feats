@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120816152916) do
+ActiveRecord::Schema.define(:version => 20120924224630) do
 
   create_table "attempts", :force => true do |t|
     t.integer  "feat_id"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20120816152916) do
     t.datetime "updated_at",     :null => false
     t.integer  "user_id"
     t.string   "name"
+    t.boolean  "timed"
   end
 
   add_index "feats", ["location_id"], :name => "index_feats_on_location_id"

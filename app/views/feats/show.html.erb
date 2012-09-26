@@ -25,46 +25,23 @@
   <div class="row">
     <div class="span5">
       <div class="scott-unit">
-				<div class="row">
-					<div class="span2"  align="right"><h2>Feat:</h2></div>
-					<div class="span2"><%= @feat.name %></div>
-				</div>
-				<div class="row">
-					<div class="span2"  align="right"><h2>Created by:</h2></div>
-					<div class="span2"><%= @feat.user.username %></div>
-				</div>
-				<div class="row">
-					<div class="span2" align="right"><h2>Location:</h2></div>
-					<div class="span2">
-						<%= @location.name %><br>
-						<%= @location.address %>
-					</div>
-				</div>
-				<div class="row">
-					<div class="span2" align="right"><h2>Description:</h2></div>
-					<div class="span2"><%= @feat.description %></div>
-				</div>
-				<div class="row">
-					<div class="span2" align="right"><h2>Scoring:</h2></div>
-					<div class="span2">
-						<% if @feat.low_score_wins %>						
-							Low score wins.
-						<% else %>
-							High score wins.
-						<% end %>
-					</div>
-				</div>
+				<%= render 'layouts/feat_info' %>
 				<br>
 	      <br>
 				<div class="row">
-					<div class="span4">
+					<div class="span4" align="center">
 						<% if @attempts.empty? %>
 							<h2>This feat has no recorded attempts</h2>
+							<br>
 						<% else %>
 							<h2>Attempts:</h2>
 							<ol>
 								<% @attempts.each do |a| %>
-									<li><%= a.user.username%>: <%= a.score.to_s %>
+									<% if @feat.timed %>
+										<li><%= a.user.username%>: <%= a.score.to_hhmmss %>
+									<% else %>
+										<li><%= a.user.username%>: <%= a.score.to_s %>
+									<% end %>
 									<% if a.user.id == session[:user_id] %>
 									  <% @attempt_exists = true %>
 										<%= link_to "Update", edit_attempt_path(a.id) %>
@@ -77,7 +54,7 @@
 				</div>
 				<% if !@attempt_exists %>
 					<div class="row">
-						<div class="span4">
+						<div class="span4" align="center">
 							<%= link_to "Record an attempt on this feat", 
 									new_attempt_path %>
 						</div>

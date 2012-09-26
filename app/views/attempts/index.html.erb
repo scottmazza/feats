@@ -47,7 +47,9 @@
 	 			gMarkers.push(marker);
 				lat_lng_bounds.extend(lat_lng);
 			<% end %>
-			gMap.fitBounds(lat_lng_bounds);		
+			<% if @attempts.length > 1 %>
+				gMap.fitBounds(lat_lng_bounds);
+			<% end %>		
 		<% else %>
 			var marker = new google.maps.Marker({
 				position: lat_lng,

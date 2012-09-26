@@ -14,19 +14,26 @@
           <br>
           <%= form_for @feat do |f| %>
             <%= render 'shared/error_messages', target: @feat %>
-            <fieldset>
+						<fieldset>
               <%= f.label :name %>
-              <%= f.text_field :name %>
+              <%= f.text_field :name, class: "field span4" %>
               <%= f.label :description %>
-              <%= f.text_area :description, rows: 4 %>
-	            <%= f.label :scoring %>
-              <%= f.select :low_score_wins, 
-            		[['Highest score wins', 0], ['Lowest score wins', 1]] %>
+              <%= f.text_area :description, rows: 4, class: "field span4" %>
+							<%= f.label "Scored or timed"%>
+							<%= f.radio_button :timed, 1 %>
+							<%= f.label :timed, style: "display:inline;" %>
+							<br>
+							<%= f.radio_button :timed, 0, checked: true %>
+							<%= f.label :timed, "Scored", style: "display:inline;" %>
+							<br>
+							<br>
+							<%= f.check_box :low_score_wins %>
+	            <%= f.label "Low score/time wins", style: "display:inline;" %>
               <br>
               <br>
 	            <%= f.submit "Create Feat", 
 	              class: "btn btn-large btn-primary" %>
-	          </fieldset>
+						</fieldset>
           <% end %>
         </div>
       </div>

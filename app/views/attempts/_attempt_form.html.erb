@@ -1,0 +1,28 @@
+<%= form_for @attempt do |f| %>
+	<% if @attempt.errors.any? %>
+		<%= render 'shared/error_messages', target: @attempt %>
+	<% end %>
+	<fieldset>
+		<% if @feat.timed %>
+			<%= text_field_tag "hours", params[:hours], maxlength: "2", 
+				class: "field span1"%>
+			<%= f.label :hours, style: "display:inline;"%>
+			<br>
+			<%= text_field_tag "minutes", params[:minutes], maxlength: "2", 
+				class: "field span1"%>
+			<%= f.label "Mins.", style: "display:inline;"%>
+			<br>
+			<%= text_field_tag "seconds", params[:seconds], maxlength: "4", 
+				class: "field span1"%>
+			<%= f.label "Secs.", style: "display:inline;"%>
+			<br>
+		
+		<% else %>
+			<%= f.label :score %>
+			<%= f.text_field :score, class: "field span1"%>
+		<% end %>
+		<br>
+		<%= f.submit "Record Attempt", 
+        class: "btn btn-small btn-primary" %>		            
+	</fieldset>
+<% end %>

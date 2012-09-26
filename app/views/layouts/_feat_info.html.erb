@@ -1,0 +1,35 @@
+<div class="row">
+	<div class="span2" align="right"><strong>Feat name:</strong></div>
+	<div class="span2"><%= @feat.name %></div>
+</div>
+<div class="row">
+	<div class="span2"  align="right"><strong>Created by:</strong></div>
+	<div class="span2"><%= @feat.user.username %></div>
+</div>
+<div class="row">
+	<div class="span2" align="right"><strong>Location:</strong></div>
+	<div class="span2">
+		<%= @location.name %><br>
+		<%= @location.address %>
+	</div>
+</div>
+<div class="row">
+	<div class="span2" align="right"><strong>Description:</strong></div>
+	<div class="span2"><%= @feat.description %></div>
+</div>
+<div class="row">
+	<div class="span2" align="right"><strong>Scoring:</strong></div>
+	<div class="span2">
+		<% if @feat.low_score_wins %>	
+			<% if @feat.timed %>
+				Shortest time wins.
+			<% else %>
+				Low score wins.
+			<% end %>
+		<% elsif @feat.timed %>
+			Longest time wins.
+		<% else %>
+			High score wins.
+		<% end %>
+	</div>
+</div>
