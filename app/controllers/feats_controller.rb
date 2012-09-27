@@ -28,6 +28,7 @@ class FeatsController < ApplicationController
     @feat = Feat.new
     if params[:location_id].present?
       @location = Location.find(params[:location_id])
+      session[:location_id] = @location.id 
     elsif session[:location_id].present? 
       @location = Location.find(session[:location_id])
     else

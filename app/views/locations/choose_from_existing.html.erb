@@ -38,7 +38,7 @@
 						 	options_from_collection_for_select(@locations, :id, :name),
 							multiple: 'true')%>
 						<br>
-           	<%= submit_tag 'Use this location', 
+           	<%= submit_tag 'Use this location', name: nil,
 							class: "btn btn-small btn-primary" %>
          	</fieldset>
         <% end %>
