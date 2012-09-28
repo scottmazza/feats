@@ -29,6 +29,10 @@ class Feat < ActiveRecord::Base
   
   before_create :check_for_dup
   
+  def self.count_by_user_id( user_id )
+    count conditions: ["user_id=?", user_id ]
+  end
+  
   private
   
     def check_for_dup

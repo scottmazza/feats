@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
     user = User.find_by_email(auth.info.email)
     if !user
       flash[:error] = "Please sign up first." 
-      redirect_to '/users/new'
+      redirect_to new_user_path
     else
       # --------------------------------------------------------------------- #
       # The user is in our DB. We'll record the FB auth info in our DB,       #
@@ -27,10 +27,14 @@ class SessionsController < ApplicationController
         image:            auth.info.image )
    
       session[:user_id] = user.id
-      if !user.profile_complete?
-        redirect_to controller: 'users', action: 'edit', id: user.id
+      if user.profile_complete?
+        if user.has_feats?
+          redirect_to root_url
+        else
+          redirect_to search_feats_path
+        end
       else
-        redirect_to root_url
+        redirect_to controller: 'users', action: 'edit', id: user.id
       end
     end
   end

@@ -32,9 +32,17 @@ class User < ActiveRecord::Base
                        uniqueness: { case_sensitive: false },
                        length: { maximum: 16 }, allow_nil: true, 
                        on: "update"
-                    
+
+  def has_feats?
+    if Feat.count_by_user_id( self.id ) > 0
+      true
+    else
+      false
+    end
+  end
+  
   def profile_complete?
-    if !@username
+    if self.username.blank?
       false
     else
       true
