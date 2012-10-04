@@ -7,10 +7,30 @@
 				<br>
 	      <br>
 				<div class="row">
-					<div class="span4">
-						<%= render 'form' %>
+					<% if @feat.timed %>
+						<div class="span2" align="right">
+							<strong><%= @attempt.user.username.possessive %> time:</strong>
+						</div>
+						<div class="span2">
+							<%= @attempt.score.to_hhmmss %>
+						</div>
+					<% else %>
+						<div class="span2" align="right">
+							<strong><%= @attempt.user.username.possessive %> score:</strong>
+						</div>
+						<div class="span2">
+							<%= @attempt.score.to_s %>
+						</div>
+					<% end %>
+				</div>
+				<% unless @attempt.image.blank? %>
+					<br>
+					<div class="row">
+						<div class="span5">
+							<%= image_tag @attempt.image_url.to_s %>
+						</div>
 					</div>
-				</div>				
+				<% end %>			
 			</div>
     </div>
 		<div id="map_canvas" class="span7"></div>

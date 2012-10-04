@@ -6,4 +6,11 @@ class String
   def not_a_positive_int?
     self !~ /^\s*[+]?\d+\s*$/
   end
+  
+  def possessive
+    self + case self[-1,1].downcase
+        when 's' then "'"
+        else "'s"
+        end
+  end
 end

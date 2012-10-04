@@ -18,29 +18,22 @@
       <div class="nav-collapse pull-right">
         <ul class="nav">
 		      <% if current_user %>
-	          <li id="feats-menu" class="dropdown">
-		          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-		            Feats <b class="caret"></b>
-		          </a>
-		          <ul class="dropdown-menu">
-			          <%= link_to "My Feats", feats_path %>
-								<%= link_to "My Feat Attempts", attempts_path %>
-			          <%= link_to "Create Feat", new_feat_path %>
-								<%= link_to "Search Feats", search_feats_path %>
-			        </ul>
-		        </li>
+						<li><%= link_to "Search Feats", search_feats_path %></li>
+	          <li><%= link_to "Create A Feat", new_feat_path %></li>
 		        <li id="user-menu" class="dropdown">
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 		            <%= current_user.name %> <b class="caret"></b>
 		          </a>
 		          <ul class="dropdown-menu">
+			          <li><%= link_to "My Feats", feats_path %></li>
+								<li><%= link_to "My Records", attempts_path %></li>
 			          <li>
-				          <%= link_to "Profile", edit_user_path(current_user) %>
-				        </li>
+									<%= link_to "My Profile", edit_user_path(current_user) %>
+								</li>
 			          <li class="divider"></li>
 			          <li>
-				          <%= link_to "Sign out", signout_path, method: "delete" %>
-				        </li>
+									<%= link_to "Sign out", signout_path, method: "delete" %>
+								</li>
               </ul>
 		        </li>  
 		      <% else %>

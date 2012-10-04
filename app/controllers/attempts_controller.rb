@@ -7,37 +7,35 @@ class AttemptsController < ApplicationController
                             
     if @feat.timed
       @attempt = Attempt.new( user_id: session[:user_id], 
-                              feat_id: session[:feat_id] )
-      if params[:hours].not_a_positive_int?
-        @attempt.errors[:base] << "Invalid 'Hours' value."
-      end
-      if params[:minutes].not_a_positive_int?
-          @attempt.errors[:base] << "Invalid 'Minutes' value."
-      end
-      if params[:seconds].not_a_positive_float?
-          @attempt.errors[:base] << "Invalid 'Seconds' value."
-      end
+                              feat_id: session[:feat_id],
+                              image: params[:attempt][:image] )
+      @attempt.hhmmss_to_score( params[:hours], params[:minutes], 
+        params[:seconds] )
     else
       @attempt = Attempt.new( user_id: session[:user_id], 
                               feat_id: session[:feat_id],
-                              score: params[:attempt][:score] )
-    end
-    if @attempt.errors.empty? && @feat.timed
-      @attempt.score = params[:hours].to_f * 3600.0 + 
-                       params[:minutes].to_f * 60.0 +
-                       params[:seconds].to_f
-      if @attempt.score.zero?
-        @attempt.errors[:base] << "Attempt time must be non-zero."
-      end
+                              score: params[:attempt][:score],
+                              image: params[:attempt][:image] )
     end
     unless @attempt.errors.any?  
       if @attempt.save
-        flash[:notice] = "Attempt recorded."
-        redirect_to feat_path( session[:feat_id] )
-      end
+        flash[:notice] = "Record created."
+        redirect_to attempt_path( @attempt.id )
+     end
     else
       render action: "new"
     end
+  end
+  
+  def destroy
+    @attempt = Attempt.find( params[:id] )
+    @feat = Feat.find( @attempt.feat_id )
+    
+    # Only the owning user can delete his attempt ---------------------------- #    
+    if @attempt.user_id == session[:user_id]
+      @attempt.destroy
+    end
+    redirect_to feat_path( @attempt.feat_id )
   end
   
   def edit
@@ -72,12 +70,25 @@ class AttemptsController < ApplicationController
     
     # Only the owning user can update his attempt ---------------------------- #    
     if @attempt.user_id == session[:user_id]
-      if params[:hours].not_a_positive_int?
-        @attempt.errors[:base] << "Invalid 'Hours' value."
-      elsif @attempt.update_attributes( params[:attempt] )
-        flash[:notice] = "Attempt recorded."
-        redirect_to feat_path( session[:feat_id] )
-      end        
+      @attempt.image = params[:attempt][:image]
+      if @attempt.feat.timed
+        @attempt.hhmmss_to_score( params[:hours], params[:minutes], 
+          params[:seconds] )
+      else
+        if params[:attempt][:score].not_a_positive_float?
+          @attempt.errors[:base] << "Invalid 'Score' value."
+        else
+          @attempt.score = params[:attempt][:score].to_f
+        end              
+      end
+      unless @attempt.errors.any?  
+        if @attempt.save
+          flash[:notice] = "Record updated."
+          redirect_to attempt_path( @attempt.id )
+        end
+      else
+        render action: "edit"
+      end
     end
   end
 end

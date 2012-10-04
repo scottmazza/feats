@@ -42,9 +42,13 @@
 									<% else %>
 										<li><%= a.user.username%>: <%= a.score.to_s %>
 									<% end %>
+									<%= link_to "View", attempt_path(a.id) %>
 									<% if a.user.id == session[:user_id] %>
 									  <% @attempt_exists = true %>
 										<%= link_to "Update", edit_attempt_path(a.id) %>
+										<%= link_to "Delete", attempt_path(a.id),
+										 	confirm: 'Are you sure you want to delete this record?',
+											method: 'delete' %>
 									<% end %>
 									</li>
 								<% end %>
@@ -52,7 +56,7 @@
 						<% end %>
 					</div>
 				</div>
-				<% if !@attempt_exists %>
+				<% unless @attempt_exists %>
 					<div class="row">
 						<div class="span4" align="center">
 							<%= link_to "Record an attempt on this feat", 

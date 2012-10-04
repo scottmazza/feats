@@ -11,17 +11,9 @@ Feats::Application.routes.draw do
     get 'locate', on: :collection
     get 'choose_from_existing', on: :collection
   end 
-  resources :attempts,  only: [:new, :create, :edit, :update, :index]
+  resources :attempts
+     
   
-  # These static pages are temporary
-  get "static_pages/edituser"
-  get "static_pages/featmap"
-  get "static_pages/featpage"
-  get "static_pages/newfeat"
-  get "static_pages/placepage"
-  get "static_pages/user"
-  get "static_pages/testpage"
-
   match '/signup', to: 'users#new' 
   match '/signin', to: 'sessions#new'
   match '/auth/facebook/callback', to: 'sessions#create'

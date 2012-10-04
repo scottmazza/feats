@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120924224630) do
+ActiveRecord::Schema.define(:version => 20121002214815) do
 
   create_table "attempts", :force => true do |t|
     t.integer  "feat_id"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20120924224630) do
     t.string   "video_url"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "image"
   end
 
   add_index "attempts", ["feat_id"], :name => "index_attempts_on_feat_id"
