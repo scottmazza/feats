@@ -37,8 +37,8 @@ class Attempt < ActiveRecord::Base
     
     if self.errors.empty?
       self.score = hh.to_f * 3600.0 + mm.to_f * 60.0 + ss.to_f
-      if @attempt.score.zero?
-        @attempt.errors[:base] << "Attempt time must be non-zero."
+      if self.score.zero?
+        self.errors[:base] << "Attempt time must be non-zero."
       end
     end
   end  
