@@ -6,6 +6,261 @@
   box-sizing: border-box;
 }
 
+.statictop-well {
+  min-height: 0px;
+  padding: 20px 25px 20px 25px;
+  margin-top: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-image: url(greyline.png);
+  background-repeat: repeat;
+  border-bottom: 1px solid #E6E6E6;
+  border-top: 1px solid #CCC;
+  border-left: 1px solid #CCC;
+  border-right: 1px solid #CCC;
+  -webkit-border-top-left-radius: 6px;
+  -moz-border-top-left-radius: 6px;
+  border-top-left-radius: 6px;
+  -webkit-border-top-right-radius: 6px;
+  -moz-border-top-right-radius: 6px;
+  border-top-right-radius: 6px;
+  -webkit-box-shadow: 1px 0px 1px 1px rgba(0, 0, 0, 0.05), -1px -1px 1px 1px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 1px 0px 1px 1px rgba(0, 0, 0, 0.05), -1px -1px 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 1px 0px 1px 1px rgba(0, 0, 0, 0.05), -1px -1px 1px 1px rgba(0, 0, 0, 0.05);  	
+}
+
+.statictop-well h1 {
+  font-size: 35px;
+  line-height: 1.2;
+  color: #333;
+  font-weight: 200;
+}
+
+.pull-right {
+  float: right;
+}
+
+.pull-left {
+  float: left;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+
+
+.staticbottom-well {
+  min-height:10px;
+  min-width:  10px;
+  padding: 30px 25px 32px 25px;
+  margin-bottom: 30px;
+  margin-right: 10px;
+  margin-left: 10px;
+  background-color: #FFF;
+  #border-top: 1px solid #E6E6E6;
+  border-bottom: 1px solid #CCC;
+  border-left: 1px solid #CCC;
+  border-right: 1px solid #CCC;
+  -webkit-border-bottom-left-radius: 6px;
+  -moz-border-bottom-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  -webkit-border-bottom-right-radius: 6px;
+  -moz-border-bottom-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  -webkit-box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.05), -1px 0px 1px 1px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.05), -1px 0px 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.05), -1px 0px 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.staticbottom-well h1 {
+  font-size: 18px;
+  line-height: 1.3;
+  color: #333;
+  font-weight: 500;
+}
+
+.staticbottom-well h2 {
+  font-size: 15px;
+  line-height: 1.3;
+  color: #333;
+  font-weight: 400;
+}
+
+.pull-right {
+  float: right;
+}
+
+.pull-left {
+  float: left;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+
+.background-unit {
+  min-height: 700px;
+  padding: 60px;
+  margin-bottom: 0px;
+  background-image: url(grey_bkgrnd.png);
+  background-repeat: repeat;
+}
+
+.pull-right {
+  float: right;
+}
+
+.pull-left {
+  float: left;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+
+
+.roundedwhite-well {
+  min-height:10px;
+  min-width:  10px;
+  padding: 30px 25px 32px 25px;
+  margin-bottom: 30px;
+  margin-right: 10px;
+  margin-left: 10px;
+  background-color: #FFF;
+  border-top: 1px solid #CCC;
+  border-bottom: 1px solid #CCC;
+  border-left: 1px solid #CCC;
+  border-right: 1px solid #CCC;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.05), -1px -1px 1px 1px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.05), -1px -1px 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.05), -1px -1px 1px 1px rgba(0, 0, 0, 0.05);
+}
+.roundedwhite-well h1 {
+  font-size: 18px;
+  line-height: 1.3;
+  color: #333;
+  font-weight: 500;
+}
+
+.roundedwhite-well h2 {
+  font-size: 15px;
+  line-height: 1.3;
+  color: #333;
+  font-weight: 400;
+}
+
+.pull-right {
+  float: right;
+}
+
+.pull-left {
+  float: left;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+
+
+.footer-unit {
+  min-height: 25px;
+  padding: 20px 15px 30px 15px;
+  margin-left: -20px;
+  margin-right: -20px;
+  background-color: #000;
+  border-top-style: solid;
+  border-color: #CCC;
+  border-width: 1px; 
+}
+
+.footer-unit h1 {
+  margin-bottom: 0;
+  font-size: 17px;
+  line-height: 2.2;
+  font-weight: 400;
+  letter-spacing: 0px;
+  color: #CCC;
+}
+
+.footer-unit h2 {
+  font-size: 14px;
+  line-height: 2;
+  font-weight:400;
+  color: #CCC;
+}
+
+.footer-unit h3 {
+  font-size: 8px;
+  line-height: 1.3;
+  color: #FFF;
+}
+
+.pull-right {
+  float: right;
+}
+
+.pull-left {
+  float: left;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.hr1 {
+  margin: 30px 0px 25px 0px;
+  border: 0;
+  border-top: 1px solid #eeeeee;
+  border-bottom: 1px solid #ffffff;
+}
+
 
 .craig-unit {
   min-height: 100px;
