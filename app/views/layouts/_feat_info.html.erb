@@ -1,10 +1,12 @@
 <div class="row">
 	<div class="span2" align="right"><strong>Feat name:</strong></div>
-	<div class="span2"><%= @feat.name %></div>
+	<div class="span2"><%= link_to "#{@feat.name}", feat_path(@feat.id) %></div>
 </div>
 <div class="row">
 	<div class="span2"  align="right"><strong>Created by:</strong></div>
-	<div class="span2"><%= @feat.user.username %></div>
+	<div class="span2">
+		<%= link_to "#{@feat.user.username}", user_path(@feat.user.id) %>
+	</div>
 </div>
 <div class="row">
 	<div class="span2" align="right"><strong>Location:</strong></div>

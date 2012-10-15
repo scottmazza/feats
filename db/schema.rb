@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121002214815) do
+ActiveRecord::Schema.define(:version => 20121009172305) do
 
   create_table "attempts", :force => true do |t|
     t.integer  "feat_id"
@@ -66,5 +66,16 @@ ActiveRecord::Schema.define(:version => 20121002214815) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["username"], :name => "index_users_on_username", :unique => true
+
+  create_table "validations", :force => true do |t|
+    t.integer  "attempt_id"
+    t.integer  "user_id"
+    t.text     "comment"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "validations", ["attempt_id"], :name => "index_validations_on_attempt_id"
+  add_index "validations", ["user_id"], :name => "index_validations_on_user_id"
 
 end

@@ -4,34 +4,42 @@ class AttemptsController < ApplicationController
   def create
     @feat = Feat.find( session[:feat_id])
     @location = @feat.location
-                            
-    if @feat.timed
-      @attempt = Attempt.new( user_id: session[:user_id], 
-                              feat_id: session[:feat_id],
-                              image: params[:attempt][:image] )
-      @attempt.hhmmss_to_score( params[:hours], params[:minutes], 
-        params[:seconds] )
-    else
-      @attempt = Attempt.new( user_id: session[:user_id], 
-                              feat_id: session[:feat_id],
-                              score: params[:attempt][:score],
-                              image: params[:attempt][:image] )
-    end
-    unless @attempt.errors.any?  
-      if @attempt.save
-        flash[:notice] = "Record created."
-        redirect_to attempt_path( @attempt.id )
-     end
-    else
-      render action: "new"
+    existing_attempt = 
+      @feat.attempts.where( user_id: session[:user_id]).first
+    if existing_attempt.nil?
+      if @feat.timed
+        @attempt = Attempt.new( user_id: session[:user_id], 
+                                feat_id: session[:feat_id] )
+        @attempt.hhmmss_to_score( params[:hours], params[:minutes], 
+          params[:seconds] )
+      else
+        @attempt = Attempt.new( user_id: session[:user_id], 
+                                feat_id: session[:feat_id],
+                                score: params[:attempt][:score] )
+      end
+      if params[:attempt].present? and params[:attempt][:image].present?
+        @attempt.image = params[:attempt][:image]
+      end
+      unless @attempt.errors.any?  
+        if @attempt.save
+          flash[:notice] = "Attempt recorded."
+          redirect_to attempt_path( @attempt.id )
+        end
+      else
+        render action: "new"
+      end
+    else               
+      flash[:error] = "You have already recorded an attempt on this feat."
+      redirect_to attempt_path( existing_attempt.id )
     end
   end
   
   def destroy
     @attempt = Attempt.find( params[:id] )
-    @feat = Feat.find( @attempt.feat_id )
-    
-    # Only the owning user can delete his attempt ---------------------------- #    
+    @feat    =  @attempt.feat
+    #
+    # Only the owning user can delete his attempt 
+    #  
     if @attempt.user_id == session[:user_id]
       @attempt.destroy
     end
@@ -39,13 +47,18 @@ class AttemptsController < ApplicationController
   end
   
   def edit
-    @attempt = Attempt.find( params[:id] )
-    @feat = Feat.find( @attempt.feat_id )
+    @attempt  = Attempt.find( params[:id] )
+    @feat     = @attempt.feat
     @location = @feat.location
   end
   
   def index
-    @attempts = Attempt.find_all_by_user_id( session[:user_id] )
+    if params[:user_id].present?
+      @user = User.find( params[:user_id] )
+    else
+      @user = current_user
+    end
+    @attempts = Attempt.find_all_by_user_id( @user.id )
   end
   
   def new
@@ -61,8 +74,10 @@ class AttemptsController < ApplicationController
   
   def show
     @attempt = Attempt.find( params[:id] )
-    @feat = Feat.find( @attempt.feat_id )    
+    session[:attempt_id] = @attempt.id
+    @feat = @attempt.feat
     @location = @feat.location
+    @validations = @attempt.validations
   end
   
   def update
@@ -83,7 +98,7 @@ class AttemptsController < ApplicationController
       end
       unless @attempt.errors.any?  
         if @attempt.save
-          flash[:notice] = "Record updated."
+          flash[:notice] = "Attempt updated."
           redirect_to attempt_path( @attempt.id )
         end
       else

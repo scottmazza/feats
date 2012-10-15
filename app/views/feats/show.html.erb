@@ -38,9 +38,11 @@
 							<ol>
 								<% @attempts.each do |a| %>
 									<% if @feat.timed %>
-										<li><%= a.user.username%>: <%= a.score.to_hhmmss %>
+										<li><%= link_to "#{a.user.username}", 
+													user_path( a.user.id)%>: <%= a.score.to_hhmmss %>
 									<% else %>
-										<li><%= a.user.username%>: <%= a.score.to_s %>
+										<li><%= link_to "#{a.user.username}", 
+													user_path( a.user.id)%>: <%= a.score.to_s %>
 									<% end %>
 									<%= link_to "View", attempt_path(a.id) %>
 									<% if a.user.id == session[:user_id] %>

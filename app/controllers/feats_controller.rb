@@ -2,9 +2,9 @@ class FeatsController < ApplicationController
   before_filter :signed_in_user
   
   def create
-    @feat = Feat.new(params[:feat])
-    @feat.user = User.find(session[:user_id])
-    @feat.location = @location = Location.find(session[:location_id])
+    @feat = Feat.new( params[:feat] )
+    @feat.user = User.find( session[:user_id] )
+    @feat.location = @location = Location.find( session[:location_id] )
     @feat.name = @feat.name.lstrip.rstrip
     if @feat.save
       flash[:notice] = "Feat created successfully."
@@ -16,9 +16,11 @@ class FeatsController < ApplicationController
 
   def index
     if params[:id].present?
-      redirect_to feat_path(params[:id])
+      redirect_to feat_path( params[:id] )
+    elsif params[:user_id].present?
+      @feats = Feat.find_all_by_user_id( params[:user_id] )
     else
-      @feats = Feat.find_all_by_user_id(session[:user_id])
+      @feats = Feat.find_all_by_user_id( session[:user_id] )
     end
   end
   
@@ -27,10 +29,10 @@ class FeatsController < ApplicationController
     
     @feat = Feat.new
     if params[:location_id].present?
-      @location = Location.find(params[:location_id])
+      @location = Location.find( params[:location_id] )
       session[:location_id] = @location.id 
     elsif session[:location_id].present? 
-      @location = Location.find(session[:location_id])
+      @location = Location.find( session[:location_id] )
     else
       redirect_to locate_locations_path
     end
@@ -81,9 +83,9 @@ class FeatsController < ApplicationController
     @location       = @feat.location
     @attempt_exists = false
     if @feat.low_score_wins 
-      @attempts = Attempt.find_all_by_feat_id( @feat.id, order: 'score')
+      @attempts = Attempt.find_all_by_feat_id( @feat.id, order: 'score' )
     else
-      @attempts = Attempt.find_all_by_feat_id( @feat.id, order: 'score DESC')
+      @attempts = Attempt.find_all_by_feat_id( @feat.id, order: 'score DESC' )
     end
     session[:feat_id] = @feat.id
   end

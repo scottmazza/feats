@@ -16,8 +16,17 @@ class Attempt < ActiveRecord::Base
   attr_accessible :feat_id, :score, :user_id, :video_url, :image
   belongs_to :user
   belongs_to :feat
+  has_many :validations
   mount_uploader :image, ImageUploader
   validates :score, presence: true, numericality: true 
+  
+  # count_by_user_id
+  #
+  # Returns the number of attempts associated with the passed in user id.
+  #
+  def self.count_by_user_id( user_id )
+    count conditions: ["user_id=?", user_id ]
+  end
   
   # hhmmss_to_float
   #
@@ -42,4 +51,5 @@ class Attempt < ActiveRecord::Base
       end
     end
   end  
+  
 end

@@ -69,7 +69,7 @@
 		<div class="craig-unit">
 			<div class="scott-unit">
         <h3>
-					You have created the following feats:
+					Feats created by <%=@feats.first.user.username%>:
 				</h3>
         <br>
         <%= form_tag feats_path, action: 'show', method: 'get' do %>

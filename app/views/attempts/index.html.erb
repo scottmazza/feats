@@ -69,9 +69,10 @@
   <div class="span4">
 		<div class="craig-unit">
 			<div class="scott-unit">
-        <h3>
-					You have attempted the following feats:
-				</h3>
+        <h2>
+					<%= link_to "#{@user.username}", user_path(@user.id) %> has 
+						attempted the following feats:
+				</h2>
         <br>
         <%= form_tag feats_path, action: 'show', method: 'get' do %>
           <fieldset>

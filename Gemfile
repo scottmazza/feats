@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.6'
+gem 'jquery-rails'
 gem 'omniauth-facebook'
 gem 'geocoder'
 gem 'carrierwave'
@@ -23,11 +24,10 @@ group :assets do
   gem 'twitter-bootstrap-rails'
 end
 
-gem 'jquery-rails', '2.0.0'
 
 group :test do
   gem 'capybara', '1.1.2'
-  gem 'rb-fsevent', '0.4.3.1', :require => false
+  gem 'rb-fsevent', '0.9.1', :require => false
   gem 'growl', '1.0.3'
   gem 'guard-spork', '0.3.2'
   gem 'spork', '0.9.0'
