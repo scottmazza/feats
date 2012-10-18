@@ -1,5 +1,6 @@
 class AttemptsController < ApplicationController
   before_filter :signed_in_user
+  helper :maps
   
   def create
     @feat = Feat.find( session[:feat_id])

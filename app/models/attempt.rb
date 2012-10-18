@@ -52,4 +52,11 @@ class Attempt < ActiveRecord::Base
     end
   end  
   
+  def location
+    self.feat.location
+  end
+  
+  def name
+    self.feat.name
+  end
 end

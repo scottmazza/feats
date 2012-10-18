@@ -18,7 +18,9 @@ class LocationsController < ApplicationController
                   longitude: session[:longitude])
                   
     if @location.valid?
-      # Check for a location with the same name (sans whitespace, etc.) --- #
+      #
+      # Check for a location with the same name (sans whitespace, etc.) 
+      #
       @locations = Location.find_names_by_lat_long(session[:latitude], 
                       session[:longitude])
       @locations.each do |loc|
@@ -41,7 +43,9 @@ class LocationsController < ApplicationController
   end
   
   def choose_from_existing
-    # Use address obtained from Geocoder ---------------------------------- #            
+    #
+    # Use address obtained from Geocoder
+    # 
     @location = Location.new(
                   address:   session[:address],
                   latitude:  session[:latitude],
@@ -54,29 +58,35 @@ class LocationsController < ApplicationController
     if @locations.empty?
       redirect_to action: :new
     end
-    # --------------------------------------------------------------------- #
-    # Location(s) exist with same lat and longitude. User must choose one   #
-    # or create a new one.                                                  #
-    # --------------------------------------------------------------------- #
+    # 
+    # Location(s) exist with same lat and longitude. User must choose one 
+    # or create a new one. 
+    # 
   end
   
   def locate
-    if params[:location].nil?           
-      # Empty form -------------------------------------------------------- #
+    if params[:location].nil? 
+      #          
+      # Empty form
+      #
       session.delete(:address)
       session.delete(:latitude)
       session.delete(:longitude)
       @location = Location.new
       
-    else             
-      # Populate location with user entered data and validate ------------- #           
+    else  
+      #           
+      # Populate location with user entered data and validate
+      #       
       @location = Location.new( name: "location name",
                                 address: params[:location][:address])
       @location.latitude  = 0
       @location.longitude = 0
       
       if @location.valid?
-        # Attempt to geolocate input address ------------------------------ #        
+        #
+        # Attempt to geolocate input address 
+        #
         @location.latitude, @location.longitude = 
           Geocoder.coordinates(@location.address)
           
@@ -84,14 +94,16 @@ class LocationsController < ApplicationController
           @location.errors[:base] << "Cannot locate address."
           
         else
-          # We have coordinates, but do they match the input address? ----- #
+          # We have coordinates, but do they match the input address? 
+          #
           session[:address] = Geocoder.address( [@location.latitude,
                                 @location.longitude])
           session[:latitude]  = @location.latitude
           session[:longitude] = @location.longitude          
         end
       else
-        # Keep rendering with errors until valid -------------------------- # 
+        # Keep rendering with errors until valid 
+        #
         session.delete(:address)       
       end
     end

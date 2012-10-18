@@ -1,5 +1,6 @@
 class FeatsController < ApplicationController
   before_filter :signed_in_user
+  helper :maps
   
   def create
     @feat = Feat.new( params[:feat] )
@@ -17,12 +18,15 @@ class FeatsController < ApplicationController
   def index
     if params[:id].present?
       redirect_to feat_path( params[:id] )
-    elsif params[:user_id].present?
-      @feats = Feat.find_all_by_user_id( params[:user_id] )
     else
-      @feats = Feat.find_all_by_user_id( session[:user_id] )
+      if params[:user_id].present?
+        @user = User.find( params[:user_id] )
+      else
+        @user = current_user
+      end
+      @feats = Feat.find_all_by_user_id( @user.id )
     end
-  end
+   end
   
   def new
     # Location must be created/chosen before feat creation can continue ------ #
