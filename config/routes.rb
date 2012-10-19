@@ -1,18 +1,18 @@
 Feats::Application.routes.draw do
   root to: 'feats#index'
   
-  resources :users,     only: [:new, :create, :edit, :update]
+  resources :users,     only: [:new, :create, :edit, :update, :show]
   resources :feats do
     options = { only: [:new, :create, :show, :index] } 
     get 'search', on: :collection
   end    
   resources :locations do     
-    options = { only: [:new, :create, :edit, :update] }
+    options = { only: [:new, :create] }
     get 'locate', on: :collection
     get 'choose_from_existing', on: :collection
   end 
   resources :attempts
-     
+  resources :validations     
   
   match '/signup', to: 'users#new' 
   match '/signin', to: 'sessions#new'

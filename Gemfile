@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.6'
+gem 'jquery-rails'
 gem 'omniauth-facebook'
 gem 'geocoder'
 gem 'carrierwave'
@@ -22,8 +23,6 @@ group :assets do
   gem 'sass-rails',   '3.2.4'
   gem 'twitter-bootstrap-rails'
 end
-
-gem 'jquery-rails'
 
 group :test do
   gem 'capybara', '1.1.2'

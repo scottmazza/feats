@@ -5,32 +5,23 @@
       <div class="scott-unit">
 				<%= render 'layouts/feat_info' %>
 				<br>
-	      <br>
-				<div class="row">
-					<% if @feat.timed %>
-						<div class="span2" align="right">
-							<strong><%= @attempt.user.username.possessive %> time:</strong>
-						</div>
-						<div class="span2">
-							<%= @attempt.score.to_hhmmss %>
-						</div>
-					<% else %>
-						<div class="span2" align="right">
-							<strong><%= @attempt.user.username.possessive %> score:</strong>
-						</div>
-						<div class="span2">
-							<%= @attempt.score.to_s %>
-						</div>
-					<% end %>
-				</div>
-				<% unless @attempt.image.blank? %>
-					<br>
+				<%= render 'layouts/attempt_info' %>
+				<br>
+				<% if @attempt.user.id == session[:user_id] %>					
 					<div class="row">
-						<div class="span5">
-							<%= image_tag @attempt.image_url.to_s %>
+						<div class="span4" align="center">
+							<%= link_to "Delete this attempt", attempt_path(@attempt.id),
+							 	confirm: 'Delete this attempt?', method: 'delete' %>
 						</div>
 					</div>
-				<% end %>			
+				<% elsif 
+					@attempt.validations.where(user_id: session[:user_id]).first.nil? %>
+					<div class="row">
+						<div class="span4" align="center">
+							<%= link_to "Validate this attempt", new_validation_path %>
+						</div>
+					</div>
+				<% end %>
 			</div>
     </div>
 		<div id="map_canvas" class="span7"></div>

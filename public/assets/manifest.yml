@@ -1,12 +1,19 @@
 ---
 featmap.png: featmap-5e5fa3081f21da2db389570e2023994f.png
 featmap2.png: featmap2-0f65056b37e914329422fcae6b501e19.png
+feats_logo_large.png: feats_logo_large-79ece4463523337302c7a01fd16ccea2.png
+feats_logo_small.png: feats_logo_small-0dbe9ab52514e31be4651905836d90ca.png
 featsof.png: featsof-a13a45b9a30dafb5e8cff49d033ae4e9.png
 glyphicons-halflings-white.png: glyphicons-halflings-white-13553a5bf21ae3cc374006592488ec64.png
 glyphicons-halflings.png: glyphicons-halflings-f6675c325532ec11a984d58e172b8e2a.png
 rails.png: rails-be8732dac73d845ac5b142c8fb5f9fb0.png
+<<<<<<< HEAD
 application.js: application-0cdc4a7e2a1b795283aeafb88f6130eb.js
 application.css: application-f155494b3a76da3eeb2d110c9318d25a.css
+=======
+application.js: application-5d2c3a98007bdbfc41788a5e7b0bba60.js
+application.css: application-059a59a23d5f85abef862d0df82491c9.css
+>>>>>>> 61b5bde523d05e778d1e275f6c02d50099346998
 bw.jpg: bw-981d5c6ee0cc6df4ef5f7fac568e34d3.jpg
 grey_bkgrnd.png: grey_bkgrnd-7a6a3232ea84bee7b1e6cf2f65a91f45.png
 greyline.png: greyline-9dc674bb7851d98382629d983ff72edb.png
@@ -15,4 +22,4 @@ fontawesome-webfont.svg: fontawesome-webfont-4d19fdd70a080778557b652cb4868557.sv
 fontawesome-webfont.ttf: fontawesome-webfont-1e29be0bb354c9f664cbca7df9a966d8.ttf
 fontawesome-webfont.woff: fontawesome-webfont-9c0e35b95bf9cea29c77678ebf71a29d.woff
 twitter/bootstrap/glyphicons-halflings-white.png: twitter/bootstrap/glyphicons-halflings-white-13553a5bf21ae3cc374006592488ec64.png
-twitter/bootstrap/glyphicons-halflings.png: twitter/bootstrap/glyphicons-halflings-f6675c325532ec11a984d58e172b8e2a.png
+twitter/bootstrap/glyphicons-halflings.png: twitter/bootstrap/glyphicons-halflings-ab3144065a860d198f1d7d9a4882640c.png
