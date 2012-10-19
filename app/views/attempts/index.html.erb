@@ -1,33 +1,33 @@
 <%= render 'shared/multi_loc_map_script', {obj_list: @attempts} %>
-<div class="row">
-  <div class="span4">
-		<div class="craig-unit">
-			<div class="scott-unit">
+	<div class="row" style="display:inline">
 				<%= link_to(( image_tag @user.image ), @user ) %>
-        <h2>
-					<%= link_to "#{@user.username}", @user %> has 
-						attempted the following feats:
-				</h2>
-        <br>
-        <%= form_tag feats_path, action: 'show', method: 'get' do %>
-          <fieldset>
-						<select id="id" name="id" onchange="selection_changed(this)" 
-							multiple="multiple">
-							<% @attempts.each do |a| %>
-								<option value="<%=a.feat.id%>"><%=a.feat.name%></option>
-							<% end %>
-						</select>
-						<br>
-           	<%= submit_tag 'View Feat', 
-							class: "btn btn-small btn-primary" %>
-         	</fieldset>
-        <% end %>
-				<br>
-				<br>
+				<%= link_to "#{@user.username}", @user %> has 
+					attempted the following feats:
+	</div>
+	<div class="row">
+	  <div class="span4">
+			<div class="craig-unit">
+				<div class="scott-unit">
+	        <br>
+	        <%= form_tag feats_path, action: 'show', method: 'get' do %>
+	          <fieldset>
+							<select id="id" name="id" onchange="selection_changed(this)" 
+								multiple="multiple">
+								<% @attempts.each do |a| %>
+									<option value="<%=a.feat.id%>"><%=a.feat.name%></option>
+								<% end %>
+							</select>
+							<br>
+	           	<%= submit_tag 'View Feat', 
+								class: "btn btn-small btn-primary" %>
+	         	</fieldset>
+	        <% end %>
+					<br>
+					<br>
+			  </div>
 		  </div>
 	  </div>
-  </div>
-	<div id="map_canvas" class="span8"></div>
-</div>
+		<div id="map_canvas" class="span8"></div>
+	</div>
 <br>
 <br>

@@ -34,7 +34,7 @@ module MapsHelper
       obj_array.each do |obj|
         marker_exists = false
         markers.each do |m|
-          if obj.location.latitude == m.latitude and 
+          if obj.location.latitude == m.latitude and
              obj.location.longitude == m.longitude
             marker_exists = true
             m.add_data( obj )
@@ -42,12 +42,12 @@ module MapsHelper
           end
         end
         unless marker_exists
-          markers << Marker.new(
-                        context,
-                        obj.location.address, 
-                        obj.location.latitude,
-                        obj.location.longitude, 
-                        link_to( obj.name, obj ))
+            markers << Marker.new(
+                          context,
+                          obj.location.address, 
+                          obj.location.latitude,
+                          obj.location.longitude, 
+                          link_to( obj.name, obj ))
         end
       end
     end

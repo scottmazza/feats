@@ -4,6 +4,7 @@
 <script type="text/javascript">
 	var gMap;
 	var gMarkers = [ ];
+	var gInfoWindows = [ ];
 	
 	$(function () {
 		var title = "";
@@ -30,6 +31,7 @@
 		<% if obj_list.any? %>
 			var lat_lng_bounds = new google.maps.LatLngBounds();
 			<% markers = create_markers( self, obj_list ) %>
+			var idx = 0;
 			<% markers.each do |m| %>
 				lat_lng = new google.maps.LatLng(<%=m.latitude%>, <%=m.longitude%>);
 				var marker = new google.maps.Marker({
@@ -37,16 +39,20 @@
 					map: gMap,
 					title: "<%=m.title%>"
 				});
+				marker.set( "index", idx );
+	 			gMarkers.push(marker);
 
 				var info_window = new google.maps.InfoWindow({
 					content: '<%=m.content_str%>'
 				});
-				google.maps.event.addListener( marker, 'click', function( ) {
-					info_window.open( gMap, marker );
+				gInfoWindows.push(info_window);
+				google.maps.event.addListener( gMarkers[idx], 'click', function( ) {
+					var idx = this.get( "index" );
+					gInfoWindows[ idx ].open( gMap, gMarkers[ idx ]);
 				});
 				
-	 			gMarkers.push(marker);
 				lat_lng_bounds.extend(lat_lng);
+				idx++;
 			<% end %>
 			<% if markers.size > 1 %>
 				gMap.fitBounds(lat_lng_bounds);
@@ -54,7 +60,7 @@
 
 		<% end %>					
 	});
-	
+
 	function selection_changed( select_obj ) {
 		var idx = select_obj.selectedIndex;
 		gMap.panTo(gMarkers[idx].position);		
