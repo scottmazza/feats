@@ -1,26 +1,20 @@
-<br>
-<br>
-<br>
-<br>
-<br>
-
-<div class="container">
-  <div class="row">
-    <ul class="span3">
-    </ul>
-    <ul class="span4">
-      <div class="well">
-        <h2>Make history.</h2>
-        <h2>Win glory.</h2>
-        <h2>Become a champion.</h2>
-        <br>
-        <br>
-        <%= button_to "Sign in with Facebook", "/auth/facebook", 
+<div class="background-unit">
+  <div class="container">
+    <div class="row">
+	  <div class="span6 offset2">
+        <div class="home-well">
+          <center>
+          <h1>An interactive online record board.</h1>
+		  <br>
+          <h2>Compete with your friends over personal<br>
+		  records in your city and around the world.</h2>
+          <br>
+          <%= button_to "Sign In with Facebook", "/auth/facebook", 
 					class: "btn btn-large btn-primary"%>
-        <br>
-				<br>
-        <%= link_to "Not a member yet? Sign up here.", "/signup"%>
-      </div>
-    </ul>
+          <%= link_to "Not a member yet? Sign up here.", "/signup"%>
+          </center>
+		</div>
+	  </div>
+    </div>
   </div>
 </div>

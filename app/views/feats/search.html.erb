@@ -68,39 +68,48 @@
 		gMap.panTo(gMarkers[idx].position);		
 	}
 </script>
-<div class="row">
-  <div class="span4">
+
+<div class="background-unit">
+  <div class="container">
+	<div class="row-fluid">
+      <div class="span3">
 		<div class="craig-unit">
-			<div class="scott-unit">
-        <%= form_tag search_feats_path, method: 'get' do %>
-          <fieldset>
-						<h3>Search for feats within</h3>
-						<br>
-						<%= text_field_tag :distance, params[:distance] %>
-						<br>
-						miles of
-						<br>
+            <%= form_tag search_feats_path, method: 'get' do %>
+            <fieldset>
+        	<h1>Search for FEATS within</h1>
+	    	<br>
+			<%= text_field_tag :distance, params[:distance] %>
+			<br>
+	    	<h1>miles of</h1>
+			<br>
            	<%= text_field_tag :address, params[:address], maxlength: 255 %>
-						<br>
+			<br>
            	<%= submit_tag 'Search', name: nil, 
-							class: "btn btn-small btn-primary" %>
+			class: "btn btn-small btn-primary" %>
          	</fieldset>
-        <% end %>
-				<br>
-				<br>
-		  </div>
-	  </div>
-	<% if @feats.any? %>
+            <% end %>
+	    </div>
+	  
+	    <% if @feats.any? %>
+		
 		<div class="craig-unit">
-			<div class="scott-unit">
-				<% @feats.each do |f| %>
-					<%= link_to "#{f.name}", feat_path(f.id) %><br>
-				<% end %>
-			</div>
+	        <% @feats.each do |f| %>
+			<%= link_to "#{f.name}", feat_path(f.id) %><br>
+		    <% end %>
 		</div>
-	<% end %>
+	
+	    <% end %>
+  
+      </div>
+	
+	  <div class="span9">
+	    <div class="map-well">  
+          <div id="map_canvas"></div>
+        </div>
+      </div> 
+	</div>
+    <br>
+    <br>
   </div>
-	<div id="map_canvas" class="span8"></div>
 </div>
-<br>
-<br>
+
