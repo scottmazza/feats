@@ -17,8 +17,8 @@
 	  <style type="text/css">
 		 html { height: 100% }
 		 body {
-				padding-top: 100px;
-		    padding-bottom: 0px;
+				padding-top: 58px;
+		        padding-bottom: 0px;
 				height: 100%;
 				margin: 0
 		  }
@@ -37,20 +37,23 @@
 	  <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
 
 	</head>
+	
 	<body>
+
 		<div class="container">
 			<%= render 'layouts/navbar' %>
 			  <% flash.each do |key, value| %>
 			    <div class="alert alert-<%= key %>"><%= value %></div>
 			  <% end %>
 			  <%= yield %>
-
-			  <!-- Main hero unit for a primary marketing message or call to action -->    
+	   </div>
+	   
+   </body>   
 
 			  
    <footer>
    
-       <div class="footer-unit">
+   <div class="footer-unit">
      <div class="container">
        <div class="row-fluid">
          <div class="span3">
