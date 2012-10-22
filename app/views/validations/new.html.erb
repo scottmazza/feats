@@ -1,24 +1,29 @@
 <%= render 'shared/single_loc_map_script' %>
-<div class="container">
-  <div class="row">
-    <div class="span5">
-      <div class="scott-unit">
-				<%= render 'layouts/feat_info' %>
-				<br>
-	      <br>
-				<%= render 'layouts/attempt_info' %>
-				<br>
-				<br>
-				<div class="span1">
-					<br>
-				</div>
-				<div class="span3">
-					<%= render 'validation_form'%>
-				</div>
+
+ <div class="background-unit">
+    <div class="container">
+	  <div class="row-fluid">
+        <div class="span3">
+		  <div class="craig-unit">
+		    <%= render 'layouts/feat_info' %>
+			<br>
+	        <br>
+		    <%= render 'layouts/attempt_info' %>
+			<br>
+			<br>
+			<div class="span1">
+			<br>
 			</div>
+			<div class="span3">
+			<%= render 'validation_form'%>
+		  </div>
+		</div>
+    
+	    <div class="span9">
+	      <div class="map-well"> 
+	        <div id="map_canvas"></div>
+          </div>
+	    </div>
+	  </div>
     </div>
-		<div id="map_canvas" class="span7"></div>
   </div>
-</div>
-<br>
-<br>

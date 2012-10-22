@@ -1,30 +1,38 @@
 <%= render 'shared/multi_loc_map_script', {obj_list: @feats} %>
-<div class="row">
-  <div class="span4">
-		<div class="craig-unit">
-			<div class="scott-unit">
-				<%= link_to(( image_tag @user.image ), @user ) %>
-        <h2>
-					<%= link_to "#{@user.username}", @user %> has 
-						created the following feats:
-				</h2>
-        <br>
-        <%= form_tag feats_path, action: 'show', method: 'get' do %>
-          <fieldset>
-						<%= select_tag("id",
-						 	options_from_collection_for_select(@feats, :id, :name),
-							onchange: "selection_changed(this)", multiple: 'true')%>
-						<br>
-           	<%= submit_tag 'View Feat', name: nil,
-							class: "btn btn-small btn-primary" %>
-         	</fieldset>
-        <% end %>
-				<br>
-				<br>
-		  </div>
+
+  <div class="background-unit">
+    <div class="container">
+	  <div class="row">
+        <div class="span12">
+		  <%= link_to(( image_tag @user.image ), @user ) %>
+		  <%= link_to "#{@user.username}", @user %> has 
+		  created the following feats:
+		</div>
 	  </div>
+      <br>
+	  
+	  <div class="row">
+        <div class="span3">
+		  <div class="craig-unit">
+            <%= form_tag feats_path, action: 'show', method: 'get' do %>
+            <fieldset>
+		    <%= select_tag("id",
+		    options_from_collection_for_select(@feats, :id, :name),
+		    onchange: "selection_changed(this)", multiple: 'true')%>
+		    <br>
+            <%= submit_tag 'View Feat', name: nil,
+		    class: "btn btn-small btn-primary" %>
+            </fieldset>
+            <% end %>
+		  </div>
+	    </div>
+
+        <div class="span9">
+	      <div class="map-well"> 
+	        <div id="map_canvas"></div>
+          </div>
+	    </div>
+	  </div>
+    </div>
   </div>
-	<div id="map_canvas" class="span8"></div>
-</div>
-<br>
-<br>
+

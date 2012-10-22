@@ -43,10 +43,8 @@
 	  <div class="row-fluid">
         <div class="span3">
 		  <div class="craig-unit">
-            <h1>Where did the Feat take place?<br>
+            <h1>Enter an address for the Feat's physical location.</h1>
 			<br>
-			Enter an address for<br> the Feat location:</h1>
-            <br>
             <%= form_for @location, url: locate_locations_path, 
 							method: 'get' do |f| %>
             <%= render 'shared/error_messages', target: @location %>
@@ -58,12 +56,11 @@
             </fieldset>
             <% end %>
 			<% if !session[:address].nil? %>
-				  <br>
-				  <br>
-				  <h1>Did you mean:</h1>
-				  <%= link_to "#{session[:address]}", 
-						choose_from_existing_locations_path %>
-				<% end %>
+		    <br>
+			<h1>Did you mean:</h1>
+			<%= link_to "#{session[:address]}", 
+			choose_from_existing_locations_path %>
+			<% end %>
 		  </div>
 		</div>
 		
@@ -75,5 +72,3 @@
       </div>
 	</div>
   </div>
-        <br>
-        <br>

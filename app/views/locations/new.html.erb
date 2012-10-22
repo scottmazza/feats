@@ -21,30 +21,40 @@
 		marker.setMap(gMap);
 	});
 </script>
-<div class="row">
-  <div class="span5">
-    <div class="craig-unit">
-      <div class="scott-unit">
-        <h1>Create a new feat location</h1>
-        <br>
-        <%= form_for @location do |f| %>
-          <%= render 'shared/error_messages', target: @location %>
-          <fieldset>
+
+
+  <div class="background-unit">
+    <div class="container">
+	  <div class="row-fluid">
+        <div class="span3">
+		  <div class="craig-unit">
+            <h1>Now let's name the Feat's location.</h1>
+
+			<h2>The location's name should be simple and easy to understand. Here are a few examples:</h2> 
+			<h2>&middot; The Brooklyn Bridge<br>&middot; Big Buns Gourmet Grill<br>&middot; Scott's House<br>&middot; The Corner of S & 10th Street</h2>
+            <br>
+            <%= form_for @location do |f| %>
+            <%= render 'shared/error_messages', target: @location %>
+            <fieldset>
             <%= f.label :name %>
             <%= f.text_field :name, maxlength: 255 %>
            	<%= f.label :address %>
             <%= f.text_field :address, disabled: 'true', maxlength: 255 %>
             <br>
-            <br>
-           <%= f.submit "Create Location", 
-             class: "btn btn-large btn-primary" %>
-         </fieldset>
-        <% end %>
-			</div>
+            <%= f.submit "Name This Location", 
+             class: "btn btn-small btn-primary" %>
+            </fieldset>
+            <% end %>
+	      </div>
 		</div>
+  
+      <div class="span9">
+	    <div class="map-well"> 
+	      <div id="map_canvas"></div>
+        </div>
+	  </div>
+	</div>
   </div>
-	<div id="map_canvas" class="span7"></div>
 </div>
-<br>
-<br>
+
 

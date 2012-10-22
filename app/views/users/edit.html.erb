@@ -1,37 +1,29 @@
 <div class="background-unit">
-<div class="container">
-
-<div class="row">
-	<div class="span1"><br></div>
-  <div class="span11">
-    <div class="scott-unit">
-			<div class="row">
-      	<h3>Edit your profile</h3>
-				<br>
+    <div class="container">
+	  <div class="row-fluid">
+	    <div class="span12">
+          <div class="craig-unit">
+			<div class="row-fluid">
+		      <%= image_tag@user.image %> <%= @user.name %>
 			</div>
-			<div class="row">
-				<%= image_tag@user.image %> <%= @user.name %>
-			</div>
-			<div class="row">
-	      <br>
-	      <%= form_for(@user) do |f| %>
-	        <%= render 'shared/error_messages', target: @user %>
-	        <fieldset>
-	          <div class="control-group">
-	            <%= f.label :username %>
-	            <div class="controls">
-	           <%= f.text_field :username %>
-	            </div>
-	          </div> 
-	          <%= f.submit "Save changes", class: "btn btn-info btn-large" %>
-	        </fieldset>
-	      <% end %>
-			</div>
-    </div>
-  </div>
-</div>
-</div>
-</div>
-<br>
-<br>
+			<div class="row-fluid">
+	        <br>
+	          <%= form_for(@user) do |f| %>
+	          <%= render 'shared/error_messages', target: @user %>
+	            <fieldset>
+	              <div class="control-group">
+	                <%= f.label :username %>
+	                  <div class="controls">
+	                    <%= f.text_field :username %>
+	                  </div>
+	               </div> 
+	               <%= f.submit "Save Changes", class: "btn btn-small btn-primary" %>
+	             </fieldset>
+	           <% end %>
+			 </div>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
 

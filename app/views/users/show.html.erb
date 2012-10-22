@@ -1,45 +1,46 @@
-<div class="row">
-	<div class="span1"><br></div>
-  <div class="span11">
-    <div class="scott-unit">
-			<div class="row">
-				<%= image_tag@user.image %> <%= @user.name %>
-				<br>
-				<br>
+<div class="background-unit">
+    <div class="container">
+	  <div class="row-fluid">
+	    <div class="span12">
+          <div class="craig-unit">
+		    <div class="row-fluid">
+		      <%= image_tag@user.image %> <%= @user.name %>
+			  <br>
+			  <br>
 			</div>
-			<div class="row">
-	      <h2 style="display:inline;">Username:</h2> <%= @user.username %>
+			<div class="row-fluid">
+	          <h1 style="display:inline;">Username:</h1> <%= @user.username %>
 			</div>
-			<div class="row">
-				<% if @feat_count == 0 %>
-					0 feats created,
-				<% elsif @feat_count == 1 %>
-					<%= link_to "#{@feat_count} feat created", 
-						feats_path( user_id: params[:id] ) %>
-				<% else %>
-					<%= link_to "#{@feat_count} feats created", 
-						feats_path( user_id: params[:id] ) %>
-				<% end %>
-				<br>
-				<% if @attempt_count == 0 %>
-					0 feats attempted,
-				<% elsif @attempt_count == 1 %>
-					<%= link_to "#{@attempt_count} feat attempted",
-				 		attempts_path( user_id: params[:id] ) %>
-				<% else %>
-					<%= link_to "#{@attempt_count} feats attempted",
-				 		attempts_path( user_id: params[:id] ) %>
-				<% end %>
-				<br>
-				<br>
+			<div class="row-fluid">
+		      <% if @feat_count == 0 %>
+			  0 feats created,
+			  <% elsif @feat_count == 1 %>
+	    	  <%= link_to "#{@feat_count} feat created", 
+			  feats_path( user_id: params[:id] ) %>
+			  <% else %>
+			  <%= link_to "#{@feat_count} feats created", 
+			  feats_path( user_id: params[:id] ) %>
+			  <% end %>
+			  <br>
+			  <% if @attempt_count == 0 %>
+			  0 feats attempted,
+			  <% elsif @attempt_count == 1 %>
+			  <%= link_to "#{@attempt_count} feat attempted",
+			  attempts_path( user_id: params[:id] ) %>
+			  <% else %>
+			  <%= link_to "#{@attempt_count} feats attempted",
+			  attempts_path( user_id: params[:id] ) %>
+			  <% end %>
+			  <br>
+			  <br>
 			</div>
 			<% if params[:id].eql?(session[:user_id].to_s ) %>
-				<div class="row">
-					<%= link_to "Edit profile", edit_user_path( session[:user_id] ) %>
-				</div>
+			<div class="row-fluid">
+			  <h1><%= link_to "Edit Your Profile", edit_user_path( session[:user_id] ) %></h1>
+			</div>
 			<% end %>
+		  </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-<br>
-<br>

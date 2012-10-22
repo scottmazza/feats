@@ -1,14 +1,14 @@
 <div class="row">
-	<% if @feat.timed %>
-		<div class="span2" align="right">
-			<strong>
-				<%= link_to "#{@attempt.user.username.possessive}", 
-					user_path(@attempt.user.id) %> time:
-			</strong>
-		</div>
-		<div class="span2">
-			<%= @attempt.score.to_hhmmss %>
-		</div>
+<% if @feat.timed %>
+		
+  <div class="span2" align="left">
+    <%= link_to "#{@attempt.user.username.possessive}", 
+	user_path(@attempt.user.id) %> time:
+  </div>
+		
+  <div class="span2">
+    <%= @attempt.score.to_hhmmss %>
+	</div>
 	<% else %>
 		<div class="span2" align="right">
 			<strong><%= link_to "#{@attempt.user.username.possessive}", 
