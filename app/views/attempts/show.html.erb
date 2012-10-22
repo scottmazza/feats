@@ -3,7 +3,7 @@
   <div class="background-unit">
     <div class="container">
 	  <div class="row">
-        <div class="span4">
+        <div class="span3">
 		  <div class="craig-unit">
 		    <%= render 'layouts/feat_info' %>
 			<br>
@@ -11,9 +11,9 @@
 			<br>
 			<% if @attempt.user.id == session[:user_id] %>					
 			<div class="row">
-			  <div class="span4" align="center">
-			  <%= link_to "Delete this attempt", attempt_path(@attempt.id),
-			  confirm: 'Delete this attempt?', method: 'delete' %>
+			  <div class="span4">
+			  <h2><%= link_to "Delete This Attempt", attempt_path(@attempt.id),
+			  confirm: 'Delete this attempt?', method: 'delete' %></h2>
 			  </div>
 			</div>
 			
@@ -30,7 +30,7 @@
 		</div>
         
 
-	    <div class="span8">
+	    <div class="span9">
 	      <div class="map-well"> 
 	        <div id="map_canvas"></div>
           </div>

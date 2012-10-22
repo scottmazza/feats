@@ -36,7 +36,7 @@
 			</div>
 			<% if params[:id].eql?(session[:user_id].to_s ) %>
 			<div class="row-fluid">
-			  <h1><%= link_to "Edit Your Profile", edit_user_path( session[:user_id] ) %></h1>
+			  <h2><%= link_to "Edit Your Profile", edit_user_path( session[:user_id] ) %></h2>
 			</div>
 			<% end %>
 		  </div>
