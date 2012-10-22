@@ -26,20 +26,19 @@
   <div class="background-unit">
     <div class="container">
 	  <div class="row-fluid">
-        <div class="span3">
+        <div class="span4">
 		  <div class="craig-unit">
-            <h1>Now let's name the Feat's location.</h1>
+            <h1>Name the Feat location.</h1>
 
-			<h2>The location's name should be simple and easy to understand. Here are a few examples:</h2> 
-			<h2>&middot; The Brooklyn Bridge<br>&middot; Big Buns Gourmet Grill<br>&middot; Scott's House<br>&middot; The Corner of S & 10th Street</h2>
             <br>
             <%= form_for @location do |f| %>
             <%= render 'shared/error_messages', target: @location %>
             <fieldset>
-            <%= f.label :name %>
-            <%= f.text_field :name, maxlength: 255 %>
+            <%= f.label "Location Name" %>
+            <%= f.text_field :name, maxlength: 255, class: "span12" %>
            	<%= f.label :address %>
-            <%= f.text_field :address, disabled: 'true', maxlength: 255 %>
+            <%= f.text_field :address, disabled: 'true', maxlength: 255, 
+							class: "span12"  %>
             <br>
             <%= f.submit "Name This Location", 
              class: "btn btn-small btn-primary" %>
@@ -48,7 +47,7 @@
 	      </div>
 		</div>
   
-      <div class="span9">
+      <div class="span8">
 	    <div class="map-well"> 
 	      <div id="map_canvas"></div>
         </div>

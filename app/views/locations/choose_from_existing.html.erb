@@ -22,41 +22,35 @@
 	});
 </script>
 
-  <div class="background-unit">
-    <div class="container">
+<div class="background-unit">
+	<div class="container">
 	  <div class="row-fluid">
-        <div class="span3">
-		  <div class="craig-unit">
+      <div class="span4">
+		  	<div class="craig-unit">
 	        <h1>The following places exist at:</h1>
-			<br>
-			<%= "#{session[:address]}" %>:
-			<br>
-            <br>
-            <%= form_tag new_feat_path, method: 'get' do %>
-            <fieldset>
-			<%= select_tag(:location_id,
-			options_from_collection_for_select(@locations, :id, :name),
-   			multiple: 'true')%>
-			<br>
-			<h1>Would you like to:</h2>
-			<br>
-           	<center><%= submit_tag 'Use one of the above places', name: nil,
-			class: "btn btn-small btn-primary" %></center>
-         	</fieldset>
-            <% end %>
-			<br>
-			<center><h1>or</h1></center>
-			<br>
-			<center><%= button_to 'Create a new place', { action: 'new' }, 
-			{ method: 'get', class: 'btn btn-small btn-primary' }%></center>
+					<br>
+					<%= "#{session[:address]}" %>:
+					<br>
+          <br>
+          <%= form_tag new_feat_path, method: 'get' do %>
+           	<fieldset>
+							<%= select_tag(:location_id,
+								options_from_collection_for_select(@locations, :id, :name),
+   							multiple: 'true')%>
+							<br>
+           		<%= submit_tag 'Use This Location', name: nil,
+								class: "btn btn-small btn-primary" %>
+         		</fieldset>
+          <% end %>
+					<h1>or</h1>
+					<h2><%= link_to 'Create A New Location', new_location_path %></h2>
 		  </div>
 	    </div>
-		
-        <div class="span9">
-	      <div class="map-well"> 
-	        <div id="map_canvas"></div>
+        <div class="span8">
+	      	<div class="map-well"> 
+	        	<div id="map_canvas"></div>
           </div>
-	    </div>
+	    	</div>
 	  </div>
     </div>
   </div>

@@ -2,25 +2,25 @@
   <div class="background-unit">
     <div class="container">
 	  <div class="row-fluid">
-        <div class="span3">
+        <div class="span4">
 		  <div class="craig-unit">
-            <h1>We have the Feat's location as:</h1>
+            <h1>The Feat location is:</h1>
 		       <h2>
 			   <%= @location.name %><br>
 		       <%= @location.address %><br>
 		       </h2>
 			   <h2><%= link_to "Change the Feat Location", locate_locations_path %></h2>
                <div class="hr1"></div>
-			   <h1>Now, you need to name the Feat and describe it.</h1>
+			   <h1>Name the Feat and describe it.</h1>
 			   <br>
                <%= form_for @feat do |f| %>
                <%= render 'shared/error_messages', target: @feat %>
 			   <fieldset>
-               <%= f.label :name %>
+               <%= f.label "Feat name" %>
                <%= f.text_field :name, class: "field span12" %>
-               <%= f.label :description %>
+               <%= f.label "Feat description" %>
                <%= f.text_area :description, rows: 4, class: "field span12" %>
-			   <%= f.label "Scored or timed"%>
+				 <%= f.label "Is the Feat timed or scored?"%>
 			   <%= f.radio_button :timed, 1 %>
 			   <%= f.label :timed, style: "display:inline;" %>
 			   <br>
@@ -28,8 +28,13 @@
 			   <%= f.label :timed, "Scored", style: "display:inline;" %>
 			   <br>
 			   <br>
-			   <%= f.check_box :low_score_wins %>
-	           <%= f.label "Low score/time wins", style: "display:inline;" %>
+				 <%= f.label "How is the winner determined?"%>
+				<%= f.radio_button :low_score_wins, 1 %>
+				<%= f.label "Low score/time wins", style: "display:inline;" %>
+				<br>
+				<%= f.radio_button :low_score_wins, 0, checked: true %>
+			  <%= f.label "High score/time wins", style: "display:inline;" %>
+	           
                <br>
                <br>
 	           <%= f.submit "Create Feat", 
@@ -39,7 +44,7 @@
            </div>
          </div>
 		 
-         <div class="span9">
+         <div class="span8">
 	       <div class="map-well"> 
 	         <div id="map_canvas"></div>
            </div>
