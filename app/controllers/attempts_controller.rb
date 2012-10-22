@@ -25,9 +25,11 @@ class AttemptsController < ApplicationController
         if @attempt.save
           flash[:notice] = "Attempt recorded."
           redirect_to attempt_path( @attempt.id )
+        else
+          render action: 'new'
         end
       else
-        render action: "new"
+        render action: 'new'
       end
     else               
       flash[:error] = "You have already recorded an attempt on this feat."

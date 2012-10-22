@@ -19,6 +19,7 @@ Feats::Application.routes.draw do
   match '/auth/facebook/callback', to: 'sessions#create'
   match '/auth/failure', to: redirect('/')
   match '/signout', to: 'sessions#destroy', as: 'signout'
+  match '/how_it_works', to: 'static_pages#how_it_works'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
