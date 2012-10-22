@@ -4,24 +4,20 @@
 	  <div class="row-fluid">
         <div class="span3">
 		  <div class="craig-unit">
-            <h1>Alright, so we have the Feat's location as:</h1>
+            <h1>We have the Feat's location as:</h1>
 		       <h2>
 			   <%= @location.name %><br>
 		       <%= @location.address %><br>
 		       </h2>
 			   <h2><%= link_to "Change the Feat Location", locate_locations_path %></h2>
                <div class="hr1"></div>
-			   <h1>Now it's time to name the Feat</h1>
-			   <h2>Here's an example:</h2>
-			   <center><h3>"The fastest to run accross the Key Bridge"</h3></center>
+			   <h1>Now, you need to name the Feat and describe it.</h1>
+			   <br>
                <%= form_for @feat do |f| %>
                <%= render 'shared/error_messages', target: @feat %>
 			   <fieldset>
                <%= f.label :name %>
                <%= f.text_field :name, class: "field span12" %>
-			   <div class="hr1"></div>
-			   <h1>Finally, describe the Feat</h1>
-			   <h2>Using the Key Bridge example, you would need to clearly explain where the start and finish lines are located.</h2>
                <%= f.label :description %>
                <%= f.text_area :description, rows: 4, class: "field span12" %>
 			   <%= f.label "Scored or timed"%>

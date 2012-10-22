@@ -29,12 +29,10 @@
         <div class="span3">
 		  <div class="craig-unit">
 		  <%= render 'layouts/feat_info' %>
-		  <br>
 	      
-		  
-		 
 		      <% if @attempts.empty? %>
-		      <h2>This Feat doesn't have an attempt yet.<br> Do you want to record one?</h2>
+			  <div class="hr1"></div>
+		      <h2>This Feat doesn't have an attempt yet. Do you want to record one?</h2>
 		      <% else %>
 		      <h1>Feat Attempts</h1>
 		      <ol>
