@@ -1,24 +1,25 @@
 <div class="background-unit">
   <div class="container">
-    <div class="row-fluid">
-	  <div class="span12">
+	<div class="row-fluid">
+	  <div class="span10 offset1">
+	    <center>
+		<%= link_to( image_tag "feats_home.png" ) %>
+		</center>
 	  </div>
 	</div>
+	<br>
 	<div class="row-fluid">
-	<br>
-	<br>
 	  <div class="span6 offset3">
         <div class="home-well">
-          <center>
-          <h1>An interactive online record board.</h1>
-		  <br>
-          <h2>Compete with your friends over personal<br>
-		  records in your city and around the world.</h2>
-          <br>
-          <%= button_to "Sign In with Facebook", "/auth/facebook", 
-					class: "btn btn-large btn-primary"%>
-          <%= link_to "Not a member yet? Sign up here.", "/signup"%>
-          </center>
+        <center>
+        <h1>An interactive online record board.</h1>
+	    <br>
+        <h2>Compete with your friends over personal<br>
+   	    records in your city and around the world.</h2>
+        <br>
+        <%= button_to "Sign In with Facebook", "/auth/facebook", 
+		class: "btn btn-large btn-primary"%>
+        </center>
 		</div>
 	  </div>
     </div>
