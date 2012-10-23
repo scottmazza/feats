@@ -61,7 +61,7 @@
 .staticbottom-well {
   min-height:10px;
   min-width:  10px;
-  padding: 30px 25px 32px 25px;
+  padding: 15px 25px 15px 25px;
   margin-bottom: 30px;
   margin-right: 10px;
   margin-left: 10px;
@@ -323,7 +323,7 @@
 .home-well {
   min-height: 20px;
   min-width: 20px;
-  padding: 10px 22px 20px 22px;
+  padding: 10px 18px 10px 18px;
   background-color: #333;
   margin-bottom: 0px;
   -webkit-border-radius: 4px;
@@ -336,16 +336,16 @@
 
 .home-well h1 {
   margin-bottom: 0;
-  font-size: 35px;
-  line-height: 1;
+  font-size: 33px;
+  line-height: 1.1;
   font-weight: 200;
   letter-spacing: 0px;
   color: #FFF;
 }
 
 .home-well h2 {
-  font-size: 24px;
-  line-height: 1.2;
+  font-size: 28px;
+  line-height: 1.1;
   font-weight:100;
   color: #FFF;
   letter-spacing: 1px;
@@ -388,7 +388,8 @@
 }
 
 .btn-large {
-  padding: 12px 25px;
+  padding: 12px 45px;
+  margin-top: 10px;
   font-size: 20px;
   font-weight: 200;
   line-height: normal;
