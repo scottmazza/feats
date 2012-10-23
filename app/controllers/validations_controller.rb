@@ -44,7 +44,8 @@ class ValidationsController < ApplicationController
   end
   
   def show
-    @attempt = Attempt.find( params[:id] )
+    @validation = Validation.find( params[:id])
+    @attempt = @validation.attempt
     @feat = @attempt.feat
     @location = @feat.location
     @validations = @attempt.validations

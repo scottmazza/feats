@@ -21,7 +21,8 @@ Feats::Application.routes.draw do
   match '/signout', to: 'sessions#destroy', as: 'signout'
   match '/how_it_works', to: 'static_pages#how_it_works'
   match '/terms', to: 'static_pages#terms_of_use'
-
+  match '/privacy', to: 'static_pages#privacy_policy'
+ 
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
