@@ -1,13 +1,12 @@
-  <%= form_for @validation, html: { multipart: true } do |f| %>
+<%= form_for @validation, html: { multipart: true } do |f| %>
   <% if @validation.errors.any? %>
-  <%= render 'shared/error_messages', target: @validation %>
+ 		<%= render 'shared/error_messages', target: @validation %>
   <% end %>
 	<fieldset>
 	  <%= f.label :comment %>
 	  <%= f.text_area :comment, rows: "5", class: "field span3"%>
 	  <br>
-	  <br>
 	  <%= f.submit "Validate Attempt", 
       class: "btn btn-small btn-primary" %>		            
 	</fieldset>
-  <% end %>
+<% end %>

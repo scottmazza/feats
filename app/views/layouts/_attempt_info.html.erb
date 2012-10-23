@@ -1,53 +1,39 @@
 <div class="row">
-<% if @feat.timed %>
-		
-  <div class="span12" align="left">
-    <%= link_to "#{@attempt.user.username.possessive}", 
-	user_path(@attempt.user.id) %> time:
-  </div>
-		
-  <div class="span12">
-    <%= @attempt.score.to_hhmmss %>
-  </div>
-	
+	<% if @feat.timed %>
+  	<div class="span12" align="left">
+    	<h1>
+				<%= link_to "#{@attempt.user.username.possessive}", 
+					user_path(@attempt.user.id) %> time:</h1>
+  	</div>
+  	<div class="span12">
+    	<%= @attempt.score.to_hhmmss %>
+  	</div>
   <% else %>
-		
-  <div class="span12" align="left">
-    <h1><%= link_to "#{@attempt.user.username.possessive}", 
-	user_path(@attempt.user.id) %> Score:</h1>		
-  </div>
-		
-  <div class="span12">
-    <h2><%= @attempt.score.to_s %>
-  </div>
-	
+  	<div class="span12" align="left">
+    	<h1><%= link_to "#{@attempt.user.username.possessive}", 
+				user_path(@attempt.user.id) %> Score:</h1>		
+  	</div>
+  	<div class="span12">
+    	<h2><%= @attempt.score.to_s %>
+  	</div>
   <% end %>
-
   <% unless params[:controller] == "validations" %>
-		
-  <div class="span12">
-	<% if @validations.empty? %>
-	0 validations
-	<% elsif @validations.size == 1 %>
-	<%= link_to "1 validation", validation_path %></h2>
-	
-	<% else %>
-	
-	<%= link_to "#{@validations.size} validations", validation_path %>
-			
-	<% end %>	
-		
-  </div>
-	
+  	<div class="span12">
+			<% if @validations.empty? %>
+				0 validations
+			<% elsif @validations.size == 1 %>
+				<%= link_to "1 validation", validation_path %></h2>
+			<% else %>
+				<%= link_to "#{@validations.size} validations", validation_path %>
+			<% end %>	
+  	</div>
   <% end %>
 </div>
-
-  <% unless @attempt.image.blank? %>
+<% unless @attempt.image.blank? %>
 	<br>
 	<div class="row">
 	  <div class="span5">
 	    <%= image_tag @attempt.image_url.to_s %>
 	  </div>
 	</div>
-  
-  <% end %>
+<% end %>

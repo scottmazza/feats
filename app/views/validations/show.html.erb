@@ -2,47 +2,50 @@
 
 <div class="background-unit">
   <div class="container">
-    <div class="row-fluid">
+    <div class="row">
       <div class="span4">
-	    <div class="craig-unit">
-		  <%= render 'layouts/feat_info' %>
-		  <br>
-	      <br>
-		  <%= render 'layouts/attempt_info' %>
-		  <% unless @attempt.user.id == session[:user_id] %>
-		  <% if 
-		  @attempt.validations.where(user_id: session[:user_id]).first.nil? %>
-		  <%= link_to "Validate this record", new_validation_path %>
-		  <% end %>
-		  <% end %>
-		  <% unless @validations.empty? %>
-		  <br>
-		    <div class="row">
-			  <div class="span2" align="left">
-			    <h2>Validations:</h2><br>
-			  </div>
+	    	<div class="craig-unit">
+		  		<%= render 'layouts/feat_info' %>
+		  		<br>
+	    		<br>
+		  		<%= render 'layouts/attempt_info' %>
+		  		<% unless @attempt.user.id == session[:user_id] %>
+		  			<% if 
+		  				@attempt.validations.where(user_id: session[:user_id]).first.nil? %>
+		  				<%= link_to "Validate this record", new_validation_path %>
+		  			<% end %>
+		  		<% end %>
+		  		<% unless @validations.empty? %>
+		  			<br>
+		    		<div class="row">
+			  			<div class="span2" align="left">
+			    			<h1>Validations:</h1><br>
+			  			</div>
+						</div>
+						<div class="row">
+			  			<% @validations.each do |v| %>
+			  				<div class="span2" align="left">
+			  					<%= link_to "#{v.user.username}", user_path(v.user.id) %>
+								</div>
+								<div class="span2">
+			  					<%= "#{v.comment}" %><br>
+			  					<% if v.user.id == session[:user_id] %>
+			  						<h2>
+											<%= link_to "Delete", validation_path(v.id),
+			  								confirm: 'Delete this validation?', method: 'delete' %>
+										</h2>
+			  					<% end %>
+								</div>
+							<% end %>
+	      		</div>
+		  		<% end %>
+				</div>
 			</div>
-			<div class="row">
-			  <% @validations.each do |v| %>
-			  <div class="span2" align="left">
-			  <%= link_to "#{v.user.username}", user_path(v.user.id) %>
-			</div>
-			<div class="span2">
-			  <%= "#{v.comment}" %><br>
-			  <% if v.user.id == session[:user_id] %>
-			  <%= link_to "Delete", validation_path(v.id),
-			  confirm: 'Delete this validation?', method: 'delete' %>
-			  <% end %>
-			</div>
-			<% end %>
-	      </div>
-		  <% end %>
-		
-		<div class="span8">
+			<div class="span8">
 	      <div class="map-well"> 
 	        <div id="map_canvas"></div>
-          </div>
+         </div>
 	    </div>
 	  </div>
-    </div>
   </div>
+</div>
