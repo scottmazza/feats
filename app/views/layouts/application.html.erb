@@ -3,13 +3,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<%= render 'layouts/head' %>
 	<body>
-		<div class="container">
-			<%= render 'layouts/navbar' %>
-			<% flash.each do |key, value| %>
-			  <div class="alert alert-<%= key %>"><%= value %></div>
-			<% end %>
-			<%= yield %>
-	  </div>
+		<%= render 'layouts/navbar' %>
+		<% flash.each do |key, value| %>
+		  <div class="alert alert-<%= key %>"><%= value %></div>
+		<% end %>
+		<%= yield %>
 		<%= render 'layouts/footer' %>	  
 		<% if Rails.env.development? %>
 			<%= debug(params) %>
