@@ -7,14 +7,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </div>
-	  <div class="brand"</div>
-      <%= link_to(( image_tag "feats_logo_small.png" ), root_path ) %>
-	  </div>
-      <div class="nav-collapse pull-right">
-        <ul class="nav">
+		  <div class="brand"</div>
+	      <%= link_to(( image_tag "feats_logo_small.png" ), root_path ) %>
+		  </div>
+	    <div class="nav-collapse pull-right">
+	      <ul class="nav">
 		      <% if current_user %>
 						<li><%= link_to "Search Feats", search_feats_path %></li>
-	          <li><%= link_to "Create A Feat", new_feat_path %></li>
+		         <li><%= link_to "Create A Feat", new_feat_path %></li>
 		        <li id="user-menu" class="dropdown">
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 		            <%= current_user.name %> <b class="caret"></b>
@@ -29,16 +29,14 @@
 			          <li>
 									<%= link_to "Sign out", signout_path, method: "delete" %>
 								</li>
-              </ul>
+		            </ul>
 		        </li>  
 		      <% else %>
 		        <li><%= link_to "Sign in with Facebook", "/auth/facebook" %></li>
 		      <% end %>
-        </ul>
-      </div>
+	      </ul>
+	    </div>
     </div><!--/.nav-collapse -->
   </div>
 </div>
-</div>
-
 
