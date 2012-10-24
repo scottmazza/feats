@@ -39,7 +39,7 @@ class ValidationsController < ApplicationController
     @attempt     = Attempt.find( session[:attempt_id])
     @feat        = @attempt.feat
     @validations = @attempt.validations
-    
+    @location    = @feat.location    
   end
   
   def new
