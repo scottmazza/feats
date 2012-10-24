@@ -35,19 +35,26 @@ class ValidationsController < ApplicationController
     redirect_to attempt_path( @validation.attempt_id )
   end
   
-  def new
-    @feat = Feat.find( session[:feat_id] )
-    @location = @feat.location
-    @attempt = Attempt.find( session[:attempt_id] )
+  def index
+    @attempt     = Attempt.find( session[:attempt_id])
+    @feat        = @attempt.feat
     @validations = @attempt.validations
-    @validation = Validation.new( attempt_id: @attempt.id )
+    
+  end
+  
+  def new
+    @feat        = Feat.find( session[:feat_id] )
+    @location    = @feat.location
+    @attempt     = Attempt.find( session[:attempt_id] )
+    @validations = @attempt.validations
+    @validation  = Validation.new( attempt_id: @attempt.id )
   end
   
   def show
-    @validation = Validation.find( params[:id])
-    @attempt = @validation.attempt
-    @feat = @attempt.feat
-    @location = @feat.location
+    @validation  = Validation.find( params[:id])
+    @attempt     = @validation.attempt
+    @feat        = @attempt.feat
+    @location    = @feat.location
     @validations = @attempt.validations
   end
 end

@@ -53,6 +53,11 @@ class AttemptsController < ApplicationController
     @attempt  = Attempt.find( params[:id] )
     @feat     = @attempt.feat
     @location = @feat.location
+    if @feat.timed
+      params[:hours], params[:minutes], params[:seconds] = @attempt.score_to_hhmmss
+    else
+      params[:score] = @attempt.score
+    end
   end
   
   def index
@@ -85,10 +90,14 @@ class AttemptsController < ApplicationController
   
   def update
     @attempt = Attempt.find( params[:id] )
+    @feat     = @attempt.feat
+    @location = @feat.location
     
     # Only the owning user can update his attempt ---------------------------- #    
     if @attempt.user_id == session[:user_id]
-      @attempt.image = params[:attempt][:image]
+      if params[:attempt].present?
+        @attempt.image = params[:attempt][:image]
+      end
       if @attempt.feat.timed
         @attempt.hhmmss_to_score( params[:hours], params[:minutes], 
           params[:seconds] )

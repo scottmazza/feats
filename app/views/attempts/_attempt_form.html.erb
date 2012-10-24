@@ -17,7 +17,7 @@
 			<%= f.label "Secs.", style: "display:inline;"%>
 		<% else %>
 			<%= f.label :score %>
-			<%= f.text_field :score, class: "field span1"%>
+			<%= text_field_tag :score, params[:score] %>
 		<% end %>
 		<br>
 		<br>

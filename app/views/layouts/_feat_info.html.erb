@@ -1,32 +1,31 @@
 <div class="row">
-	<h1><div class="span2" align="left">The Feat</div><h1>
-	<h2><div class="span2"><%= link_to "#{@feat.name}", feat_path(@feat.id) %></div></h2>
+	<h1><div class="span12" align="left">The Feat</div><h1>
+	<h2><div class="span12"><%= link_to "#{@feat.name}", feat_path(@feat.id) %></div></h2>
 </div>
 <br>
-
 <div class="row">
-	<h1><div class="span2"  align="left">Created By</div></h1>
-	<h2><div class="span2">
+	<h1><div class="span12"  align="left">Created By</div></h1>
+	<h2><div class="span12">
 		<%= link_to "#{@feat.user.username}", user_path(@feat.user.id) %>
 	</div></h2>
 </div>
 <br>
 <div class="row">
-	<h1><div class="span2" align="left">Feat Location</div></h1>
-	<h2><div class="span2">
+	<h1><div class="span12" align="left">Feat Location</div></h1>
+	<h2><div class="span12">
 		<%= @location.name %><br>
 		<%= @location.address %>
 	</div></h2>
 </div>
 <br>
 <div class="row">
-	<h1><div class="span2" align="left">Feat Description</div></h1>
-	<h2><div class="span2"><%= @feat.description %></div></h2>
+	<h1><div class="span12" align="left">Feat Description</div></h1>
+	<h2><div class="span12"><%= @feat.description %></div></h2>
 </div>
 <br>
 <div class="row">
-	<h1><div class="span2" align="left">Scoring</div></h1>
-	<div class="span2">
+	<h1><div class="span12" align="left">Scoring</div></h1>
+	<div class="span12">
 		<% if @feat.low_score_wins %>	
 			<% if @feat.timed %>
 				Shortest time wins.

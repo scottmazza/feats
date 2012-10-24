@@ -1,40 +1,36 @@
 <%= render 'shared/single_loc_map_script' %>
-
-  <div class="background-unit">
-    <div class="container">
+<div class="background-unit">
+  <div class="container">
 	  <div class="row">
-        <div class="span4">
-		  <div class="craig-unit">
-		    <%= render 'layouts/feat_info' %>
-			<br>
-			<%= render 'layouts/attempt_info' %>
-			<br>
-			<% if @attempt.user.id == session[:user_id] %>					
-			<div class="row">
-			  <div class="span4">
-			  <h2><%= link_to "Delete This Attempt", attempt_path(@attempt.id),
-			  confirm: 'Delete this attempt?', method: 'delete' %></h2>
-			  </div>
+      <div class="span4">
+		  	<div class="craig-unit">
+		    	<%= render 'layouts/feat_info' %>
+					<br>
+					<%= render 'layouts/attempt_info' %>
+					<br>
+					<% if @attempt.user.id == session[:user_id] %>					
+						<div class="row">
+			  			<div class="span4">
+			  				<h2><%= link_to "Delete This Attempt",
+			 						attempt_path(@attempt.id),
+			  					confirm: 'Delete this attempt?', method: 'delete' %></h2>
+			  			</div>
+						</div>
+					<% elsif 
+						@attempt.validations.where(user_id: session[:user_id]).first.nil? %>
+						<div class="row">
+			  			<div class="span4" align="center">
+			    			<%= link_to "Validate this attempt", new_validation_path %>
+		      		</div>
+						</div>
+					<% end %>
+		  	</div>
 			</div>
-			
-			<% elsif 
-			@attempt.validations.where(user_id: session[:user_id]).first.nil? %>
-			
-			<div class="row">
-			  <div class="span4" align="center">
-			    <%= link_to "Validate this attempt", new_validation_path %>
-		      </div>
-			</div>
-			<% end %>
-		  </div>
-		</div>
-        
-
 	    <div class="span8">
 	      <div class="map-well"> 
 	        <div id="map_canvas"></div>
-          </div>
+        </div>
 	    </div>
 	  </div>
-    </div>
   </div>
+</div>

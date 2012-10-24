@@ -28,20 +28,26 @@ class Attempt < ActiveRecord::Base
     count conditions: ["user_id=?", user_id ]
   end
   
-  # hhmmss_to_float
+  # hhmmss_to_score
   #
   # Validates passed in hh, mm, and ss values, converts them to a float, and 
   # stores them in the 'score' field. Any errors will be written to :base
   #
   def hhmmss_to_score( hh, mm, ss )
-    if hh.not_a_positive_int?
-      self.errors[:base] << "Invalid 'Hours' value."
+    unless hh.empty?
+      if hh.not_a_positive_int?
+        self.errors[:base] << "Invalid 'Hours' value."
+      end
     end
-    if mm.not_a_positive_int?
-        self.errors[:base] << "Invalid 'Minutes' value."
+    unless mm.empty?
+      if mm.not_a_positive_int?
+          self.errors[:base] << "Invalid 'Minutes' value."
+      end
     end
-    if ss.not_a_positive_float?
-        self.errors[:base] << "Invalid 'Seconds' value."
+    unless ss.empty?
+      if ss.not_a_positive_float?
+          self.errors[:base] << "Invalid 'Seconds' value."
+      end
     end
     
     if self.errors.empty?
@@ -58,5 +64,18 @@ class Attempt < ActiveRecord::Base
   
   def name
     self.feat.name
+  end
+  
+  # score_to_hhmmss
+  #
+  # Converts the attempt score into hours, minutes and seconds and returns 
+  # the results in an array.
+  #
+  def score_to_hhmmss
+    
+    ss = self.score.modulo( 60 )
+    mm = (( self.score - ss ) / 60 ).to_i
+    hh = (( self.score - ss - mm * 60 ) / 3600).to_i
+    [hh, mm, ss]
   end
 end
