@@ -102,10 +102,10 @@ class AttemptsController < ApplicationController
         @attempt.hhmmss_to_score( params[:hours], params[:minutes], 
           params[:seconds] )
       else
-        if params[:attempt][:score].not_a_positive_float?
+        if params[:score].not_a_positive_float?
           @attempt.errors[:base] << "Invalid 'Score' value."
         else
-          @attempt.score = params[:attempt][:score].to_f
+          @attempt.score = params[:score].to_f
         end              
       end
       unless @attempt.errors.any?  
