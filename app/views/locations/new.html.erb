@@ -23,36 +23,33 @@
 </script>
 
 
-  <div class="background-unit">
-    <div class="container">
+<div class="background-unit">
+  <div class="container">
 	  <div class="row-fluid">
-        <div class="span4">
-		  <div class="craig-unit">
-            <h1>Name the Feat location.</h1>
-
-            <br>
-            <%= form_for @location do |f| %>
-            <%= render 'shared/error_messages', target: @location %>
+      <div class="span4">
+		    <div class="craig-unit">
+          <h1>Name the feat location.</h1>
+          <br>
+          <%= form_for @location do |f| %>
+          <%= render 'shared/error_messages', target: @location %>
             <fieldset>
-            <%= f.label "Location Name" %>
-            <%= f.text_field :name, maxlength: 255, class: "span12" %>
-           	<%= f.label :address %>
-            <%= f.text_field :address, disabled: 'true', maxlength: 255, 
-							class: "span12"  %>
-            <br>
-            <%= f.submit "Name This Location", 
-             class: "btn btn-small btn-primary" %>
+              <%= f.label "Location Name" %>
+              <%= f.text_field :name, maxlength: 255, class: "span12" %>
+              <%= f.label :address %>
+              <%= f.text_field :address, disabled: 'true', maxlength: 255, class: "span12"  %>
+              <br>
+              <%= f.submit "Name This Location", class: "btn btn-small btn-primary" %>
             </fieldset>
-            <% end %>
+          <% end %>
 	      </div>
-		</div>
+		  </div>
   
       <div class="span8">
-	    <div class="map-well"> 
-	      <div id="map_canvas"></div>
+	      <div class="map-well"> 
+	        <div id="map_canvas"></div>
         </div>
+	    </div>
 	  </div>
-	</div>
   </div>
 </div>
 

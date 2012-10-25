@@ -43,7 +43,7 @@
 	  <div class="row-fluid">
     	<div class="span4">
 		  	<div class="craig-unit">
-        	<h1>Enter an address for the Feat location.</h1>
+        	<h1>Enter an address for the feat location.</h1>
 					<br>
           <%= form_for @location, url: locate_locations_path, 
 							method: 'get' do |f| %>
@@ -56,9 +56,8 @@
             </fieldset>
           <% end %>
 					<% if !session[:address].nil? %>
-						<h1>Did you mean:</h1>
-						<h2>
-							<%= link_to "#{session[:address]}", 
+						<h2>Did you mean:</h2>
+						<h2><%= link_to "#{session[:address]}", 
 								choose_from_existing_locations_path %>
 						</h2>
 					<% end %>

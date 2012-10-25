@@ -23,61 +23,59 @@
 </script>
 
 
- <div class="background-unit">
-    <div class="container">
+<div class="background-unit">
+  <div class="container">
 	  <div class="row">
-        <div class="span4">
-		  <div class="craig-unit">
-		  <%= render 'layouts/feat_info' %>
-	      
-		      <% if @attempts.empty? %>
-			  <div class="hr1"></div>
-		      <h2>This Feat doesn't have an attempt yet. Do you want to record one?</h2>
-		      <% else %>
-			  <div class="hr1"></div>
-		      <h1>Feat Attempts</h1>
-		      <ol>
-		      <% @attempts.each do |a| %>
-		      <% if @feat.timed %>
-		      <li><%= link_to "#{a.user.username}", 
-		      user_path( a.user.id)%>: <%= a.score.to_hhmmss %>
-		      <% else %>
-		      <li><%= link_to "#{a.user.username}", 
-		      user_path( a.user.id)%>: <%= a.score.to_s %>
-		      <% end %>
-		      <%= link_to "View", attempt_path(a.id) %>
-		      <% if a.user.id == session[:user_id] %>
-		      <% @attempt_exists = true %>
-		      <%= link_to "Update", edit_attempt_path(a.id) %>
-		      <%= link_to "Delete", attempt_path(a.id),
-		      confirm: 'Are you sure you want to delete this record?',
-		      method: 'delete' %>
-		      <% end %>
-		      </li>
-		      <% end %>
-		      </ol>
-		      <% end %>
+      <div class="span4">
+		    <div class="craig-unit">
+		      <%= render 'layouts/feat_info' %>
+	          <% if @attempts.empty? %>
+			        <div class="hr1"></div>
+		          <h1>This feat doesn't have an attempt yet.<br> Would you like to record one?</h1>
+		        <% else %>
+			        <div class="hr1"></div>
+		          <h1>Feat Attempts:</h1>
+					    <h2>
+		            <ol>
+								  <div class="row-fluid">
+								    <div class="span6">
+		                  <% @attempts.each do |a| %>
+		                    <% if @feat.timed %>
+		                    <li><%= link_to "#{a.user.username}", user_path( a.user.id)%> - <%= a.score.to_hhmmss %>
+		                    <% else %>
+		                    <li><%= link_to "#{a.user.username}", user_path( a.user.id)%> - <%= a.score.to_s %>
+		                  <% end %>
+									  </div>
+									  <div class="span6">
+		                  <%= link_to "View", attempt_path(a.id) %> |
+		                    <% if a.user.id == session[:user_id] %>
+		                    <% @attempt_exists = true %>
+		                    <%= link_to "Update", edit_attempt_path(a.id) %> |
+		                    <%= link_to "Delete", attempt_path(a.id), confirm: 'Are you sure you want to delete this record?', method: 'delete' %>
+		                  <% end %>
+		                    </li>
+		                <% end %>
+									  </div>
+									</div>
+		            </ol>
+					    </h2>
+		        <% end %>
 		
 		  
-		  <% unless @attempt_exists %>
-		  
-		 
-			  <h2><%= link_to "Record An Attempt", 
-			  new_attempt_path %></h2>
+		      <% unless @attempt_exists %>
+			      <h2><%= link_to "Record An Attempt", new_attempt_path %></h2>
+		      <% end %>
 		
-		  
-		  <% end %>
-		
-		</div>
+		    </div>
       </div>
 	  
 	    <div class="span8">
 	      <div class="map-well"> 
 	        <div id="map_canvas"></div>
-          </div>
+        </div>
 	    </div>
 	  </div>
-    </div>
   </div>
+</div>
 
 	
