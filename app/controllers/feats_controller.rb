@@ -34,9 +34,11 @@ class FeatsController < ApplicationController
     @feat = Feat.new
     if params[:location_id].present?
       @location = Location.find( params[:location_id] )
-      session[:location_id] = @location.id 
+      session[:location_id] = @location.id
+      @feats = Feat.find_all_by_location_id( @location.id ) 
     elsif session[:location_id].present? 
       @location = Location.find( session[:location_id] )
+      @feats = Feat.find_all_by_location_id( @location.id ) 
     else
       redirect_to locate_locations_path
     end

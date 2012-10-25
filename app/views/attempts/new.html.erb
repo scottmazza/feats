@@ -1,24 +1,21 @@
-<%= render 'shared/single_loc_map_script' %>
-
-  <div class="background-unit">
-    <div class="container">
+<%= render 'shared/map_script', {obj_list: [@feat]}%>
+<div class="background-unit">
+  <div class="container">
 	  <div class="row">
-        <div class="span4">
-		  <div class="craig-unit">
-	
-		    <%= render 'layouts/feat_info' %>
-			<div class="hr1"></div>
-            <h1>Record your Feat attempt.</h1>
-			<br>
-		    <%= render 'attempt_form' %>
-		  </div>
-		</div>				
-			
-	    <div class="span8">
-	      <div class="map-well"> 
-	        <div id="map_canvas"></div>
-          </div>
-	    </div>
-	  </div>
-    </div>
+      <div class="span4">
+		  	<div class="craig-unit">
+		    	<%= render 'layouts/feat_info' %>
+					<div class="hr1"></div>
+          <h1>Record your Feat attempt.</h1>
+					<br>
+    			<%= render 'attempt_form' %>
+  			</div>
+			</div>				
+   		<div class="span8">
+     		<div class="map-well"> 
+       		<div id="map_canvas"></div>
+        </div>
+   		</div>
+ 		</div>
   </div>
+</div>

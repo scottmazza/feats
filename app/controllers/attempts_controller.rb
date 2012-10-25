@@ -16,7 +16,7 @@ class AttemptsController < ApplicationController
       else
         @attempt = Attempt.new( user_id: session[:user_id], 
                                 feat_id: session[:feat_id],
-                                score: params[:attempt][:score] )
+                                score: params[:score] )
       end
       if params[:attempt].present? and params[:attempt][:image].present?
         @attempt.image = params[:attempt][:image]
