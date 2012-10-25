@@ -1,7 +1,7 @@
 <%= render 'shared/map_script', {obj_list: @feats} %>
 <div class="background-unit">
   <div class="container">
-	  <div class="row">
+    <div class="row-fluid">
       <div class="span12">
 		  	<%= link_to(( image_tag @user.image ), @user ) %>
 		  	<%= link_to "#{@user.username}", @user %> has created the following
@@ -9,7 +9,7 @@
 			</div>
 	  </div>
     <br>
-	  <div class="row">
+	  <div class="row-fluid">
       <div class="span4">
 		  	<div class="craig-unit">
           <%= form_tag feats_path, action: 'show', method: 'get' do %>
