@@ -1,6 +1,6 @@
 module MapsHelper
   class Marker
-    attr_reader :title, :latitude, :longitude, :content_str
+    attr_reader :title, :latitude, :longitude, :content_str, :context
     
     def initialize( context, title, latitude, longitude, content_str )
       @context     = context
@@ -11,8 +11,8 @@ module MapsHelper
     end
     
     def add_data( obj )
-      @content_str << @context.tag( "br", nil, true ) << 
-        @context.link_to( obj.name, obj )
+      content_str << context.tag( "br", nil, true ) << 
+        context.link_to( context.escape_javascript( obj.name ), obj )
     end    
   end
   
