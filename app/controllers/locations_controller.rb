@@ -29,8 +29,9 @@ class LocationsController < ApplicationController
       #
       # Check for a location with the same name (sans whitespace, etc.) 
       #
-      @locations = Location.find_names_by_lat_long(session[:latitude], 
-                      session[:longitude])
+      @locations = 
+        Location.find_all_by_latitude_and_longitude(session[:latitude], 
+          session[:longitude])
       @locations.each do |loc|
         if @location.name.gsub( /[\s\W]+/, "").casecmp( loc.name.gsub(/[\s\W]+/, "")) == 0
           session[:location_id] = loc.id
