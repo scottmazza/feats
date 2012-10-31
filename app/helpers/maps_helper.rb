@@ -7,7 +7,7 @@ module MapsHelper
       @title       = title
       @latitude    = latitude
       @longitude   = longitude 
-      @content_str = content_str     
+      @content_str = context.escape_javascript( content_str )  
     end
     
     def add_data( obj )
