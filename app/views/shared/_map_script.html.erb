@@ -9,11 +9,16 @@
 	$(function () {
 		var title = "";
 		
-		<% center = get_map_center( obj_list, request.location.latitude,
-									request.location.longitude ) %>
+		<% if @location.nil? %>
+			<% center = get_map_center( obj_list, request.location ) %>
+		<% else %>
+			<% center = get_map_center( obj_list, @location ) %>
+		<% end %>
+		
 		var lat_lng = new google.maps.LatLng( <%=center[ 0 ]%>, <%=center[ 1 ]%> );
 		
-		<% if obj_list.empty? %>
+		<% if obj_list.empty? && ( @location.nil? || 
+			(@location.latitude.blank? && @location.longitude.blank? )) %>
 			var zoom = 4;
 		<% else %>
 			var zoom = 15;

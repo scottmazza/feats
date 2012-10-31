@@ -1,43 +1,4 @@
-<script type="text/javascript"
-	src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBk3LMS2I-w-KWmm2YEnPdqPu4EVULGfdE&sensor=false">
-</script>
-<script type="text/javascript">
-	var gMap;
-	$(function () {
-		<% if session[:address].nil? %>
-			<% if request.location.latitude == 0 && 
-				    request.location.longitude == 0 %>
-				var lat_lng = new google.maps.LatLng(37.09024, -95.712891);
-				var zoom    = 4;
-			<% else %>	
-				var lat_lng = new google.maps.LatLng(<%=request.location.latitude%>,
-												<%=request.location.longitude%>);
-				var zoom    = 15;
-			<% end %>
-			var title = "";
-		<% else %>
-			var lat_lng = new google.maps.LatLng(<%=@location.latitude%>,
-			 							<%=@location.longitude%>);
-			var zoom    = 15;
-			var title = "<%=@location.name%>";
-		<% end %>
-		
-	  var mapOptions = {
-	    center: lat_lng,
-	    zoom: zoom,
-	    mapTypeId: google.maps.MapTypeId.ROADMAP
-	  };
-	  gMap = new google.maps.Map(document.getElementById("map_canvas"),
-	          mapOptions);
-		var marker = new google.maps.Marker({
-			position: lat_lng,
-			title: title
-		});
-	
-		marker.setMap(gMap);
-	});
-</script>
-
+<%= render 'shared/map_script', { obj_list: [] } %>
 <div class="background-unit">
   <div class="container">
 	  <div class="row-fluid">

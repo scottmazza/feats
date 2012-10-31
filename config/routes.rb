@@ -10,6 +10,7 @@ Feats::Application.routes.draw do
     options = { only: [:new, :create] }
     get 'locate', on: :collection
     get 'choose_from_existing', on: :collection
+    get 'select', on: :member
   end 
   resources :attempts
   resources :validations     

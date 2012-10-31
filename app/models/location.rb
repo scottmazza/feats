@@ -28,9 +28,5 @@ class Location < ActiveRecord::Base
   
   geocoded_by :address
   
-  def self.find_names_by_lat_long( latitude, longitude )
-    find_by_sql ["SELECT name, id from locations WHERE latitude=? and longitude=?",
-      latitude, longitude ] 
-  end
 end
 

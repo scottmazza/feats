@@ -6,7 +6,15 @@ class LocationsController < ApplicationController
                   address:   session[:address],
                   latitude:  session[:latitude],
                   longitude: session[:longitude])
-                  
+    @locations = 
+      Location.find_all_by_latitude_and_longitude( session[:latitude], 
+        session[:longitude] )
+    @feats = []
+    unless @locations.empty?
+      @locations.each do |l|
+        @feats += Feat.find_all_by_location_id( l.id )
+      end
+    end                  
   end
     
   def create
@@ -52,11 +60,16 @@ class LocationsController < ApplicationController
                   longitude: session[:longitude])
                   
 
-    @locations = Location.find_names_by_lat_long(session[:latitude], 
+    @locations = Location.find_all_by_latitude_and_longitude(session[:latitude], 
                     session[:longitude])
                     
     if @locations.empty?
       redirect_to action: :new
+    else
+      @feats = []
+      @locations.each do |l|
+        @feats += Feat.find_all_by_location_id( l.id )
+      end
     end
     # 
     # Location(s) exist with same lat and longitude. User must choose one 
@@ -69,9 +82,9 @@ class LocationsController < ApplicationController
       #          
       # Empty form
       #
-      session.delete(:address)
-      session.delete(:latitude)
-      session.delete(:longitude)
+      session.delete( :address )
+      session.delete( :latitude )
+      session.delete( :longitude )
       @location = Location.new
       
     else  
@@ -79,7 +92,7 @@ class LocationsController < ApplicationController
       # Populate location with user entered data and validate
       #       
       @location = Location.new( name: "location name",
-                                address: params[:location][:address])
+                                address: params[ :location ][ :address ] )
       @location.latitude  = 0
       @location.longitude = 0
       
@@ -96,16 +109,24 @@ class LocationsController < ApplicationController
         else
           # We have coordinates, but do they match the input address? 
           #
-          session[:address] = Geocoder.address( [@location.latitude,
-                                @location.longitude])
-          session[:latitude]  = @location.latitude
-          session[:longitude] = @location.longitude          
+          session[ :address ] = Geocoder.address( [@location.latitude,
+                                @location.longitude] )
+          session[ :latitude ]  = @location.latitude
+          session[ :longitude ] = @location.longitude
         end
       else
         # Keep rendering with errors until valid 
         #
-        session.delete(:address)       
+        session.delete( :address )       
       end
+    end
+  end
+  
+  def select
+    location = Location.find( params[ :id ] )
+    unless location.nil?
+      session[ :location_id ] = location.id
+      redirect_to new_feat_path
     end
   end
   

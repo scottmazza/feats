@@ -1,28 +1,4 @@
-<script type="text/javascript"
-	src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBk3LMS2I-w-KWmm2YEnPdqPu4EVULGfdE&sensor=false">
-</script>
-<script type="text/javascript">
-	var gMap;
-	$(function () {
-		var lat_lng = new google.maps.LatLng(<%=session[:latitude]%>,
-			 							<%=session[:longitude]%>);
-	  var mapOptions = {
-	    center: lat_lng,
-	    zoom: 15,
-	    mapTypeId: google.maps.MapTypeId.ROADMAP
-	  };
-	  gMap = new google.maps.Map(document.getElementById("map_canvas"),
-	          mapOptions);
-		var marker = new google.maps.Marker({
-			position: lat_lng,
-			title: "<%=session[:address]%>"
-		});
-	
-		marker.setMap(gMap);
-	});
-</script>
-
-
+<%= render 'shared/map_script', { obj_list: @feats } %>
 <div class="background-unit">
   <div class="container">
 	  <div class="row-fluid">
@@ -36,9 +12,11 @@
               <%= f.label "Location Name" %>
               <%= f.text_field :name, maxlength: 255, class: "span12" %>
               <%= f.label :address %>
-              <%= f.text_field :address, disabled: 'true', maxlength: 255, class: "span12"  %>
+              <%= f.text_field :address, disabled: 'true', maxlength: 255,
+								class: "span12"  %>
               <br>
-              <%= f.submit "Name This Location", class: "btn btn-small btn-primary" %>
+              <%= f.submit "Name This Location", 
+								class: "btn btn-small btn-primary" %>
             </fieldset>
           <% end %>
 	      </div>

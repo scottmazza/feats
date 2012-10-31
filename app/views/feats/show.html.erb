@@ -1,28 +1,4 @@
-<script type="text/javascript"
-	src="http://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_API_KEY']%>&sensor=false">
-</script>
-<script type="text/javascript">
-	var gMap;
-	$(function ()  {
-		var lat_lng = new google.maps.LatLng(<%=@location.latitude%>,
-			 							<%=@location.longitude%>);
-	  var mapOptions = {
-	    center: lat_lng,
-	    zoom: 15,
-	    mapTypeId: google.maps.MapTypeId.ROADMAP
-	  };
-	  gMap = new google.maps.Map(document.getElementById("map_canvas"),
-	          mapOptions);
-		var marker = new google.maps.Marker({
-			position: lat_lng,
-			title: "<%=@location.name%>"
-		});
-	
-		marker.setMap(gMap);
-	});
-</script>
-
-
+<%= render 'shared/map_script', {obj_list: [@feat]} %>
 <div class="background-unit">
   <div class="container">
 	  <div class="row">
@@ -50,10 +26,10 @@
 	                  	<% end %>
 								  	</div>
 								  	<div class="span6">
-	                  	<%= link_to "View", attempt_path(a.id) %> |
+	                  	<%= link_to "View", attempt_path(a.id) %>
 	                    <% if a.user.id == session[:user_id] %>
 	                    	<% @attempt_exists = true %>
-	                    	<%= link_to "Update", edit_attempt_path(a.id) %> |
+	                    	| <%= link_to "Update", edit_attempt_path(a.id) %> |
 	                    	<%= link_to "Delete", attempt_path(a.id), 
 													confirm: 'Delete this attempt?', method: 'delete' %>
 	                  	<% end %>
