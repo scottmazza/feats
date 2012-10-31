@@ -16,17 +16,13 @@ class FeatsController < ApplicationController
   end
 
   def index
-    if params[:id].present?
-      redirect_to feat_path( params[:id] )
+    if params[:user_id].present?
+      @user = User.find( params[:user_id] )
     else
-      if params[:user_id].present?
-        @user = User.find( params[:user_id] )
-      else
-        @user = current_user
-      end
-      @feats = Feat.find_all_by_user_id( @user.id )
+      @user = current_user
     end
-   end
+    @feats = Feat.find_all_by_user_id( @user.id )
+  end
   
   def new
     # Location must be created/chosen before feat creation can continue ------ #

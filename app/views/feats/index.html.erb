@@ -12,16 +12,9 @@
 	  <div class="row-fluid">
       <div class="span4">
 		  	<div class="craig-unit">
-          <%= form_tag feats_path, action: 'show', method: 'get' do %>
-            <fieldset>
-		    			<%= select_tag("id",
-		    				options_from_collection_for_select(@feats, :id, :name),
-		    				onchange: "selection_changed(this)", multiple: 'true')%>
-		    			<br>
-            	<%= submit_tag 'View Feat', name: nil,
-		    				class: "btn btn-small btn-primary" %>
-            </fieldset>
-          <% end %>
+					<% @feats.each do |f| %>
+						<h2><%= link_to f.name, feat_path( f.id ) %></h2>
+					<% end %>
 		  	</div>
 	    </div>
       <div class="span8">
