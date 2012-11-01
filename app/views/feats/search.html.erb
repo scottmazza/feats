@@ -6,13 +6,11 @@
 				<div class="craig-unit">
           <%= form_tag search_feats_path, method: 'get' do %>
             <fieldset>
-        			<h1>Search for feats within</h1>
-	    				<br>
-							<%= text_field_tag :distance, params[:distance] %>
-							<br>
-	    				<h1>miles of</h1>
-							<br>
-           		<%= text_field_tag :address, params[:address], maxlength: 255 %>
+        			<h2><strong>Search for feats within &nbsp;
+							<%= text_field_tag :distance, params[:distance], class: "span3" %> &nbsp;
+	    				miles of</strong></h2>
+						
+           		<%= text_field_tag :address, params[:address], maxlength: 255, class: "span12" %>
 							<br>
            		<%= submit_tag 'Search', name: nil, 
 								class: "btn btn-small btn-primary" %>
@@ -21,6 +19,8 @@
 				</div>
 	    	<% if @feats.any? %>
 					<div class="craig-unit">
+					  <h2><strong>The following feats exist in this area.</strong></h2>
+						<div class="hr1"></div>
 	        	<% @feats.each do |f| %>
 							<h2><%= link_to "#{f.name}", feat_path(f.id) %></h2>
 		    		<% end %>

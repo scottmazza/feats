@@ -4,21 +4,19 @@
 	  <div class="row-fluid">
       <div class="span4">
 		    <div class="craig-unit">
-          <h1>Feat Location:</h1>
+          <h2><strong>Feat Location:</strong></h2>
 		       <h2>
 			       <%= @location.name %><br>
 		         <%= @location.address %><br>
 		       </h2>
-			     <h2><%= link_to "Change the Feat Location", locate_locations_path %></h2>
+			     <h2><%= link_to "Change Location", locate_locations_path %></h2>
            <div class="hr1"></div>
-			     <h1>Name the feat and describe it.</h1>
-			     <br>
+			     <h2><strong>Name the feat and describe it.</strong></h2>
            <%= form_for @feat do |f| %>
            <%= render 'shared/error_messages', target: @feat %>
 			       <fieldset>
                <%= f.label "Feat name" %>
                <%= f.text_field :name, class: "field span12" %>
-							 <br>
 							 <br>
                <%= f.label "Feat description" %>
                <%= f.text_area :description, rows: 4, class: "field span12" %>

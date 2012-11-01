@@ -5,16 +5,14 @@
 	  <div class="row-fluid">
       <div class="span4">
 		  	<div class="craig-unit">
-	        <h1>The following places exist at:</h1>
-					<br>
+	        <h2><strong>The following places exist at:</strong></h2>
 					<%= "#{session[:address]}" %>:
 					<br>
-          <br>
 					<% @locations.each do |l| %>
 						<h2><%= link_to l.name, select_location_path( l.id ) %></h2>
 					<% end %>
-					<h1>or</h1>
-					<h2><%= link_to 'Create A New Location', new_location_path %></h2>
+					<h2><strong>or</strong></h2>
+					<h2><%= link_to 'Create New Location', new_location_path %></h2>
 		  </div>
 	    </div>
         <div class="span8">

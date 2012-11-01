@@ -4,8 +4,7 @@
 	  <div class="row-fluid">
     	<div class="span4">
 		  	<div class="craig-unit">
-        	<h1>Enter an address for the feat location.</h1>
-					<br>
+        	<h2><strong>Enter an address for the feat location.</strong></h2>
           <%= form_for @location, url: locate_locations_path, 
 							method: 'get' do |f| %>
           	<%= render 'shared/error_messages', target: @location %>

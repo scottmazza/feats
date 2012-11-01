@@ -5,11 +5,10 @@
         <div class="craig-unit">
 		      <%= image_tag@user.image %> <%= @user.name %>
 			    <br>
-			    <br>
-	        <h1 style="display:inline;">Username:</h1> <%= @user.username %>
 					<br>
-					<br>
-		      <% if @feat_count == 0 %>
+	        <h2><strong>Username:</strong> <%= @user.username %></h2>
+		      <h2>
+					  <% if @feat_count == 0 %>
 			      0 feats created,
 			      <% elsif @feat_count == 1 %>
 	    	    <%= link_to "#{@feat_count} feat created", feats_path( user_id: params[:id] ) %>
@@ -26,10 +25,10 @@
 			      <%= link_to "#{@attempt_count} feats attempted",
 			      attempts_path( user_id: params[:id] ) %>
 			    <% end %>
-			    <br>
-			    <br>
+					</h2>
+					<br>
 			    <% if params[:id].eql?(session[:user_id].to_s ) %>
-			      <h2><%= link_to "Edit Your Profile", edit_user_path( session[:user_id] ) %></h2>
+			      <h2><%= link_to "Edit Profile", edit_user_path( session[:user_id] ) %></h2>
 			    <% end %>
 		    </div>
       </div>

@@ -20,7 +20,6 @@
 			<%= text_field_tag :score, params[:score] %>
 		<% end %>
 		<br>
-		<br>
 		<%= f.label :image %>
 		<% unless @attempt.image.blank? %>
 			<%= image_tag @attempt.image_url.to_s %>

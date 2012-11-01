@@ -2,12 +2,13 @@
   <h1><%= link_to "#{@attempt.user.username.possessive}", user_path(@attempt.user.id) %> time:</h1>
   <%= @attempt.score.to_hhmmss %>
   <% else %>
-    <h1><%= link_to "#{@attempt.user.username.possessive}", user_path(@attempt.user.id) %> Score:</h1>
-    <h2><%= @attempt.score.to_s %> &nbsp;|&nbsp;
+    <h2><strong><%= link_to "#{@attempt.user.username.possessive}", user_path(@attempt.user.id) %> score:</strong></h2>
+		<div class="hr1"></div>
+    <h2><%= @attempt.score.to_s %>
 <% end %>
 <% unless params[:controller] == "validations" %>
   <% if @validations.empty? %>
-	    <em>0 validations</em>
+	  <h2>0 Validations
       <% elsif @validations.size == 1 %>
 	    <%= link_to "1 validation", validations_path %>
 	    <% else %>
@@ -16,5 +17,7 @@
   <% end %>	
 <% end %>
 <% unless @attempt.image.blank? %>
+<br>
+<br>
   <%= image_tag @attempt.image_url.to_s %>
 <% end %>

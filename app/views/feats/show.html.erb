@@ -5,43 +5,47 @@
       <div class="span4">
 		    <div class="craig-unit">
 		      <%= render 'layouts/feat_info' %>
+				</div>
+				<div class="craig-unit">
 	        <% if @attempts.empty? %>
-			      <div class="hr1"></div>
-		          <h1>This feat doesn't have an attempt yet.<br> Would you like to
-			 					record one?</h1>
+		      <h2><strong>This feat doesn't have an attempt yet.<br> Would you like to record one?</strong></h2>
 		      <% else %>
-			      <div class="hr1"></div>
-	          <h1>Feat Attempts:</h1>
-				    <h2>
+	        <h2><strong>Feat attempts:</strong></h2>
+					  <div class="hr1"></div>
+				    
 	            <ol>
 							  <div class="row-fluid">
 	                <% @attempts.each do |a| %>
-								    <div class="span6">
+								    <div class="span7">
+										  <h2>
 	                    <% if @feat.timed %>
-	                    	<li><%= link_to "#{a.user.username}", 
+	                    	<li><%= link_to "#{ a.user.username}", 
 													user_path( a.user.id)%> - <%= a.score.to_hhmmss %>
 	                    <% else %>
 	                    	<li><%= link_to "#{a.user.username}", 
-													user_path( a.user.id)%> - <%= a.score.to_s %>
+													user_path(a.user.id)%> - <%= a.score.to_s %>
 	                  	<% end %>
+											</h2>
 								  	</div>
-								  	<div class="span6">
-	                  	<%= link_to "View", attempt_path(a.id) %>
+								  	<div class="span5">
+										  <h1>
 	                    <% if a.user.id == session[:user_id] %>
 	                    	<% @attempt_exists = true %>
-	                    	| <%= link_to "Update", edit_attempt_path(a.id) %> |
+	                    	<%= link_to "Update", edit_attempt_path(a.id) %> |
 	                    	<%= link_to "Delete", attempt_path(a.id), 
-													confirm: 'Delete this attempt?', method: 'delete' %>
+													confirm: 'Delete this attempt?', method: 'delete' %> |
+												<%= link_to "View", attempt_path(a.id) %>
 	                  	<% end %>
 	                    </li>
+											</h1>
 									  </div>
 	                <% end %>
 								</div>
 	            </ol>
-				    </h2>
+				    
 		      <% end %>
 		      <% unless @attempt_exists %>
-			      <h2><%= link_to "Record An Attempt", new_attempt_path %></h2>
+			      <h2><%= link_to "Record Attempt", new_attempt_path %></h2>
 		      <% end %>
 		    </div>
       </div>
