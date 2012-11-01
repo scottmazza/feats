@@ -1,6 +1,7 @@
 <% if @feat.timed %>
-  <h1><%= link_to "#{@attempt.user.username.possessive}", user_path(@attempt.user.id) %> time:</h1>
-  <%= @attempt.score.to_hhmmss %>
+  <h2><strong><%= link_to "#{@attempt.user.username.possessive}", user_path(@attempt.user.id) %> time:</strong></h1>
+  <div class="hr1"></div>
+	<%= @attempt.score.to_hhmmss %>
   <% else %>
     <h2><strong><%= link_to "#{@attempt.user.username.possessive}", user_path(@attempt.user.id) %> score:</strong></h2>
 		<div class="hr1"></div>
