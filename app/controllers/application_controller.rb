@@ -5,7 +5,19 @@ class ApplicationController < ActionController::Base
   private
   
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    if session[ :user_id ]
+      @current_user = User.find( session[ :user_id ] )
+      if @current_user
+        if @current_user.oauth_expires_at < Time.now
+          session.delete( :user_id )
+          @current_user = nil
+        end
+      else
+        session.delete( :user_id )
+        @current_user = nil
+      end
+    end
+    @current_user
   end
   
   def signed_in_user
