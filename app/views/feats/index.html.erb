@@ -12,8 +12,17 @@
 	  <div class="row-fluid">
       <div class="span4">
 		  	<div class="craig-unit">
-					<% @feats.each do |f| %>
-						<h2><%= link_to f.name, feat_path( f.id ) %></h2>
+					<% unless @feats.empty? %>
+						<% @feats.each do |f| %>
+							<h2><%= link_to f.name, feat_path( f.id ) %></h2>
+						<% end %>
+					<% else %>
+						<% if @user.id  == session[ :user_id ] %>
+							<h2>You have no feats. 
+								<%= link_to "Create one", new_feat_path %>?</h2>
+						<% else %>
+							<h2><%= link_to "#{@user.username}", @user %> has no feats.</h2>
+						<% end %>
 					<% end %>
 		  	</div>
 	    </div>

@@ -23,11 +23,7 @@ class SessionsController < ApplicationController
  
     session[:user_id] = user.id
     if user.profile_complete?
-      if user.has_feats?
-        redirect_to root_url
-      else
-        redirect_to search_feats_path
-      end
+      redirect_to root_url
     else
       redirect_to controller: 'users', action: 'edit', id: user.id
     end
