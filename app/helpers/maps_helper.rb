@@ -17,7 +17,7 @@ module MapsHelper
   end
   
   def get_map_center( obj_array, location )
-    if obj_array.empty?
+    if obj_array.nil? or obj_array.empty?
       if location.nil? || ( location.latitude.blank? && location.longitude.blank? ) 
         [ 37.09024, -95.712891 ]
       else

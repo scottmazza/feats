@@ -17,7 +17,7 @@
 		
 		var lat_lng = new google.maps.LatLng( <%=center[ 0 ]%>, <%=center[ 1 ]%> );
 		
-		<% if obj_list.empty? && ( @location.nil? || 
+		<% if ( obj_list.nil? or obj_list.empty? ) && ( @location.nil? || 
 			(@location.latitude.blank? && @location.longitude.blank? )) %>
 			var zoom = 4;
 		<% else %>
@@ -33,7 +33,7 @@
 	  gMap = new google.maps.Map(document.getElementById("map_canvas"),
 	          mapOptions);
 	
-		<% if obj_list.any? %>
+		<% unless obj_list.nil? or obj_list.empty? %>
 			var lat_lng_bounds = new google.maps.LatLngBounds();
 			<% markers = create_markers( self, obj_list ) %>
 			var idx = 0;

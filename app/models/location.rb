@@ -13,7 +13,7 @@
 #
 
 class Location < ActiveRecord::Base
-  VALID_NAME_REGEXP = /\A[a-z\d]+[a-z \'\d\-\.,]+[a-z\d\.]\z/i
+  VALID_NAME_REGEXP = /\A[a-z\d]+.+[a-z\d\.]\z/i
   VALID_ADDRESS_REGEXP = /\A[a-z\d]+[\S ]+[a-z\d\.]\z/i
 
   belongs_to :user, inverse_of: :locations
