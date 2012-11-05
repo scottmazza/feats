@@ -21,7 +21,7 @@ class UsersController < ApplicationController
         flash[:info] = "Profile updated successfully."
         redirect_to root_path
       else
-        redirect_to action: 'edit', id: session[:user_id]
+        render action: 'edit', id: session[:user_id]
       end
     end
   end
