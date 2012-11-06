@@ -5,6 +5,25 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
     
+  def search
+    @user = nil
+    if params[ :usertxt ].present?
+      usertxt = params[ :usertxt ].downcase
+      if usertxt.is_valid_email?
+        @user = User.find_by_email( usertxt )
+      else
+        @user = User.find( :first,  
+                  conditions: ["lower( username ) = ?", usertxt ])
+      end
+      if @user.nil?
+        flash.now.notice = "No users matched your search criteria."
+      end
+    else
+      params[ :usertxt ] = "Username or email"
+    end
+    
+  end
+  
   def show
     @user = User.find(params[:id])
     @feat_count = Feat.count_by_user_id( params[:id] )

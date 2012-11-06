@@ -1,4 +1,10 @@
 class String
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  
+  def is_valid_email?
+    self =~ VALID_EMAIL_REGEX
+  end
+  
   def not_a_positive_float?
     self !~ /^\s*[+]?((\d+_?)*\d+(\.(\d+_?)*\d+)?|\.(\d+_?)*\d+)(\s*|([eE][+-]?(\d+_?)*\d+)\s*)$/
   end

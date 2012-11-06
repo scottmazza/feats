@@ -1,0 +1,30 @@
+<div class="background-unit">
+  <div class="container">
+		<div class="row-fluid">
+    	<div class="span4">
+				<div class="craig-unit">
+          <%= form_tag search_users_path, method: 'get' do %>
+            <fieldset>
+        			<h2><strong>Search for user by</strong></h2>
+           		<%= text_field_tag :usertxt, params[:usertxt], maxlength: 255,
+ 								class: "span12" %>
+							<br>
+           		<%= submit_tag 'Search', name: nil, 
+								class: "btn btn-small btn-primary" %>
+         		</fieldset>
+          <% end %>
+				</div>
+	    	<% unless @user.nil? %>
+					<div class="craig-unit">
+					  <h2><strong>The following user matches your search:</strong></h2>
+						<div class="hr1"></div>
+						<h2><%= link_to "#{@user.username}", user_path( @user ) %></h2>
+					</div>
+	    	<% end %>
+      </div>
+		</div>
+    <br>
+    <br>
+  </div>
+</div>
+

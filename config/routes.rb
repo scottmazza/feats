@@ -1,7 +1,10 @@
 Feats::Application.routes.draw do
   root to: 'feats#index'
   
-  resources :users,     only: [ :edit, :update, :show ]
+  resources :users do
+    options = { only: [ :edit, :update, :show ]}
+    get 'search', on: :collection
+  end
   resources :feats do
     options = { only: [ :new, :create, :show, :index ]} 
     get 'search', on: :collection
