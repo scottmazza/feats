@@ -16,7 +16,7 @@ class Attempt < ActiveRecord::Base
   attr_accessible :feat_id, :score, :user_id, :video_url, :image
   belongs_to :user
   belongs_to :feat
-  has_many :validations
+  has_many :validations, dependent: :destroy
   mount_uploader :image, ImageUploader
   validates :score, presence: true, numericality: true 
   

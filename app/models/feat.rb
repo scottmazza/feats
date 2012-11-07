@@ -18,7 +18,7 @@ class Feat < ActiveRecord::Base
 
   belongs_to :user, inverse_of: :feats
   belongs_to :location, inverse_of: :feats
-  has_many   :attempts
+  has_many   :attempts, dependent: :destroy
   has_many   :users, through: :attempts
   
   attr_accessible :user_id, :name, :description, :location_id, 
