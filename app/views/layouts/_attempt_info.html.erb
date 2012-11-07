@@ -9,8 +9,9 @@
 <% end %>
 <% unless params[:controller] == "validations" %>
   <% if @validations.empty? %>
-	  <h2>0 Validations
-      <% elsif @validations.size == 1 %>
+	  <h2>0 Validations</h2>
+    <h2>
+		  <% elsif @validations.size == 1 %>
 	    <%= link_to "1 validation", validations_path %>
 	    <% else %>
 	    <%= link_to "#{@validations.size} validations", validations_path %>
