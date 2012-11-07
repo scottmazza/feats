@@ -7,11 +7,13 @@
 	<br>
 	<div class="row-fluid">
 		<div class="span12">
+		  <div class="hr1"></div>
 			<h2>Validations:</h2>
 		  <% @validations.each do |v| %>
 			  <%= link_to "#{v.user.username}", user_path(v.user.id) %>
 			  <%= "#{v.comment}" %><br>
 			  <% if v.user.id == session[:user_id] %>
+				  <br>
 			    <h2><%= link_to "Delete Validation", validation_path(v.id), confirm: 'Are you sure?', method: 'delete' %></h2>
 			  <% end %>
 	    <% end %>
