@@ -14,7 +14,8 @@
 	        <% if @attempts.empty? %>
 						<div class="row-fluid">
 							<div class="span12">
-		      			<h2><strong>This feat doesn't have an attempt yet.<br> Would you like to record one?</strong></h2>
+		      			<h2><strong>This feat doesn't have an attempt yet.<br> Would you
+			 							like to record one?</strong></h2>
 							</div>
 						</div>
 		      <% else %>
@@ -31,9 +32,11 @@
 								  	<li>
 									  	<h2>
                   			<% if @feat.timed %>
-	                    		<%= link_to "#{ a.user.username}", user_path( a.user.id)%> - <%= a.score.to_hhmmss %>
+	                    		<%= link_to "#{ a.user.username}", 
+														user_path( a.user.id)%> - <%= a.score.to_hhmmss %>
 	                  		<% else %>
-	                    		<%= link_to "#{a.user.username}", user_path(a.user.id)%> - <%= a.score.to_s %>
+	                    		<%= link_to "#{a.user.username}",
+	 													user_path(a.user.id)%> - <%= a.score.to_s %>
 	                  		<% end %>
 											</h2>
 	                	</li>
@@ -44,7 +47,8 @@
 	                  	<% if a.user.id == session[:user_id] %>
 	               				<% @attempt_exists = true %>
 	                 			| <%= link_to "Update", edit_attempt_path(a.id) %> |
-	                 			<%= link_to "Delete", attempt_path(a.id), confirm: 'Delete this attempt?', method: 'delete' %>
+	                 			<%= link_to "Delete", attempt_path(a.id), 
+													confirm: 'Delete this attempt?', method: 'delete' %>
 	                 		<% end %>
 										</h1>
 									</div>

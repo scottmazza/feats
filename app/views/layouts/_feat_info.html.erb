@@ -5,10 +5,11 @@
   <%= @location.address %>
 	<div class="hr1"></div>
   <strong><%= link_to "#{@feat.name}", feat_path(@feat.id) %></strong>
-  created by <%= link_to "#{@feat.user.username}", user_path(@feat.user.id) %><br>
+  created by <%= link_to "#{@feat.user.username}", 
+	user_path(@feat.user.id) %><br>
 	<br>
 	<div class="break-word">
-	<%= @feat.description %><br>
+		<%= @feat.description %><br>
 	</div>
 	<br>
   <% if @feat.low_score_wins %>	
@@ -16,12 +17,17 @@
       Fastest time wins.
     <% else %>
       Low score wins.
-  <% end %>
+  	<% end %>
   <% elsif @feat.timed %>
     Longest time wins.
   <% else %>
     High score wins.
   <% end %>
+	<% if @feat.user.id == session[ :user_id ] %>
+		<br>
+  	<h2><%= link_to "Delete Feat", feat_path(	@feat	),
+			confirm: 'Delete this feat?', method: 'delete' %></h2>
+	<% end %>
 </h2>
 
 
