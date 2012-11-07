@@ -1,11 +1,11 @@
 <% if @feat.timed %>
   <h2><strong><%= link_to "#{@attempt.user.username.possessive}", user_path(@attempt.user.id) %> time:</strong></h1>
-  <div class="hr1"></div>
+  <center><div class="hr1"></div></center>
 	<%= @attempt.score.to_hhmmss %>
   <% else %>
     <h2><strong><%= link_to "#{@attempt.user.username.possessive}", user_path(@attempt.user.id) %> score:</strong></h2>
-		<div class="hr1"></div>
-    <h2><%= @attempt.score.to_s %>
+		<center><div class="hr1"></div></center>
+    <h2><%= @attempt.score.to_s %></h2>
 <% end %>
 <% unless params[:controller] == "validations" %>
   <% if @validations.empty? %>

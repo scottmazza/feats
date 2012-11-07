@@ -1,29 +1,24 @@
-<h2><strong><%= link_to "#{@feat.name}", feat_path(@feat.id) %></strong>
-created by <%= link_to "#{@feat.user.username}", user_path(@feat.user.id) %></h2>
-<div class="hr1"></div>
-
-<h2><strong>Location:</strong><br>
-
-<%= @location.name %><br><%= @location.address %><br>
-<br>
-
-<strong>Description:</strong><br>
-
-<%= @feat.description %><br>
-<br>
-
-<strong>Scoring:</strong><br>
-
+<h2>
+	<i class="icon-map-marker"></i>
+	<strong><%= @location.name %></strong>
+	<br>
+  <%= @location.address %>
+	<div class="hr1"></div>
+  <strong><%= link_to "#{@feat.name}", feat_path(@feat.id) %></strong>
+  created by <%= link_to "#{@feat.user.username}", user_path(@feat.user.id) %><br>
+	<br>
+	<%= @feat.description %><br>
+  <br>
   <% if @feat.low_score_wins %>	
     <% if @feat.timed %>
-      Shortest time wins
+      Fastest Time Wins
     <% else %>
-      Low score wins
-    <% end %>
+      Low Score Wins
+  <% end %>
   <% elsif @feat.timed %>
-    Longest time wins
+    Longest Time Wins
   <% else %>
-    High score wins
+    High Score Wins
   <% end %>
 </h2>
 
