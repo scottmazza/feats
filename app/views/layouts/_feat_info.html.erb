@@ -7,18 +7,20 @@
   <strong><%= link_to "#{@feat.name}", feat_path(@feat.id) %></strong>
   created by <%= link_to "#{@feat.user.username}", user_path(@feat.user.id) %><br>
 	<br>
+	<div class="break-word">
 	<%= @feat.description %><br>
-  <br>
+	</div>
+	<br>
   <% if @feat.low_score_wins %>	
     <% if @feat.timed %>
-      Fastest Time Wins
+      Fastest time wins.
     <% else %>
-      Low Score Wins
+      Low score wins.
   <% end %>
   <% elsif @feat.timed %>
-    Longest Time Wins
+    Longest time wins.
   <% else %>
-    High Score Wins
+    High score wins.
   <% end %>
 </h2>
 

@@ -19,7 +19,7 @@
 				</div>
 	    	<% if @feats.any? %>
 					<div class="craig-unit">
-					  <h2><strong>The following feats exist in this area.</strong></h2>
+					  <h2><strong>Feats in this area.</strong></h2>
 						<div class="hr1"></div>
 	        	<% @feats.each do |f| %>
 							<h2><%= link_to "#{f.name}", feat_path(f.id) %></h2>

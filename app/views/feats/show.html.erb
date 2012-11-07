@@ -4,7 +4,11 @@
 	  <div class="row-fluid">
       <div class="span4">
 		    <div class="craig-unit">
-		      <%= render 'layouts/feat_info' %>
+				  <div class="row-fluid">
+					  <div class="span12">
+		          <%= render 'layouts/feat_info' %>
+						</div>
+					</div>
 				</div>
 				<div class="craig-unit">
 	        <% if @attempts.empty? %>
@@ -16,7 +20,7 @@
 		      <% else %>
 						<div class="row-fluid">
 							<div class="span12">
-	        			<h2><strong>Feat attempts:</strong></h2>
+	        			<h2><strong>Feat Attempts</strong></h2>
 					  		<div class="hr1"></div>
 							</div>
 						</div>

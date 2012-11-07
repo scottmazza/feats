@@ -13,7 +13,7 @@
 						</h2>  
 					</div>
 					<div class="craig-unit">
-			      <h2><strong>Name the feat and describe it.</strong></h2>
+			      <h2><strong>Feat name, description and rules.</strong></h2>
 						<center><div class="hr1"></div></center>
             <%= form_for @feat do |f| %>
             <%= render 'shared/error_messages', target: @feat %>
@@ -21,7 +21,7 @@
                 <%= f.label "Feat name" %>
                 <%= f.text_field :name, class: "field span12" %>
 		  			    <br>
-                <%= f.label "Feat description" %>
+                <%= f.label "description/rules" %>
                 <%= f.text_area :description, rows: 4, class: "field span12" %>
 						    <br>
 						    <br>
