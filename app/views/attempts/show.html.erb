@@ -8,10 +8,13 @@
 			  </div>
 				<div class="craig-unit">
 				  <%= render 'layouts/attempt_info' %>
-				    <br>
-				    <% if @attempt.user.id == session[:user_id] %>				
-            <h2><%= link_to "Delete Attempt", attempt_path(@attempt.id), confirm: 'Delete this attempt?', method: 'delete' %></h2>
-				    <% elsif @attempt.validations.where(user_id: session[:user_id]).first.nil? %>
+				  <br>
+				  <% if @attempt.user.id == session[:user_id] %>
+						<br>					
+            <h2><%= link_to "Delete Attempt", attempt_path( @attempt ),
+ 							confirm: 'Delete this attempt?', method: 'delete' %></h2>
+				  <% elsif @attempt.validations.where( 
+							user_id: session[:user_id]).first.nil? %>
   		      <%= link_to "Validate this attempt", new_validation_path %>
 					<% end %>
 		  	</div>

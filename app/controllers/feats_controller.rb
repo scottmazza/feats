@@ -15,6 +15,17 @@ class FeatsController < ApplicationController
     end
   end
 
+  def destroy
+    @feat = Feat.find( params[:id] )
+    #
+    # Only the owning user can delete his attempt 
+    #  
+    if @feat.user_id == session[:user_id]
+      @feat.destroy
+    end
+    redirect_to user_path( @feat.user_id )
+  end
+  
   def index
     if params[:user_id].present?
       @user = User.find( params[:user_id] )
