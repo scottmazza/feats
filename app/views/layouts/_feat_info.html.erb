@@ -24,7 +24,7 @@
     High score wins.
   <% end %>
 	<% if @feat.user.id == session[ :user_id ] %>
-		<br>
+		<div class="hr2"></div>
   	<h2><%= link_to "Delete Feat", feat_path(	@feat	),
 			confirm: 'Delete this feat?', method: 'delete' %></h2>
 	<% end %>

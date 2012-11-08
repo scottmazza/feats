@@ -10,7 +10,7 @@
 				  <%= render 'layouts/attempt_info' %>
 				  <br>
 				  <% if @attempt.user.id == session[:user_id] %>
-						<br>					
+				
             <h2><%= link_to "Delete Attempt", attempt_path( @attempt ),
  							confirm: 'Delete this attempt?', method: 'delete' %></h2>
 				  <% elsif @attempt.validations.where( 
