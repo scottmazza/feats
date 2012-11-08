@@ -13,12 +13,15 @@
 #
 
 class Attempt < ActiveRecord::Base
+  VALID_VIDEO_URL_REGEX = /\Ahttp:\/\/www.youtube.com\/\w*v=\w+(&\w+)*\z/i
+  
   attr_accessible :feat_id, :score, :user_id, :video_url, :image
   belongs_to :user
   belongs_to :feat
   has_many :validations, dependent: :destroy
   mount_uploader :image, ImageUploader
   validates :score, presence: true, numericality: true 
+  validates :video_url, format: { with: VALID_VIDEO_URL_REGEX }, allow_nil: true
   
   # count_by_user_id
   #
