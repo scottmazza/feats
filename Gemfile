@@ -6,7 +6,7 @@ gem 'omniauth-facebook'
 gem 'geocoder'
 gem 'carrierwave'
 gem 'rmagick'
-gem 'rack-google-analytics'
+gem 'rack-google-analytics', :require => 'rack/google-analytics'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'
