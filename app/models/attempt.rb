@@ -13,7 +13,7 @@
 #
 
 class Attempt < ActiveRecord::Base
-  VALID_VIDEO_URL_REGEX = /\Ahttp:\/\/www.youtube.com\/\w*v=\w+(&\w+)*\z/i
+  VALID_VIDEO_URL_REGEX = /\Ahttp:\/\/www.youtube.com\/\S*v=\S+(&\S+)*\z/i
   
   attr_accessible :feat_id, :score, :user_id, :video_url, :image
   belongs_to :user
@@ -80,5 +80,17 @@ class Attempt < ActiveRecord::Base
     mm = (( self.score - ss ) / 60 ).to_i
     hh = (( self.score - ss - mm * 60 ) / 3600).to_i
     [hh, mm, ss]
+  end
+  
+  # video_id
+  #
+  # Returns the Youtube video ID extracted from the video URL
+  #
+  def video_id
+    if self.video_url.blank?
+      nil
+    else
+      self.video_url.split( "v=" )[ 1 ].sub( /\&\S*/, '' )
+    end
   end
 end
