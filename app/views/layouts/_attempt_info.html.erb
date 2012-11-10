@@ -1,9 +1,14 @@
 <% if @feat.timed %>
-  <h2><strong><%= link_to "#{@attempt.user.username.possessive}", user_path(@attempt.user.id) %> Time</strong></h1>
+  <h2><strong><%= link_to "#{@attempt.user.username.possessive}",
+ 		user_path(@attempt.user.id) %> Time</strong>
+	</h2>
   <center><div class="hr1"></div></center>
 	<h2><%= @attempt.score.to_hhmmss %></h2>
-  <% else %>
-    <h2><strong><%= link_to "#{@attempt.user.username.possessive}", user_path(@attempt.user.id) %> Score</strong></h2>
+<% else %>
+    <h2>
+			<strong><%= link_to "#{@attempt.user.username.possessive}",
+			 	user_path(@attempt.user.id) %> Score</strong>
+		</h2>
 		<center><div class="hr1"></div></center>
     <h2><%= @attempt.score.to_s %></h2>
 <% end %>
@@ -18,4 +23,7 @@
 <% end %>
 <% unless @attempt.image.blank? %>
   <%= image_tag @attempt.image_url.to_s %>
+<% end %>
+<% unless @attempt.video_url.blank? %>
+	<iframe src="http://www.youtube.com/embed/<%=@attempt.video_id%>" frameborder="0" allowfullscreen></iframe>
 <% end %>
