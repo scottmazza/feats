@@ -13,7 +13,7 @@
 #
 
 class Attempt < ActiveRecord::Base
-  VALID_VIDEO_URL_REGEX = /\Ahttp:\/\/www.youtube.com\/\S*v=\S+(&\S+)*\z/i
+  VALID_VIDEO_URL_REGEX = /\Ahttps?:\/\/www.youtube.com\/\S*v=\S+(&\S+)*\z/i
   
   attr_accessible :feat_id, :score, :user_id, :video_url, :image
   belongs_to :user
