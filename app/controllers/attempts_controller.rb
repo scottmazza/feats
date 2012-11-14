@@ -90,7 +90,8 @@ class AttemptsController < ApplicationController
     session[ :attempt_id ] = @attempt.id
     @feat = @attempt.feat
     @location = @feat.location
-    @validations = @attempt.validations
+    @validations = @attempt.validations.where( rebuttal: false )
+    @rebuttals   = @attempt.validations.where( rebuttal: true )
   end
   
   def update

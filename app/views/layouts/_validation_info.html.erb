@@ -3,22 +3,42 @@
 		<%= link_to "Validate this record", new_validation_path %>
 	<% end %>
 <% end %>
-<% unless @validations.empty? %>
+<% unless @attempt.validations.empty? %>
 	<br>
 	<div class="row-fluid">
 		<div class="span12">
-		  <div class="hr2"></div>
-			<h2><strong>Validations</strong></h2>
-		  <% @validations.each do |v| %>
-			  <h2>
-				  <%= link_to "#{v.user.username}", user_path(v.user.id) %>
-			    <%= "#{v.comment}" %><br>
-			    <% if v.user.id == session[:user_id] %>
-			  </h2>
-				<br>
-			  <h2><%= link_to "Delete Validation", validation_path(v.id), confirm: 'Are you sure?', method: 'delete' %></h2>
-			  <% end %>
-	    <% end %>
+			<% unless @validations.empty? %>
+		  	<div class="hr2"></div>
+				<h2><strong>Validations</strong></h2>
+		  	<% @validations.each do |v| %>
+			  	<h2>
+				  	<%= link_to "#{v.user.username}", user_path(v.user.id) %>
+			    	<%= "#{v.comment}" %><br>
+			  	</h2>
+		    	<% if v.user.id == session[:user_id] %>
+			  		<h2>
+							<%= link_to "Delete Validation", validation_path(v.id), 
+								confirm: 'Are you sure?', method: 'delete' %>
+						</h2>
+			  	<% end %>
+	    	<% end %>
+			<% end %>
+			<% unless @rebuttals.empty? %>
+	  		<div class="hr2"></div>
+				<h2><strong>Rebuttals</strong></h2>
+		  	<% @rebuttals.each do |r| %>
+			  	<h2>
+				  	<%= link_to "#{r.user.username}", user_path( r.user.id ) %>
+			    	<%= "#{r.comment}" %><br>
+			  	</h2>
+		    	<% if r.user.id == session[:user_id] %>
+			  		<h2>
+							<%= link_to "Delete Rebuttal", validation_path(r.id), 
+								confirm: 'Are you sure?', method: 'delete' %>
+						</h2>
+			  	<% end %>
+	    	<% end %>
+			<% end %>
 		</div>
 	</div>
 <% end %>

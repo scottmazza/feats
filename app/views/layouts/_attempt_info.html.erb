@@ -5,25 +5,36 @@
   <center><div class="hr1"></div></center>
 	<h2><%= @attempt.score.to_hhmmss %></h2>
 <% else %>
-    <h2>
-			<strong><%= link_to "#{@attempt.user.username.possessive}",
+  <h2>
+		<strong><%= link_to "#{@attempt.user.username.possessive}",
 			 	user_path(@attempt.user.id) %> Score</strong>
-		</h2>
-		<center><div class="hr1"></div></center>
-    <h2><%= @attempt.score.to_s %></h2>
+	</h2>
+	<center><div class="hr1"></div></center>
+  <h2><%= @attempt.score.to_s %></h2>
 <% end %>
 <% unless params[:controller] == "validations" %>
-  <% if @validations.empty? %>
-	  <h2>0 Validations</h2>
-		  <% elsif @validations.size == 1 %>
-	    <h2><%= link_to "1 validation", validations_path %></h2>
-	    <% else %>
-	    <h2><%= link_to "#{@validations.size} validations", validations_path %></h2>
-  <% end %>	
+	<h2>
+	  <% if @validations.empty? %>
+		  0 Validations
+		<% elsif @validations.size == 1 %>
+		  <%= link_to "1 validation", validations_path %>
+		<% else %>
+		  <h2><%= link_to "#{@validations.size} validations", validations_path %></h2>
+	  <% end %>
+		|
+	  <% if @rebuttals.empty? %>
+		 	0 Rebuttals
+		<% elsif @rebuttals.size == 1 %>
+		  <%= link_to "1 rebuttal", validations_path %>
+		<% else %>
+		  <%= link_to "#{@rebuttals.size} rebuttals", validations_path %>
+	  <% end %>
+	</h2>
 <% end %>
 <% unless @attempt.image.blank? %>
   <%= image_tag @attempt.image_url.to_s %>
 <% end %>
 <% unless @attempt.video_url.blank? %>
-	<iframe src="http://www.youtube.com/embed/<%=@attempt.video_id%>" frameborder="0" allowfullscreen></iframe>
+	<iframe src="http://www.youtube.com/embed/<%=@attempt.video_id%>" 
+		frameborder="0" allowfullscreen></iframe>
 <% end %>

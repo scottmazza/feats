@@ -3,10 +3,18 @@
  		<%= render 'shared/error_messages', target: @validation %>
   <% end %>
 	<fieldset>
+    <%= f.label "Validation or rebuttal?"%>
+    <%= f.radio_button :rebuttal, 0, checked: true %>
+    <%= f.label :rebuttal, "Validation", style: "display:inline;" %>
+    <br>
+    <%= f.radio_button :rebuttal, 1 %>
+    <%= f.label :rebuttal, style: "display:inline;" %>
+		<br>
+		<br>
 	  <%= f.label :comment %>
 	  <%= f.text_area :comment, rows: "5", class: "field span3"%>
 	  <br>
-	  <%= f.submit "Validate Attempt", 
+	  <%= f.submit "Validate/Rebut Attempt", 
       class: "btn btn-small btn-primary" %>		            
 	</fieldset>
 <% end %>
