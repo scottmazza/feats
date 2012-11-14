@@ -47,7 +47,8 @@ class ValidationsController < ApplicationController
   def index
     @attempt     = Attempt.find( session[ :attempt_id ])
     @feat        = @attempt.feat
-    @validations = @attempt.validations
+    @validations = @attempt.validations.where( rebuttal:false )
+    @rebuttals   = @attempt.validations.where( rebuttal: true )
     @location    = @feat.location    
   end
   
