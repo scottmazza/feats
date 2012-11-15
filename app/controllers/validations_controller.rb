@@ -14,7 +14,7 @@ class ValidationsController < ApplicationController
                                     comment:    params[ :validation ][ :comment ])
       if @validation.save
         if @validation.rebuttal
-          flash[:notice] = "Reubttal recorded."
+          flash[:notice] = "Rebuttal recorded."
         else
           flash[:notice] = "Validation recorded."
         end
