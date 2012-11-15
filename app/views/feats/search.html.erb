@@ -25,11 +25,11 @@
 						<div class="hr1"></div>
 	        	<% @feats.each do |f| %>
 							<h2>
-								<%= link_to "#{f.name}", feat_path( f.id ) %> @ 
+								<strong><%= link_to "#{f.name}", feat_path( f.id ) %></strong> at
 								<%= link_to "#{f.location.name}", location_path( f.location.id )%>
 							</h2>
 							<% if f != @feats.last %>
-								<div class="hr2"></div>
+								<div class="hr3"></div>
 							<% end %>
 		    		<% end %>
 					</div>
