@@ -1,6 +1,6 @@
 <% unless @attempt.user.id == session[:user_id] %>
 	<% if @attempt.validations.where(user_id: session[:user_id]).first.nil? %>
-		<%= link_to "Validate this record", new_validation_path %>
+		<%= link_to "Validate or rebut", new_validation_path %> this attempt.
 	<% end %>
 <% end %>
 <% unless @attempt.validations.empty? %>
