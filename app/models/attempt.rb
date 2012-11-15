@@ -21,7 +21,7 @@ class Attempt < ActiveRecord::Base
   has_many :validations, dependent: :destroy
   mount_uploader :image, ImageUploader
   validates :score, presence: true, numericality: true 
-  validates :video_url, format: { with: VALID_VIDEO_URL_REGEX }, allow_nil: true
+  validates :video_url, format: { with: VALID_VIDEO_URL_REGEX }, allow_blank: true
   
   # count_by_user_id
   #
