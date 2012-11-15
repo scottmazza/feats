@@ -55,30 +55,30 @@ class FeatsController < ApplicationController
     @feats = []
     if params[:distance].present?
       if params[:distance].not_a_positive_float?
-        flash[:error] = "Invalid distance, (#{params[:distance]})"
+        flash.now[:error] = "Invalid distance, (#{params[:distance]})"
       else
         distance = params[:distance].to_f
         if distance < 0 || distance > 100
-          flash[:error] = "Distance must be in the range [0..100]."
+          flash.now[:error] = "Distance must be in the range [0..100]."
         else        
           unless params[:address].blank?
             # Attempt to geolocate input address ----------------------------- #        
             @latitude, @longitude = Geocoder.coordinates(params[:address])
           end
           if @latitude.nil? && @longitude.nil? 
-            flash[:error] = "Please provide a valid search address."
+            flash.now[:error] = "Please provide a valid search address."
           else
             # Input is valid. Use standard address & perform search ---------- #
             params[:address] = Geocoder.address( [@latitude, @longitude] )
             @locations = Location.near([@latitude, @longitude], distance )
             if @locations.nil?
-              flash[:notice] = "No feats found in that area"
+              flash.now[:notice] = "No feats found in that area"
             else
               @locations.each do |l|
                 @feats += Feat.find_all_by_location_id(l.id)
               end
               unless @feats.any?
-                flash[:notice] = "No feats found in that area"
+                flash.now[:notice] = "No feats found in that area"
               end
             end
           end

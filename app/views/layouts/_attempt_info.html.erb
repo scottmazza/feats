@@ -14,6 +14,7 @@
 <% end %>
 <% unless params[:controller] == "validations" %>
 	<h2>
+		<i class="icon-thumbs-up"></i>
 	  <% if @validations.empty? %>
 		  0 Validations
 		<% elsif @validations.size == 1 %>
@@ -21,7 +22,7 @@
 		<% else %>
 		  <h2><%= link_to "#{@validations.size} validations", validations_path %></h2>
 	  <% end %>
-		|
+		| <i class="icon-thumbs-down"></i>
 	  <% if @rebuttals.empty? %>
 		 	0 Rebuttals
 		<% elsif @rebuttals.size == 1 %>

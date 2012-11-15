@@ -14,3 +14,6 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 
+$(function ()  
+{ $('a').tooltip();  
+});  

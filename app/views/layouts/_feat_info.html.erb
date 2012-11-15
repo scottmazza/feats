@@ -25,8 +25,9 @@
   <% end %>
 	<% if @feat.user.id == session[ :user_id ] %>
 		<div class="hr2"></div>
-  	<h2><%= link_to "Delete Feat", feat_path(	@feat	),
-			confirm: 'Delete this feat?', method: 'delete' %></h2>
+  	<h2><%= link_to '<i class="icon-remove"></i>'.html_safe, 
+			feat_path(	@feat	), confirm: 'Delete this feat?', method: 'delete', 
+			title: 'Delete feat.' %></h2>
 	<% end %>
 </h2>
 

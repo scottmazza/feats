@@ -11,8 +11,9 @@
 				  <br>
 				  <% if @attempt.user.id == session[:user_id] %>
             <h2>
-							<%= link_to "Delete Attempt", attempt_path( @attempt ), 
-								confirm: 'Delete this attempt?', method: 'delete' %>
+							<%= link_to '<i class="icon-remove"></i>'.html_safe, 
+								attempt_path( @attempt ), confirm: 'Delete this attempt?', method: 'delete',
+								title: 'Delete attempt.' %>
 						</h2>
 				  <% elsif @validations.where( user_id: session[ :user_id ]).first.nil? %>
   		      <h2>

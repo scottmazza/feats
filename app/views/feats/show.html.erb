@@ -43,12 +43,14 @@
 									</div>
 									<div class="span5">
 								  	<h1>
-											<%= link_to "View", attempt_path(a.id) %>
+											<%= link_to '<i class="icon-eye-open"></i>'.html_safe, attempt_path(a.id),
+											 	title: 'View attempt.' %>
 	                  	<% if a.user.id == session[:user_id] %>
 	               				<% @attempt_exists = true %>
-	                 			| <%= link_to "Update", edit_attempt_path(a.id) %> |
-	                 			<%= link_to "Delete", attempt_path(a.id), 
-													confirm: 'Delete this attempt?', method: 'delete' %>
+	                 			| <%= link_to '<i class="icon-edit"></i>'.html_safe, edit_attempt_path(a.id),
+	 													title: 'Edit attempt.' %> |
+	                 			<%= link_to '<i class="icon-remove"></i>'.html_safe, attempt_path(a.id), 
+													confirm: 'Delete this attempt?', method: 'delete', title: 'Delete attempt.' %>
 	                 		<% end %>
 										</h1>
 									</div>
