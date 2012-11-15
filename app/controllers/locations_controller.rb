@@ -131,4 +131,8 @@ class LocationsController < ApplicationController
     end
   end
   
+  def show
+    @location = Location.find( params[ :id ] )
+    @feats = Feat.find_all_by_location_id( @location.id )
+  end  
 end

@@ -14,7 +14,13 @@
 		  	<div class="craig-unit">
 					<% unless @attempts.empty? %>
 						<% @attempts.each do |a| %>
-							<h2><%= link_to a.feat.name, feat_path( a.feat.id ) %></h2>
+							<h2>
+								<%= link_to a.feat.name, feat_path( a.feat.id ) %> @
+								<%= link_to "#{a.feat.location.name}", location_path( a.feat.location )%>
+							</h2>
+							<% if a != @attempts.last %>
+								<div class="hr2"></div>
+							<% end %>
 						<% end %>
 					<% else %>
 						<% if @user.id  == session[ :user_id ] %>

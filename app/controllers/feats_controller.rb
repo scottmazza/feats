@@ -84,9 +84,6 @@ class FeatsController < ApplicationController
           end
         end
       end
-    else
-      params[:distance] = "0.1"
-      params[:address]  = "Address"
     end
   end
   

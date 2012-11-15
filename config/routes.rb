@@ -10,7 +10,7 @@ Feats::Application.routes.draw do
     get 'search', on: :collection
   end    
   resources :locations do     
-    options = { only: [ :new, :create ]}
+    options = { only: [ :new, :create, :show ]}
     get 'locate', on: :collection
     get 'choose_from_existing', on: :collection
     get 'select', on: :member

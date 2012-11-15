@@ -3,9 +3,12 @@
   <div class="container">
     <div class="row-fluid">
       <div class="span12">
-		  	<%= link_to(( image_tag @user.image ), @user ) %>
-		  	<%= link_to "#{@user.username}", @user %> has created the following
-		 			feats:
+		  	The following feats exist at:
+				<br>
+				<br>
+				<%= @location.name %>
+				<br>
+				<%= @location.address %>
 			</div>
 	  </div>
     <br>
@@ -14,21 +17,14 @@
 		  	<div class="craig-unit">
 					<% unless @feats.empty? %>
 						<% @feats.each do |f| %>
-							<h2>
-								<%= link_to "#{f.name}", feat_path( f.id ) %> @ 
-								<%= link_to "#{f.location.name}", location_path( f.location.id )%>
-							</h2>
+							<h2><%= link_to f.name, feat_path( f.id ) %></h2>
 							<% if f != @feats.last %>
 								<div class="hr2"></div>
 							<% end %>
 						<% end %>
 					<% else %>
-						<% if @user.id  == session[ :user_id ] %>
-							<h2>You have no feats. 
-								<%= link_to "Create one", new_feat_path %>?</h2>
-						<% else %>
-							<h2><%= link_to "#{@user.username}", @user %> has no feats.</h2>
-						<% end %>
+						<h2>There are no feats at this location.  
+							<%= link_to "Create one", new_feat_path %>?</h2>
 					<% end %>
 		  	</div>
 	    </div>
@@ -40,4 +36,3 @@
 	  </div>
   </div>
 </div>
-
