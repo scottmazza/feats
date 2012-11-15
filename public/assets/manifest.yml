@@ -1,4 +1,8 @@
 ---
+apple-touch-icon-114-precomposed.png: apple-touch-icon-114-precomposed-9f176e6ab418891c57dae4f120958818.png
+apple-touch-icon-57-precomposed.png: apple-touch-icon-57-precomposed-1e0013e823b4ab6920afc922d977be91.png
+apple-touch-icon-72-precomposed.png: apple-touch-icon-72-precomposed-d8aa6abc7f787a0790f561fa9f582a92.png
+favicon.ico: favicon-60668e3031a3f299f522d1366fbf77d7.ico
 feats_home.png: feats_home-c04d423ff15692d48a75f97da7cef9d0.png
 feats_logo_large.png: feats_logo_large-79ece4463523337302c7a01fd16ccea2.png
 feats_logo_small.png: feats_logo_small-e7c288117a9058e736c06e9a8b442029.png
@@ -6,7 +10,7 @@ glyphicons-halflings-white.png: glyphicons-halflings-white-13553a5bf21ae3cc37400
 glyphicons-halflings.png: glyphicons-halflings-f6675c325532ec11a984d58e172b8e2a.png
 rails.png: rails-be8732dac73d845ac5b142c8fb5f9fb0.png
 application.js: application-0cdc4a7e2a1b795283aeafb88f6130eb.js
-application.css: application-c57d709b161f1874657cf5cd98e42b37.css
+application.css: application-bf730e798811162f3684b16651257d25.css
 background.jpg: background-71f677faf632019fe6149cc1536a0cc8.jpg
 fontawesome-webfont.eot: fontawesome-webfont-7cf1b0de49e2f8672c9ad6d9e382115f.eot
 fontawesome-webfont.svg: fontawesome-webfont-4d19fdd70a080778557b652cb4868557.svg
