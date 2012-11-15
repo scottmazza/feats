@@ -19,7 +19,8 @@ class SessionsController < ApplicationController
       oauth_token:      auth[:credentials][:token],
       oauth_expires_at: Time.at(auth.credentials.expires_at),   
       name:             auth.info.name,
-      image:            auth.info.image )
+      image:            auth.info.image,
+      location:         auth.info.location  )
  
     session[:user_id] = user.id
     if user.profile_complete?

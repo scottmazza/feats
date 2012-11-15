@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121112224943) do
+ActiveRecord::Schema.define(:version => 20121115014639) do
 
   create_table "attempts", :force => true do |t|
     t.integer  "feat_id"
@@ -62,6 +62,8 @@ ActiveRecord::Schema.define(:version => 20121112224943) do
     t.string   "oauth_provider"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
+    t.string   "location"
+    t.text     "bio"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

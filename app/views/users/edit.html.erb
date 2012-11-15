@@ -11,12 +11,17 @@
 	          <fieldset>
 	            <div class="control-group">
 	              <%= f.label :username %>
-	                <div class="controls">
-	                  <%= f.text_field :username %>
-	                </div>
+	              <div class="controls">
+                  <%= f.text_field :username %>
+                </div>
+								<br>
+	              <%= f.label :bio %>
+	              <div class="controls">
+	                <%= f.text_area :bio, rows: 5, class: "field span6" %>
+								</div>
 	            </div> 
-	              <%= f.submit "Save Changes", 
-									class: "btn btn-small btn-primary" %>
+	            <%= f.submit "Save Changes", 
+								class: "btn btn-small btn-primary" %>
 	           </fieldset>
 	        <% end %>
 			  </div>

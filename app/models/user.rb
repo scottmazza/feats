@@ -19,8 +19,8 @@ class User < ActiveRecord::Base
   has_many :attempts
   has_many :feats, inverse_of: :user
   has_many :validations
-  attr_accessible :email, :name, :username, :image, :oauth_provider, 
-                  :oauth_token, :oauth_expires_at
+  attr_accessible :email, :name, :username, :location, :image, :bio, 
+                  :oauth_provider, :oauth_token, :oauth_expires_at
   
   before_save { |user| user.email = email.downcase }
   
