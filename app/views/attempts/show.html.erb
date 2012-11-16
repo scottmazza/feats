@@ -2,7 +2,7 @@
 <div class="background-unit">
   <div class="container">
 	  <div class="row-fluid">
-      <div class="span4">
+      <div class="span5">
 		  	<div class="craig-unit">
 		      <%= render 'layouts/feat_info' %>
 			  </div>
@@ -13,7 +13,7 @@
             <h2>
 							<%= link_to '<i class="icon-remove"></i>'.html_safe, 
 								attempt_path( @attempt ), confirm: 'Delete this attempt?', method: 'delete',
-								title: 'Delete attempt.' %>
+								title: 'Delete Attempt' %>
 						</h2>
 				  <% elsif @validations.where( user_id: session[ :user_id ]).first.nil? %>
   		      <h2>
@@ -22,7 +22,7 @@
 					<% end %>
 		  	</div>
 			</div>
-	    <div class="span8">
+	    <div class="span7">
 	      <div class="map-well"> 
 	        <div id="map_canvas"></div>
         </div>

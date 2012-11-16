@@ -2,24 +2,19 @@
   <div class="container">
 	  <div class="row-fluid">
 	    <div class="span12">
-        <div class="craig-unit">
-		      <%= image_tag@user.image %> <%= @user.name %>
-			    <br>
-					<br>
-	        <h2>
-						<strong>Username:</strong> <%= @user.username %>
-					</h2>
-					<h2>
-						<strong>Location:</strong> <%= @user.location %>
-					</h2>
-					<h2>
-						<strong>Bio:</strong>
-						<% if @user.bio.blank? %>
-						 &lt;none&gt;
-						<% else %>
-							<br><%= @user.bio %>
-						<% end %>
-					</h2>
+        <div class="usertop-well">
+				  <h2><%= image_tag@user.image %> &nbsp;<strong><%= @user.name %></strong>, <%= @user.username %></h2>
+		      <h3>
+					  <% if @user.bio.blank? %>
+						   &lt;none&gt;
+					  <% else %>
+						  <br><%= @user.bio %>
+					  <% end %><br>
+						<br>
+						<%= @user.location %>
+					</h3>
+			  </div>
+				<div class="staticbottom-well">
 					<h2>
 					  <% if @feat_count == 0 %>
 			      	0 Feats Created

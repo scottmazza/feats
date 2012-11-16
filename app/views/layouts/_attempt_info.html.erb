@@ -7,7 +7,7 @@
 <% else %>
   <h2>
 		<strong><%= link_to "#{@attempt.user.username.possessive}",
-			 	user_path(@attempt.user.id) %> Score</strong>
+			 	user_path(@attempt.user.id) %> Attempt</strong>
 	</h2>
 	<center><div class="hr1"></div></center>
   <h2><%= @attempt.score.to_s %></h2>

@@ -1,34 +1,40 @@
-<h2>
-	<i class="icon-map-marker"></i>
-	<strong><%= @location.name %></strong>
-	<br>
-  <%= @location.address %>
-	<div class="hr1"></div>
-  <strong><%= link_to "#{@feat.name}", feat_path(@feat.id) %></strong>
-  created by <%= link_to "#{@feat.user.username}", 
-	user_path(@feat.user.id) %><br>
-	<br>
-	<div class="break-word">
-		<%= @feat.description %><br>
+<div class="row-fluid">
+  <div class="span12">
+    <h2>
+	    <i class="icon-map-marker"></i>
+	    <strong><%= @location.name %></strong>
+	    <br>
+      <%= @location.address %>
+		</h2>
 	</div>
-	<br>
-  <% if @feat.low_score_wins %>	
-    <% if @feat.timed %>
-      Fastest time wins.
-    <% else %>
-      Low score wins.
-  	<% end %>
-  <% elsif @feat.timed %>
-    Longest time wins.
-  <% else %>
-    High score wins.
-  <% end %>
-	<% if @feat.user.id == session[ :user_id ] %>
-		<div class="hr2"></div>
-  	<h2><%= link_to '<i class="icon-remove"></i>'.html_safe, 
-			feat_path(	@feat	), confirm: 'Delete this feat?', method: 'delete', 
-			title: 'Delete feat.' %></h2>
-	<% end %>
-</h2>
+</div>
+<div class="row-fluid">
+  <div class="span12">
+  <div class="hr1"></div>
+	  <h2>
+      <strong><%= link_to "#{@feat.name}", feat_path(@feat.id) %></strong> created by <%= link_to "#{@feat.user.username}", user_path(@feat.user.id) %>
+			<% if @feat.user.id == session[ :user_id ] %>&nbsp;
+  	    <%= link_to '<i class="icon-remove"></i>'.html_safe, feat_path(	@feat	), confirm: 'Delete this feat?', method: 'delete',title: 'Delete Feat' %>
+	    <% end %>
+			<br>
+	    <br>
+	    <div class="break-word">
+		    <%= @feat.description %><br>
+	    </div>
+	    <br>
+      <% if @feat.low_score_wins %>	
+        <% if @feat.timed %>
+          Fastest time wins.
+        <% else %>
+          Low score wins.
+  	    <% end %>
+      <% elsif @feat.timed %>
+        Longest time wins.
+      <% else %>
+        High score wins.
+      <% end %>
+    </h2>
+  </div>
+</div>
 
 

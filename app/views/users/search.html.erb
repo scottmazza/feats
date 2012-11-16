@@ -1,11 +1,11 @@
 <div class="background-unit">
   <div class="container">
 		<div class="row-fluid">
-    	<div class="span4">
+    	<div class="span5">
 				<div class="craig-unit">
           <%= form_tag search_users_path, method: 'get' do %>
             <fieldset>
-        			<h2><strong>Search for user by</strong></h2>
+        			<h2><strong>Search Users</strong></h2>
            		<%= text_field_tag :usertxt, params[:usertxt], maxlength: 255,
  								class: "span12" %>
 							<br>

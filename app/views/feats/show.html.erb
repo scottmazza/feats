@@ -2,13 +2,9 @@
 <div class="background-unit">
   <div class="container">
 	  <div class="row-fluid">
-      <div class="span4">
+      <div class="span5">
 		    <div class="craig-unit">
-				  <div class="row-fluid">
-					  <div class="span12">
-		          <%= render 'layouts/feat_info' %>
-						</div>
-					</div>
+		      <%= render 'layouts/feat_info' %>
 				</div>
 				<div class="craig-unit">
 	        <% if @attempts.empty? %>
@@ -28,7 +24,7 @@
 	          <ol>
 							<% @attempts.each do |a| %>
 								<div class="row-fluid">
-									<div class="span7">
+									<div class="span12">
 								  	<li>
 									  	<h2>
                   			<% if @feat.timed %>
@@ -38,21 +34,18 @@
 	                    		<%= link_to "#{a.user.username}",
 	 													user_path(a.user.id)%> - <%= a.score.to_s %>
 	                  		<% end %>
-											</h2>
-	                	</li>
-									</div>
-									<div class="span5">
-								  	<h1>
-											<%= link_to '<i class="icon-eye-open"></i>'.html_safe, attempt_path(a.id),
-											 	title: 'View attempt.' %>
-	                  	<% if a.user.id == session[:user_id] %>
-	               				<% @attempt_exists = true %>
-	                 			| <%= link_to '<i class="icon-edit"></i>'.html_safe, edit_attempt_path(a.id),
-	 													title: 'Edit attempt.' %> |
-	                 			<%= link_to '<i class="icon-remove"></i>'.html_safe, attempt_path(a.id), 
-													confirm: 'Delete this attempt?', method: 'delete', title: 'Delete attempt.' %>
-	                 		<% end %>
-										</h1>
+												&nbsp;
+											  <%= link_to '<i class="icon-eye-open"></i>'.html_safe, attempt_path(a.id),
+											 	  title: 'View Attempt' %>
+	                  	  <% if a.user.id == session[:user_id] %>
+	               				  <% @attempt_exists = true %>
+	                 			  | <%= link_to '<i class="icon-edit"></i>'.html_safe, edit_attempt_path(a.id),
+	 													title: 'Edit Attempt' %> |
+	                 			  <%= link_to '<i class="icon-remove"></i>'.html_safe, attempt_path(a.id), 
+													  confirm: 'Delete this attempt?', method: 'delete', title: 'Delete Attempt' %>
+	                 		  <% end %>
+										  </h2>
+										</li>
 									</div>
 								</div>
 	            <% end %>
@@ -63,7 +56,7 @@
 		      <% end %>
 		    </div>
       </div>
-	    <div class="span8">
+	    <div class="span7">
 	      <div class="map-well"> 
 	        <div id="map_canvas"></div>
         </div>

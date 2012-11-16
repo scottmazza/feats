@@ -10,12 +10,12 @@
 	  </div>
 	  <br>
 	  <div class="row-fluid">
-      <div class="span4">
+      <div class="span5">
 		  	<div class="craig-unit">
 					<% unless @attempts.empty? %>
 						<% @attempts.each do |a| %>
 							<h2>
-								<%= link_to a.feat.name, feat_path( a.feat.id ) %> @
+								<strong><%= link_to a.feat.name, feat_path( a.feat.id ) %></strong> at
 								<%= link_to "#{a.feat.location.name}", location_path( a.feat.location )%>
 							</h2>
 							<% if a != @attempts.last %>
@@ -34,7 +34,7 @@
 					<% end %>
 	      </div>
 			</div>
-	    <div class="span8">
+	    <div class="span7">
 	      <div class="map-well"> 
 	        <div id="map_canvas"></div>
         </div>

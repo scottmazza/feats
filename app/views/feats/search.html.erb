@@ -2,13 +2,13 @@
 <div class="background-unit">
   <div class="container">
 		<div class="row-fluid">
-    	<div class="span4">
+    	<div class="span5">
 				<div class="craig-unit">
           <%= form_tag search_feats_path, method: 'get' do %>
             <fieldset>
         			<h2>
-								<strong>Search for feats within &nbsp;
-								<%= text_field_tag :distance, params[:distance], class: "span3", placeholder: '1.5' %>
+								Search for existing feats within &nbsp;
+								<%= text_field_tag :distance, params[:distance], class: "span5", placeholder: '1.5' %>
 							 	&nbsp; miles of</strong>
 							</h2>
            		<%= text_field_tag :address, params[:address], maxlength: 255, class: "span12", 
@@ -21,7 +21,7 @@
 				</div>
 	    	<% if @feats.any? %>
 					<div class="craig-unit">
-					  <h2><strong>Feats in this area.</strong></h2>
+					  <h2><strong>Existing Feats</strong></h2>
 						<div class="hr1"></div>
 	        	<% @feats.each do |f| %>
 							<h2>
@@ -35,7 +35,7 @@
 					</div>
 	    	<% end %>
       </div>
-	  	<div class="span8">
+	  	<div class="span7">
 	    	<div class="map-well">  
           <div id="map_canvas"></div>
         </div>
