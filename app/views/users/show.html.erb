@@ -5,13 +5,13 @@
         <div class="usertop-well">
 				  <h2><%= image_tag@user.image %> &nbsp;<strong><%= @user.name %></strong>, <%= @user.username %></h2>
 		      <h3>
-					  <% if @user.bio.blank? %>
+					  <%= @user.location %><br>
+						<br>
+					  <em><% if @user.bio.blank? %>
 						   &lt;none&gt;
 					  <% else %>
 						  <br><%= @user.bio %>
-					  <% end %><br>
-						<br>
-						<%= @user.location %>
+					  <% end %></em>
 					</h3>
 			  </div>
 				<div class="staticbottom-well">
