@@ -2,16 +2,13 @@
 <div class="background-unit">
   <div class="container">
     <div class="row-fluid">
-      <div class="span12">
-		  	<%= link_to(( image_tag @user.image ), @user ) %>
-		  	<%= link_to "#{@user.username}", @user %> has created the following
-		 			feats:
-			</div>
-	  </div>
-    <br>
-	  <div class="row-fluid">
       <div class="span5">
-		  	<div class="craig-unit">
+			  <div class="craig-unit">
+				  <h2>
+		  	    <%= link_to(( image_tag @user.image ), @user ) %>&nbsp;
+		  	    <%= link_to "#{@user.username}", @user %> has created the following feats:
+					</h2>
+					<hr>
 					<% unless @feats.empty? %>
 						<% @feats.each do |f| %>
 							<h2>

@@ -10,14 +10,12 @@
 		  </div>
 	  </div>
   </div>
-	<br>
-
   <div class="container">
-    <div class="profilewhite-well">
-	    <div class="row-fluid">
-		    <div class="span7">
-			    <h4>Existing Feats</h4>
-		      <div class="hr3"></div>
+	  <div class="row-fluid">
+	    <div class="span7">
+        <div class="profilewhite-well">
+			  <h4>Existing Feats</h4>
+		    <div class="hr3"></div>
 				  <h3>
 					  <% unless @feats.empty? %>
 					    <% @feats.each do |f| %>
@@ -32,12 +30,12 @@
 					  <% end %>
 				  </h3>
 		    </div>
-			  <div class="span5">
-				  <div class="map-well">
-	          <div id="map_canvas"></div>
-	        </div>
+		  </div>
+	    <div class="span5">
+		    <div class="map-well">
+	        <div id="map_canvas"></div>
 	      </div>
-      </div>
+	    </div>
     </div>
   </div>
 </div>

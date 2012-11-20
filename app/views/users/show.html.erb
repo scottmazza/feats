@@ -3,29 +3,32 @@
     <div class="row-fluid">
 	    <div class="span12">
         <div class="profilewhite-well">
-				  <h2><%= image_tag@user.image %> &nbsp;
-						<strong><%= @user.name %></strong>, <%= @user.username %></h2>
-		      <h3>
-			      <%= @user.location %><br>
-					    <em>
-						    <% if @user.bio.blank? %>
-						      &lt;none&gt;
-					      <% else %><br>
-						    <%= @user.bio %>
-					    </em>
-					  <% end %>
-				    <br>
-				    <br>
-				    <% if params[:id].eql?(session[:user_id].to_s ) %>
-			        <%= link_to "Edit Profile", 
-								edit_user_path( session[:user_id] ) %>
-			      <% end %>
-				  </h3>
+				  <div class="row-fluid">
+				    <div class="span5">
+				      <h2><%= image_tag@user.image %> &nbsp;
+						    <strong><%= @user.name %></strong>, <%= @user.username %></h2>
+		          <h3>
+			          <%= @user.location %><br>
+					        <em>
+						        <% if @user.bio.blank? %>
+						          &lt;none&gt;
+					          <% else %><br>
+						        <%= @user.bio %>
+					        </em>
+					      <% end %>
+				        <br>
+				        <br>
+				        <% if params[:id].eql?(session[:user_id].to_s ) %>
+			            <%= link_to "Edit Profile", 
+								    edit_user_path( session[:user_id] ) %>
+			          <% end %>
+				      </h3>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<br>
   <div class="container">
     <div class="profilewhite-well">
 	    <div class="row-fluid">
@@ -37,10 +40,10 @@
 			        0 Feats Created
 			      <% elsif @feat_count == 1 %>
 	    	    	<%= link_to "#{@feat_count} Feat Created", 
-								feats_path( user_id: params[:id] ) %>
+								feats_path( user_id: params[:id] ) %><br>
 			      <% else %>
 			      	<%= link_to "#{@feat_count} Feats Created", 
-								feats_path( user_id: params[:id] ) %>
+								feats_path( user_id: params[:id] ) %><br>
 			    	<% end %>
 						<br>
 			    	<% if @attempt_count == 0 %>

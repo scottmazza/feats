@@ -10,11 +10,13 @@
   min-height: 0px;
   min-width: 0px;
   padding: 10px 20px 10px 20px;
+	margin-bottom: 30px;
   background-color: #FFF;
+	border: 1px solid #CCC;
 	-webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-	-webkit-box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.05), -1px -1px 1px 1px rgba(0, 0, 0, 0.05);
+	 -webkit-box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.05), -1px -1px 1px 1px rgba(0, 0, 0, 0.05);
   -moz-box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.05), -1px -1px 1px 1px rgba(0, 0, 0, 0.05);
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.05), -1px -1px 1px 1px rgba(0, 0, 0, 0.05);
 }
@@ -28,7 +30,7 @@
 
 .profilewhite-well h3 {
   font-size: 14px;
-  line-height: 1;
+  line-height: 1.2;
   letter-spacing: 0px;
   font-weight: 300;
   color: #333;

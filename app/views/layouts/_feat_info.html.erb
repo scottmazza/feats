@@ -13,13 +13,11 @@
   <div class="hr1"></div>
 	  <h2>
       <strong><%= link_to "#{@feat.name}", feat_path(@feat.id) %></strong>
- 			created by <%= link_to "#{@feat.user.username}", 
-			user_path(@feat.user.id) %>
 			<% if @feat.user.id == session[ :user_id ] %>&nbsp;
 				<%= link_to '<i class="icon-edit"></i>'.html_safe, 
-					edit_feat_path( @feat ), title: 'Edit feat.' %> |
+					edit_feat_path( @feat ), title: 'Edit Feat' %> |
   	    <%= link_to '<i class="icon-remove"></i>'.html_safe, 
-					feat_path(	@feat	), confirm: 'Delete this feat?', 
+					feat_path(	@feat	), confirm: 'Are you sure you want to delete this feat?', 
 					method: 'delete',title: 'Delete Feat' %>
 	    <% end %>
 			<br>
