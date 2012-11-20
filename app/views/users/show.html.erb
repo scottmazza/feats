@@ -1,24 +1,40 @@
 <div class="background-unit">
   <div class="container">
-	  <div class="row-fluid">
+    <div class="row-fluid">
 	    <div class="span12">
         <div class="usertop-well">
 				  <h2><%= image_tag@user.image %> &nbsp;
 						<strong><%= @user.name %></strong>, <%= @user.username %></h2>
 		      <h3>
-					  <%= @user.location %><br>
-						<br>
-					  <em><% if @user.bio.blank? %>
-						   &lt;none&gt;
-					  <% else %>
-						  <br><%= @user.bio %>
-					  <% end %></em>
-					</h3>
-			  </div>
-				<div class="staticbottom-well">
-					<h2>
+			      <%= @user.location %><br>
+					    <em>
+						    <% if @user.bio.blank? %>
+						      &lt;none&gt;
+					      <% else %><br>
+						    <%= @user.bio %>
+					    </em>
+					  <% end %>
+				    <br>
+				    <br>
+				    <% if params[:id].eql?(session[:user_id].to_s ) %>
+			        <%= link_to "Edit Profile", 
+								edit_user_path( session[:user_id] ) %>
+			      <% end %>
+				  </h3>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br>
+  <div class="container">
+    <div class="profilewhite-well">
+	    <div class="row-fluid">
+		    <div class="span5">
+			    <h4>Feats</h4>
+		      <div class="hr3"></div>
+			    <h3>
 					  <% if @feat_count == 0 %>
-			      	0 Feats Created
+			        0 Feats Created
 			      <% elsif @feat_count == 1 %>
 	    	    	<%= link_to "#{@feat_count} Feat Created", 
 								feats_path( user_id: params[:id] ) %>
@@ -30,21 +46,14 @@
 			    	<% if @attempt_count == 0 %>
 			      	0 Feats Attempted
 			      <% elsif @attempt_count == 1 %>
-			      	<%= link_to "#{@attempt_count} Feat Attempted",
-			      		attempts_path( user_id: params[:id] ) %>
+			        <%= link_to "#{@attempt_count} Feat Attempted", 
+								attempts_path( user_id: params[:id] ) %><br>
 			      <% else %>
-			      <%= link_to "#{@attempt_count} Feats Attempted",
-			      	attempts_path( user_id: params[:id] ) %>
-			    	<% end %>
-					</h2>
-					<h2>
-						<br>
-			    	<% if params[:id].eql?(session[:user_id].to_s ) %>
-			      	<%= link_to "Edit Profile", 
-								edit_user_path( session[:user_id] ) %>
-			    	<% end %>
-					</h2>
-		    </div>
+			        <%= link_to "#{@attempt_count} Feats Attempted", 
+								attempts_path( user_id: params[:id] ) %><br>
+			      <% end %>
+				  </h3>
+        </div>
       </div>
     </div>
   </div>
