@@ -18,10 +18,7 @@ class UsersController < ApplicationController
       if @user.nil?
         flash.now.notice = "No users matched your search criteria."
       end
-    else
-      params[ :usertxt ] = "Username or email"
     end
-    
   end
   
   def show
