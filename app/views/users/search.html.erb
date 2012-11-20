@@ -6,7 +6,8 @@
           <%= form_tag search_users_path, method: 'get' do %>
             <fieldset>
         			<h2><strong>Search Users</strong></h2>
-           		<%= text_field_tag :usertxt, params[:usertxt], maxlength: 255,
+           		<%= text_field_tag :usertxt, params[:usertxt], 
+								placeholder: 'Username or email', maxlength: 255,
  								class: "span12" %>
 							<br>
            		<%= submit_tag 'Search', name: nil, 

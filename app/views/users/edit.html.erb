@@ -6,7 +6,7 @@
 		      <%= image_tag@user.image %> <%= @user.name %>
 					<br>
 					<br>
-	        <%= form_for(@user) do |f| %>
+	        <%= form_for( @user ) do |f| %>
 	        <%= render 'shared/error_messages', target: @user %>
 	          <fieldset>
 	            <div class="control-group">

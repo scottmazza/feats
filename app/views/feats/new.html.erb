@@ -1,58 +1,34 @@
-<%= render 'shared/map_script', {obj_list: @feats} %>
-  <div class="background-unit">
-    <div class="container">
-	    <div class="row-fluid">
-        <div class="span5">
-		      <div class="craig-unit">
-					  <h2>
-						  <i class="icon-map-marker"></i>
-			        <strong><%= @location.name %></strong><br>
-		          <%= @location.address %><br>
-							<br>
-			        <%= link_to "Change Location", locate_locations_path %>
-						</h2>  
-					</div>
-					<div class="craig-unit">
-			      <h2><strong>Feat Name and Feat Description/Rules</strong></h2>
-						<center><div class="hr1"></div></center>
-            <%= form_for @feat do |f| %>
-            <%= render 'shared/error_messages', target: @feat %>
-			        <fieldset>
-                <%= f.label "Feat name" %>
-                <%= f.text_field :name, class: "field span12" %>
-		  			    <br>
-                <%= f.label "description/rules" %>
-                <%= f.text_area :description, rows: 4, class: "field span12" %>
-						    <br>
-						    <br>
-			          <%= f.label "Is the Feat timed or scored?"%>
-		            <%= f.radio_button :timed, 1 %>
-		            <%= f.label :timed, style: "display:inline;" %>
-		            <br>
-		            <%= f.radio_button :timed, 0, checked: true %>
-		            <%= f.label :timed, "Scored", style: "display:inline;" %>
-		            <br>
-		            <br>
-			          <%= f.label "How is the winner determined?"%>
-			          <%= f.radio_button :low_score_wins, 1 %>
-			          <%= f.label "Low score/time wins", style: "display:inline;" %>
-			          <br>
-			          <%= f.radio_button :low_score_wins, 0, checked: true %>
-		            <%= f.label "High score/time wins", style: "display:inline;" %>
-                <br>
-                <br>
-	              <%= f.submit "Create Feat", class: "btn btn-small btn-primary" %>
-			        </fieldset>
-            <% end %>
-          </div>
-			  </div>
-     
-		 
-        <div class="span7">
-	        <div class="map-well"> 
-	          <div id="map_canvas"></div>
-          </div>
-	      </div>
-	    </div>
-    </div>
+<%= render 'shared/map_script', { obj_list: @feats } %>
+<div class="background-unit">
+  <div class="container">
+   	<div class="row-fluid">
+      <div class="span5">
+      	<div class="craig-unit">
+			  	<h2>
+				  	<i class="icon-map-marker"></i>
+	        	<strong><%= @location.name %></strong><br>
+          	<%= @location.address %><br>
+						<br>
+						<% if params[ :action ] == 'new' %>
+	        		<%= link_to "Change Location", locate_locations_path %>
+						<% end %>
+					</h2>  
+				</div>
+				<div class="craig-unit">
+	      	<h2><strong>Feat name and description/rules.</strong></h2>
+					<center><div class="hr1"></div></center>					
+					<% if params[ :action ] == 'new' %>
+   					<%= render 'new_feat_form' %>
+					<% else %>
+ 						<%= render 'edit_feat_form' %>
+					<% end %>
+        </div>
+	  	</div>
+      <div class="span7">
+       	<div class="map-well"> 
+         	<div id="map_canvas"></div>
+        </div>
+     	</div>
+   	</div>
   </div>
+</div>

@@ -6,7 +6,6 @@ Feats::Application.routes.draw do
     get 'search', on: :collection
   end
   resources :feats do
-    options = { only: [ :new, :create, :show, :index, :destroy ]} 
     get 'search', on: :collection
   end    
   resources :locations do     

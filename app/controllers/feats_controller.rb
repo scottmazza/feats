@@ -26,6 +26,12 @@ class FeatsController < ApplicationController
     redirect_to user_path( @feat.user_id )
   end
   
+  def edit
+    @feat = Feat.find( params[ :id ])
+    @location = @feat.location
+    render action: 'new'
+  end
+  
   def index
     if params[:user_id].present?
       @user = User.find( params[:user_id] )
@@ -39,8 +45,8 @@ class FeatsController < ApplicationController
     # Location must be created/chosen before feat creation can continue ------ #
     
     @feat = Feat.new
-    if params[:location_id].present?
-      @location = Location.find( params[:location_id] )
+    if params[ :location_id ].present?
+      @location = Location.find( params[ :location_id] )
       session[:location_id] = @location.id
       @feats = Feat.find_all_by_location_id( @location.id ) 
     elsif session[:location_id].present? 
@@ -98,5 +104,22 @@ class FeatsController < ApplicationController
       @attempts = Attempt.find_all_by_feat_id( @feat.id, order: 'score DESC' )
     end
     session[:feat_id] = @feat.id
+  end
+  
+  def update
+    @feat = Feat.find( params[ :id ])
+    #
+    # Only the owning user can update his feat
+    #
+    if @feat.user_id == session[ :user_id ]
+      @feat.name = params[ :feat ][ :name ]
+      @feat.description = params[ :feat ][ :description ]
+      if @feat.save
+        flash[ :success ] = "Feat updated."
+        redirect_to feat_path( @feat )
+      else
+        render action: "new"
+      end
+    end
   end
 end
