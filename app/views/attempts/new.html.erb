@@ -7,7 +7,11 @@
 		    	<%= render 'layouts/feat_info' %>
 			  </div>
 				<div class="craig-unit">
-          <h2><strong>Record your attempt.</strong></h2>
+					<% if params[ :action ] == 'new' %>
+          	<h2><strong>Record your attempt.</strong></h2>
+					<% else %>
+				  	<h2><strong>Update Your Attempt</strong></h2>
+					<% end %>
 					<div class="hr1"></div>
     			<%= render 'attempt_form' %>
   			</div>

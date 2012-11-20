@@ -31,7 +31,10 @@
 		<br>
 		<%= f.label :video_url, "Youtube video URL" %>
 		<%= f.text_field :video_url %>
-		<%= f.submit "Record Attempt", 
-        class: "btn btn-small btn-primary" %>		            
+		<% if params[ :action ] == 'new' %>
+			<%= f.submit "Record Attempt", class: "btn btn-small btn-primary" %>
+		<% else %>		            
+			<%= f.submit "Update Attempt", class: "btn btn-small btn-primary" %>
+		<% end %>
 	</fieldset>
 <% end %>

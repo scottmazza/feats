@@ -1,5 +1,4 @@
 <%= render 'shared/map_script', { obj_list: @feats } %>
-
 <div class="background-unit">
 	<div class="container">
 	  <div class="row-fluid">
@@ -13,13 +12,13 @@
 					<% end %>
 					<h2><strong>or</strong></h2>
 					<h2><%= link_to 'Create New Location', new_location_path %></h2>
-		  </div>
+		  	</div>
 	    </div>
-        <div class="span8">
-	      	<div class="map-well"> 
-	        	<div id="map_canvas"></div>
-          </div>
-	    	</div>
+      <div class="span8">
+	      <div class="map-well"> 
+	        <div id="map_canvas"></div>
+        </div>
+	    </div>
 	  </div>
-    </div>
   </div>
+</div>

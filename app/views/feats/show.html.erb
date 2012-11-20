@@ -14,8 +14,8 @@
 	        <% if @attempts.empty? %>
 						<div class="row-fluid">
 							<div class="span12">
-		      			<h2><strong>This feat doesn't have an attempt yet.<br> Would you
-			 							like to record one?</strong></h2>
+		      			<h2><strong>This feat doesn't have an attempt yet.<br> Would
+			 						you like to record one?</strong></h2>
 							</div>
 						</div>
 		      <% else %>
@@ -43,14 +43,18 @@
 									</div>
 									<div class="span5">
 								  	<h1>
-											<%= link_to '<i class="icon-eye-open"></i>'.html_safe, attempt_path(a.id),
+											<%= link_to '<i class="icon-eye-open"></i>'.html_safe,
+											 	attempt_path(a.id),
 											 	title: 'View attempt.' %>
 	                  	<% if a.user.id == session[:user_id] %>
 	               				<% @attempt_exists = true %>
-	                 			| <%= link_to '<i class="icon-edit"></i>'.html_safe, edit_attempt_path(a.id),
+	                 			| <%= link_to '<i class="icon-edit"></i>'.html_safe,
+	 												edit_attempt_path(a.id),
 	 													title: 'Edit attempt.' %> |
-	                 			<%= link_to '<i class="icon-remove"></i>'.html_safe, attempt_path(a.id), 
-													confirm: 'Delete this attempt?', method: 'delete', title: 'Delete attempt.' %>
+	                 			<%= link_to '<i class="icon-remove"></i>'.html_safe,
+	 												attempt_path(a.id), 
+													confirm: 'Delete this attempt?', method: 'delete',
+													title: 'Delete attempt.' %>
 	                 		<% end %>
 										</h1>
 									</div>

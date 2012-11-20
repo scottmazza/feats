@@ -6,16 +6,12 @@
 		      <%= image_tag@user.image %> <%= @user.name %>
 			    <br>
 					<br>
-	        <h2>
-						<strong>Username:</strong> <%= @user.username %>
-					</h2>
-					<h2>
-						<strong>Location:</strong> <%= @user.location %>
-					</h2>
+	        <h2><strong>Username:</strong> <%= @user.username %></h2>
+					<h2><strong>Location:</strong> <%= @user.location %></h2>
 					<h2>
 						<strong>Bio:</strong>
 						<% if @user.bio.blank? %>
-						 &lt;none&gt;
+						 &lt;empty&gt;
 						<% else %>
 							<br><%= @user.bio %>
 						<% end %>

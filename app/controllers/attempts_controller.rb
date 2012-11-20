@@ -54,13 +54,14 @@ class AttemptsController < ApplicationController
   end
   
   def edit
-    @attempt  = Attempt.find( params[ :id ] )
+    @attempt  = Attempt.find( params[ :id ])
     @feat     = @attempt.feat
     @location = @feat.location
     if @feat.timed
       params[ :hours ], params[ :minutes ], params[ :seconds ] = 
         @attempt.score_to_hhmmss
     end
+    render action: 'new'
   end
   
   def index
@@ -117,8 +118,8 @@ class AttemptsController < ApplicationController
       end
       unless @attempt.errors.any?  
         if @attempt.save
-          flash[ :notice ] = "Attempt updated."
-          redirect_to attempt_path( @attempt.id )
+          flash[ :success ] = "Attempt updated."
+          redirect_to attempt_path( @attempt )
         else 
           render action: "edit"
         end
