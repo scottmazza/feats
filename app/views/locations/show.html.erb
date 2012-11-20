@@ -2,41 +2,43 @@
 <div class="background-unit">
   <div class="container">
     <div class="row-fluid">
-      <div class="span12">
-				<div class="statictop-well"
-				  <h2>
-				    <strong><%= @location.name %></strong>
-				    <br>
-				    <%= @location.address %>
-					</h2>
-				</div>
-				<div class="staticbottom-well">
-					<div class="row-fluid">
-					  <div class="span7">
-						  <h2>
-							  <strong>Existing Feats</strong><br>
-								<div class="hr3"></div>
-					      <% unless @feats.empty? %>
-						      <% @feats.each do |f| %>
-							      <%= link_to f.name, feat_path( f.id ) %>
-							        <% if f != @feats.last %><br>
-											<br>
-							      <% end %>
-						      <% end %>
-					      <% else %>
-						      There are no feats at this location.  
-							    <%= link_to "Create one", new_feat_path %>?</h2>
-					      <% end %>
-							</h2>
-		  	    </div>
-			      <div class="span5">
-	            <div id="map_canvas"></div>
-							<br>
-							<br>
-	          </div>
+	    <div class="span12">
+        <div class="profilewhite-well">
+			    <h2><%= @location.name %></h2>
+				  <h3><%= @location.address %><h3>
+			  </div>
+		  </div>
+	  </div>
+  </div>
+	<br>
+
+  <div class="container">
+    <div class="profilewhite-well">
+	    <div class="row-fluid">
+		    <div class="span7">
+			    <h4>Existing Feats</h4>
+		      <div class="hr3"></div>
+				  <h3>
+					  <% unless @feats.empty? %>
+					    <% @feats.each do |f| %>
+		  	        <%= link_to f.name, feat_path( f.id ) %>
+							    <% if f != @feats.last %><br>
+							    <br>
+							  <% end %>
+						  <% end %>
+					  <% else %>
+				      There are no feats at this location.  
+						  <%= link_to "Create one", new_feat_path %>?</h2>
+					  <% end %>
+				  </h3>
+		    </div>
+			  <div class="span5">
+				  <div class="map-well">
+	          <div id="map_canvas"></div>
 	        </div>
-        </div>
+	      </div>
       </div>
     </div>
   </div>
 </div>
+

@@ -2,9 +2,8 @@
   <div class="container">
 	  <div class="row-fluid">
 	    <div class="span12">
-        <div class="craig-unit">
-		      <%= image_tag@user.image %> <%= @user.name %>
-					<br>
+        <div class="profilewhite-well">
+		      <h2><%= image_tag@user.image %> &nbsp;<%= @user.name %></h2>
 					<br>
 	        <%= form_for(@user) do |f| %>
 	        <%= render 'shared/error_messages', target: @user %>
@@ -25,6 +24,7 @@
 	           </fieldset>
 	        <% end %>
 			  </div>
+				<br>
       </div>
     </div>
   </div>
