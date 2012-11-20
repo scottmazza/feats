@@ -8,8 +8,8 @@
 				  	<i class="icon-map-marker"></i>
 	        	<strong><%= @location.name %></strong><br>
           	<%= @location.address %><br>
-						<br>
 						<% if params[ :action ] == 'new' %>
+							<br>
 	        		<%= link_to "Change Location", locate_locations_path %>
 						<% end %>
 					</h2>  
