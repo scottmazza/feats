@@ -59,32 +59,39 @@ class FeatsController < ApplicationController
 
   def search
     @feats = []
-    if params[:distance].present?
-      if params[:distance].not_a_positive_float?
-        flash.now[:error] = "Invalid distance, (#{params[:distance]})"
+    unless params[ :distance ].present?
+      user = User.find( session[ :user_id ]) 
+      unless user.location.blank?
+        params[ :distance ] = '50'
+        params[ :address ] = user.location
+      end 
+    end
+    if params[ :distance ].present?
+      if params[ :distance ].not_a_positive_float?
+        flash.now[ :error ] = "Invalid distance, (#{params[ :distance ]})"
       else
-        distance = params[:distance].to_f
-        if distance < 0 || distance > 100
-          flash.now[:error] = "Distance must be in the range [0..100]."
+        distance = params[ :distance ].to_f
+        if distance < 0 || distance > 50
+          flash.now[ :error ] = "Distance must be in the range [0..50]."
         else        
-          unless params[:address].blank?
+          unless params[ :address ].blank?
             # Attempt to geolocate input address ----------------------------- #        
-            @latitude, @longitude = Geocoder.coordinates(params[:address])
+            @latitude, @longitude = Geocoder.coordinates(params[ :address ])
           end
           if @latitude.nil? && @longitude.nil? 
-            flash.now[:error] = "Please provide a valid search address."
+            flash.now[ :error ] = "Please provide a valid search address."
           else
             # Input is valid. Use standard address & perform search ---------- #
-            params[:address] = Geocoder.address( [@latitude, @longitude] )
+            params[ :address ] = Geocoder.address( [@latitude, @longitude] )
             @locations = Location.near([@latitude, @longitude], distance )
             if @locations.nil?
-              flash.now[:notice] = "No feats found in that area"
+              flash.now[ :notice ] = "No feats found in that area"
             else
               @locations.each do |l|
                 @feats += Feat.find_all_by_location_id(l.id)
               end
               unless @feats.any?
-                flash.now[:notice] = "No feats found in that area"
+                flash.now[ :notice ] = "No feats found in that area"
               end
             end
           end

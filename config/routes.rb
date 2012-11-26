@@ -1,5 +1,5 @@
 Feats::Application.routes.draw do
-  root to: 'feats#index'
+  root to: 'feats#search'
   
   resources :users do
     options = { only: [ :edit, :update, :show ]}

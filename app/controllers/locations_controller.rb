@@ -18,7 +18,7 @@ class LocationsController < ApplicationController
   end
     
   def create
-    session[:location_id] = nil
+    session.delete( :location_id )
     @location = Location.new(
                   name: params[:location][:name],
                   address:session[:address],
@@ -30,20 +30,20 @@ class LocationsController < ApplicationController
       # Check for a location with the same name (sans whitespace, etc.) 
       #
       @locations = 
-        Location.find_all_by_latitude_and_longitude(session[:latitude], 
-          session[:longitude])
+        Location.find_all_by_latitude_and_longitude( session[ :latitude ], 
+          session[ :longitude ])
       @locations.each do |loc|
         if @location.name.gsub( /[\s\W]+/, "").casecmp( loc.name.gsub(/[\s\W]+/, "")) == 0
-          session[:location_id] = loc.id
-          flash[:notice] = "Using existing location."
+          session[ :location_id ] = loc.id
+          flash[ :notice ] = "Using existing location."
           break
         end
       end
-      if session[:location_id].nil?
-        @location.user = User.find(session[:user_id])
+      if session[ :location_id ].nil?
+        @location.user = User.find( session[ :user_id ])
         @location.save!
-        session[:location_id] = @location.id
-        flash[:notice] = "Location created."
+        session[ :location_id ] = @location.id
+        flash[ :notice ] = "Location created."
       end
       redirect_to new_feat_path
     else                       

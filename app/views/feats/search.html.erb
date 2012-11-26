@@ -8,10 +8,12 @@
             <fieldset>
         			<h2>
 								Search for existing feats within &nbsp;
-								<%= text_field_tag :distance, params[:distance], class: "span5", placeholder: '1.5' %>
+								<%= text_field_tag :distance, params[:distance], 
+									class: "span5", placeholder: '1.5' %>
 							 	&nbsp; miles of</strong>
 							</h2>
-           		<%= text_field_tag :address, params[:address], maxlength: 255, class: "span12", 
+           		<%= text_field_tag :address, params[:address], maxlength: 255,
+ 								class: "span12", 
  								placeholder: 'Address'%>
 							<br>
            		<%= submit_tag 'Search', name: nil, 
@@ -25,8 +27,10 @@
 						<div class="hr1"></div>
 	        	<% @feats.each do |f| %>
 							<h2>
-								<strong><%= link_to "#{f.name}", feat_path( f.id ) %></strong> at
-								<%= link_to "#{f.location.name}", location_path( f.location.id )%>
+								<strong><%= link_to "#{f.name}", feat_path( f.id ) %></strong>
+								at
+								<%= link_to "#{f.location.name}", 
+									location_path( f.location.id )%>
 							</h2>
 							<% if f != @feats.last %>
 								<div class="hr3"></div>
@@ -35,10 +39,8 @@
 					</div>
 	    	<% end %>
       </div>
-	  	<div class="span7">
-	    	<div class="map-well">  
-          <div id="map_canvas"></div>
-        </div>
+	  	<div class="span7 map-well">
+        <div id="map_canvas"></div>
       </div> 
 		</div>
     <br>
