@@ -243,15 +243,18 @@
   box-shadow: inset 0 12px 12px -12px #000, inset 0 -8px 8px -8px #333;
 }
 
-.map-well {
+.maphome-well {
   min-height: 282px;
 	max-height: 282px;
 	min-width: 500px;
 	max-width: 500px;
-  padding: 8px 8px 0px 8px;
+  padding: 3px;
 	margin-bottom: 0px;
   background: #FFF;
   border: 1px solid #D3D3D3;
+	-webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
   -webkit-box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.07), -2px -2px 2px 2px rgba(0, 0, 0, 0.07);
   -moz-box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.07), -2px -2px 2px 2px rgba(0, 0, 0, 0.07);
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.07), -2px -2px 2px 2px rgba(0, 0, 0, 0.07);
