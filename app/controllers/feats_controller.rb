@@ -3,9 +3,9 @@ class FeatsController < ApplicationController
   helper :maps
   
   def create
-    @feat = Feat.new( params[:feat] )
-    @feat.user = User.find( session[:user_id] )
-    @feat.location = @location = Location.find( session[:location_id] )
+    @feat = Feat.new( params[ :feat ])
+    @feat.user = User.find( session[ :user_id ])
+    @feat.location = @location = Location.find( session[ :location_id ])
     @feat.name = @feat.name.lstrip.rstrip
     if @feat.save
       flash[:notice] = "Feat created successfully."
@@ -16,11 +16,11 @@ class FeatsController < ApplicationController
   end
 
   def destroy
-    @feat = Feat.find( params[:id] )
+    @feat = Feat.find( params[ :id ])
     #
     # Only the owning user can delete his attempt 
     #  
-    if @feat.user_id == session[:user_id]
+    if @feat.user_id == session[ :user_id ]
       @feat.destroy
     end
     redirect_to user_path( @feat.user_id )
@@ -101,7 +101,7 @@ class FeatsController < ApplicationController
   end
   
   def show
-    @feat           = Feat.find(params[:id])
+    @feat           = Feat.find( params[ :id ])
     @user           = @feat.user
     @location       = @feat.location
     @attempt_exists = false

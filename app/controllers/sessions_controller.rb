@@ -8,12 +8,14 @@ class SessionsController < ApplicationController
     # there is a corresponding User record in our DB.
     #    
     auth = request.env["omniauth.auth"]
-    user = User.where( email: auth.info.email ).first_or_create!
-    # --------------------------------------------------------------------- #
-    # The user is in our DB. We'll record the FB auth info in our DB,       #
-    # create a session, and redirect the user to our root page.             #
-    # --------------------------------------------------------------------- #
-    
+    new_user = false
+    user = User.where( email: auth.info.email ).first_or_create! do | user |
+      new_user = true
+    end
+    # 
+    # The user is in our DB. We'll record the FB auth info in our DB,
+    # create a session, and redirect the user to our root page.
+    #     
     user.update_attributes!(
       oauth_provider:   auth.provider,
       oauth_token:      auth[:credentials][:token],
@@ -21,6 +23,10 @@ class SessionsController < ApplicationController
       name:             auth.info.name,
       image:            auth.info.image,
       location:         auth.info.location  )
+      
+    if new_user
+      UserMailer.welcome_email( user ).deliver
+    end
  
     session[:user_id] = user.id
     if user.profile_complete?
