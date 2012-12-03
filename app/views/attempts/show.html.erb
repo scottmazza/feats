@@ -28,3 +28,7 @@
 	  </div>
   </div>
 </div>
+<% content_for :page_specific_js do %>
+	<%= javascript_include_tag 'http://connect.facebook.net/en_US/all.js' %>
+	<%= javascript_include_tag 'fb.js'%>
+<% end %>

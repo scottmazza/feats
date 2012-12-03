@@ -2,7 +2,7 @@
   <title>Feats With Friends | Create and compete over records set all over the world.</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
-	<%= content_for :page_specific_js %>
+	<%= yield :page_specific_js %>
   <%= csrf_meta_tags %>
  <meta name="google-site-verification" content="wLYGEE_ExR7TGaJYXtoX5DNudoiyJ2HtEytvDDFEwc4" />
   <meta charset="utf-8">

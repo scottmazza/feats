@@ -9,6 +9,7 @@ class FeatsController < ApplicationController
     @feat.name = @feat.name.lstrip.rstrip
     if @feat.save
       flash[:notice] = "Feat created successfully."
+      session[ :post_to_fb_wall ] = 'true'
       redirect_to @feat
     else
       render action: 'new'
