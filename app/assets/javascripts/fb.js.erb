@@ -1,0 +1,17 @@
+$(function() {
+  FB.init({
+    appId      : '<%=ENV['FACEBOOK_APP_ID']%>',
+    status     : true,
+    cookie     : true
+  });
+
+  $("#fb-feat-share").click( function() {
+	FB.ui( window.feat_feed_obj );
+	return false;
+  });
+
+  $("#fb-attempt-share").click( function() {
+	FB.ui( window.attempt_feed_obj );
+	return false;
+  });
+});

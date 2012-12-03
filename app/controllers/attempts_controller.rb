@@ -91,6 +91,7 @@ class AttemptsController < ApplicationController
     session[ :attempt_id ] = @attempt.id
     @feat = @attempt.feat
     @location = @feat.location
+    @user = current_user
     @validations = @attempt.validations.where( rebuttal: false )
     @rebuttals   = @attempt.validations.where( rebuttal: true )
   end

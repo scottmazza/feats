@@ -1,13 +1,21 @@
 <% if @feat.timed %>
   <h2><strong><%= link_to "#{@attempt.user.username.possessive}",
- 		user_path(@attempt.user.id) %> Time</strong>
+ 		user_path(@attempt.user.id) %> Time</strong> &nbsp;
+		<% if @user.id == session[ :user_id ] %>
+			<%= link_to '<i class="icon-share"></i>'.html_safe, '#', 
+				id: 'fb-attempt-share', title: 'Share Attempt' %>
+		<% end %>
 	</h2>
   <center><div class="hr1"></div></center>
 	<h2><%= @attempt.score.to_hhmmss %></h2>
 <% else %>
   <h2>
 		<strong><%= link_to "#{@attempt.user.username.possessive}",
-			 	user_path(@attempt.user.id) %> Attempt</strong>
+			 	user_path(@attempt.user.id) %> Attempt</strong> &nbsp;
+		<% if @user.id == session[ :user_id ] %>
+			<%= link_to '<i class="icon-share"></i>'.html_safe, '#', 
+				id: 'fb-attempt-share', title: 'Share Attempt' %>
+		<% end %>
 	</h2>
 	<center><div class="hr1"></div></center>
   <h2><%= @attempt.score.to_s %></h2>
@@ -20,7 +28,9 @@
 		<% elsif @validations.size == 1 %>
 		  <%= link_to "1 validation", validations_path %>
 		<% else %>
-		  <h2><%= link_to "#{@validations.size} validations", validations_path %></h2>
+		  <h2><%= link_to "#{@validations.size} validations", 
+				validations_path %>
+			</h2>
 	  <% end %>
 		| <i class="icon-thumbs-down"></i>
 	  <% if @rebuttals.empty? %>
@@ -38,4 +48,17 @@
 <% unless @attempt.video_url.blank? %>
 	<iframe src="http://www.youtube.com/embed/<%=@attempt.video_id%>" 
 		frameborder="0" allowfullscreen></iframe>
+<% end %>
+<%= javascript_tag do %>
+  window.attempt_feed_obj = {
+	method: 'feed',
+	link: '<%= attempt_url( @attempt ) %>',
+	name: '<%=j @feat.name %>',
+	caption: 'at <%=j @feat.location.name %>',
+	<% if @feat.timed %>
+		description: 'Time: <%= @attempt.score.to_hhmmss %>'
+	<% else %>
+		description: 'Score: <%= @attempt.score %>'
+	<% end %>
+  };
 <% end %>

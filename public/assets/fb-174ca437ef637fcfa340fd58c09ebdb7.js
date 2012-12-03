@@ -1,0 +1,1 @@
+$(function(){FB.init({appId:"463074820377113",status:!0,cookie:!0}),$("#fb-feat-share").click(function(){return FB.ui(window.feat_feed_obj),!1}),$("#fb-attempt-share").click(function(){return FB.ui(window.attempt_feed_obj),!1})});
