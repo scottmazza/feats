@@ -57,6 +57,7 @@ class ValidationsController < ApplicationController
     @feat        = Feat.find( session[ :feat_id ])
     @location    = @feat.location
     @attempt     = Attempt.find( session[ :attempt_id ])
+    @user        = @attempt.user
     @validations = @attempt.validations
     @validation  = Validation.new( attempt_id: @attempt.id )
   end
