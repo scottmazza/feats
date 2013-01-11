@@ -33,20 +33,20 @@ class Feat < ActiveRecord::Base
     count conditions: ["user_id=?", user_id ]
   end
   
-  private
+private
   
-    def check_for_dup
-      dup_not_found = true
-      feats = Feat.find_all_by_location_id( self.location_id )
-      
-      feats.each do |f|
-        if f.name.casecmp( self.name ) == 0
-          dup_not_found = false;
-          self.errors[:base] << "A feat by the same name exists at that location."
-          break;
-        end
+  def check_for_dup
+    dup_not_found = true
+    feats = Feat.find_all_by_location_id( self.location_id )
+    
+    feats.each do |f|
+      if f.name.casecmp( self.name ) == 0
+        dup_not_found = false;
+        self.errors[:base] << "A feat by the same name exists at that location."
+        break;
       end
-      dup_not_found
     end
+    dup_not_found
+  end
 end
 
